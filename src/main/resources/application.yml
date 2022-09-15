@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: vacation-backend
+
+clickup:
+  api:
+    tokens:
+      - pk_42531032_7JNBWORDKD4I6QII88WGW2QGY5163QG1
+  list:
+    devs: "180311895"
+
+vacation:
+  list_devs: 180311895
