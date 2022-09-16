@@ -1,0 +1,295 @@
+openapi: 3.0.3
+
+info:
+  title: Vacation backend - OpenAPI 3.0
+  version: 1.0.0
+
+tags:
+  - name: vacations backend
+    description: Отправка заявки на отпуск, получение списка отпусков,
+      обновление данных отпуска, получение колличества дней отпуска
+
+paths:
+
+  /vacations:
+    post:
+      tags:
+        - vacations backend
+      summary: Добавление новой заявки на согласование отпуска
+      description: Добавление новой заявки на согласование отпуска
+      operationId: addVacationRequest
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VacationApprovalReq'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacation'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Violations'
+    get:
+      tags:
+        - vacations backend
+      summary: Получение списка отпусков принадлежащих пользователю
+      description: Получение списка отпусков пользователя, для просмотра статуса
+      operationId: getVacationUser
+      parameters:
+        - name: vacation_id
+          in: query
+          description: параметр для получения списка отпусков по по массиву id отпусков, игнорируется если указан egar_id, дополнительные параметры start_date и end_date игнорируются совместно с этим параметром
+          required: false
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: egar_id
+          in: query
+          description: параметр для получения списка отпусков по Egar Id, дополнительно можно указать start_date и end_date
+          required: false
+          allowEmptyValue: true
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          required: false
+          description: дата начала временного промежутка для поиска отпусков, применяется вместе с end_date и egar_id
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          required: false
+          description: дата окончания временного промежутка для поиска отпусков, применяется вместе с start_date и egar_id
+          schema:
+            type: string
+        - name: list_id
+          in: query
+          required: false
+          description: необязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vacation'
+
+  /vacations/{vacation_id}:
+
+    get:
+      tags:
+        - vacations backend
+      summary: Получение отпуска по ID
+      operationId: findVacationById
+      parameters:
+        - name: vacation_id
+          in: path
+          description: ID заявки на отпуск (используется Id таски в clickUp)
+          required: true
+          schema:
+            type: string
+        - name: list_id
+          in: query
+          required: false
+          description: необязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacation'
+
+    put:
+      tags:
+        - vacations backend
+      summary: Обновление данных отпуска
+      operationId: updateVacationById
+      parameters:
+        - name: vacation_id
+          in: path
+          description: ID заявки на отпуск (используется Id таски в clickUp)
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Vacation'
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vacation'
+        400:
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Violations'
+
+  /vacations/remain:
+    get:
+      tags:
+        - vacations backend
+      summary: Получение количества оставшихся дней отпуска
+      description: Получение количества оставшихся дней отпусков
+      operationId: getRemainVacationDays
+      parameters:
+        - name: vacation_id
+          in: query
+          description: параметр для получения оставшихся дней по по массиву id отпусков, игнорируется если указан egar_id, дополнительные параметры start_date и end_date игнорируются совместно с этим параметром
+          required: false
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: egar_id
+          in: query
+          description: параметр для получения списка отпусков по Egar Id, дополнительно можно указать start_date и end_date
+          required: false
+          allowEmptyValue: true
+          schema:
+            type: string
+        - name: start_date
+          in: query
+          required: false
+          description: дата начала временного промежутка, применяется вместе с end_date и egar_id
+          schema:
+            type: string
+        - name: end_date
+          in: query
+          required: false
+          description: дата окончания временного промежутка, применяется вместе с start_date и egar_id
+          schema:
+            type: string
+        - name: job_start_date
+          in: query
+          description: дата начала работы сотрудника
+          required: true
+          schema:
+            type: string
+        - name: list_id
+          in: query
+          required: false
+          description: необязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
+          schema:
+            type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacationDayRemain'
+        404:
+          description: User or Vacation not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+
+    Vacation:
+      type: object
+      properties:
+        vacation_id:
+          type: string
+          example: 2wmahab
+        employee_profile_id:
+          type: string
+          example: 2rgq20y
+        assigners:
+          type: array
+          items:
+            $ref: '#/components/schemas/Assigner'
+        start_date:
+          type: string
+          example: 1662065042485
+        end_date:
+          type: string
+          example: 16620182435
+        status:
+          type: string
+          example: новый
+
+    VacationApprovalReq:
+      type: object
+      properties:
+        start_date:
+          type: string
+          example: 1662065042485
+        count_day:
+          type: integer
+          format: int8
+          minimum: 2
+          maximum: 14
+          example: 14
+      required:
+        - start_date
+        - count_day
+
+    Assigner:
+      type: object
+      properties:
+        egar_id:
+          type: string
+        username:
+          type: string
+
+    VacationDayRemain:
+      type: object
+      properties:
+        profile_id:
+          type: string
+          description: "id таски с карточкой сотрудника, которому принадлежит оставшиеся дни"
+        vacation_day_remain:
+          type: number
+          description: "колличество дней отпуска"
+          example: 2
+
+    Violation:
+      type: object
+      properties:
+        field_name:
+          type: string
+        message:
+          type: string
+
+    Violations:
+      type: array
+      items:
+        $ref: "#/components/schemas/Violation"
+
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          title: Could not find user with Egar ID
+        timestamp:
+          type: string
+          example: 1662065042485
