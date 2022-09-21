@@ -105,6 +105,7 @@
                             <generatorName>spring-codegen</generatorName>
                             <apiPackage>ru.egartech.vacationbackend</apiPackage>
                             <modelPackage>ru.egartech.vacationbackend.model</modelPackage>
+
                             <configOptions>
                                 <useDto>true</useDto>
                                 <jsonIgnoreNullFields>true</jsonIgnoreNullFields>

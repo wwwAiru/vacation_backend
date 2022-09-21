@@ -1,24 +1,52 @@
 package ru.egartech.vacationbackend.mapper;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import ru.egartech.sdk.api.TaskClient;
 import ru.egartech.sdk.dto.task.deserialization.TaskDto;
+
+import ru.egartech.sdk.dto.task.deserialization.customfield.field.attachment.AttachmentDto;
+import ru.egartech.sdk.dto.task.deserialization.customfield.field.attachment.AttachmentFieldDto;
 import ru.egartech.sdk.dto.task.deserialization.customfield.field.relationship.RelationshipFieldDto;
 import ru.egartech.sdk.dto.task.deserialization.customfield.field.relationship.RelationshipValueDto;
 import ru.egartech.sdk.dto.task.deserialization.customfield.field.text.TextFieldDto;
-import ru.egartech.vacationbackend.config.ClickUpListIdConfiguration;
+import ru.egartech.sdk.dto.task.serialization.customfield.request.CustomFieldRequest;
+import ru.egartech.vacationbackend.configure.VacationClickUpListIdConfiguration;
 import ru.egartech.vacationbackend.model.VacationDto;
 import ru.egartech.vacationbackend.model.AssignerDto;
 
+import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
+import java.util.Spliterators;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 @Component
 @RequiredArgsConstructor
 public class VacationMapper {
 
-    private final ClickUpListIdConfiguration lc;
+    private final VacationClickUpListIdConfiguration lc;
+    private final TaskClient taskClient;
+
+    @Value("${org_structure_list_id}")
+    private Integer ORG_STRUCTURE_LIST_ID;
+    @Value("${cu_egar_id}")
+    private String CU_EGAR_ID;
+    @Value("${firstname}")
+    private String FIRSTNAME_ID;
+    @Value("${lastname}")
+    private String LASTNAME_ID;
+    @Value("${otc}")
+    private String OTC_ID;
+    @Value("${ava}")
+    private String AVA_ID;
+    @Value("${root_task_org_struct}")
+    private String ROOT_TASK_ORG_STRUCT;
 
     public VacationDto toVacation(TaskDto taskDto){
         Integer listId = taskDto.getList().getId();
@@ -31,19 +59,22 @@ public class VacationMapper {
                 .getValue().stream()
                 .findFirst()
                 .map(RelationshipValueDto::getId).orElse(null);
+        List<String> assignerCuEgarId = taskDto.getAssigners().stream()
+                .map(a -> a.getId())
+                .toList();
+        List<AssignerDto> assigners = null;
+        if (!assignerCuEgarId.isEmpty()){
+            assigners = assignerCuEgarId.stream()
+                    .map(this::mapAssigner)
+                    .toList();
+        }
 
-        List<AssignerDto> la = taskDto.getAssigners().stream()
-                .map((a) -> AssignerDto.builder()
-                        .username(a.getUsername())
-                        .egarId(trimEgarIdFromEmail(a.getEmail()))
-                        .build())
-                .collect(Collectors.toList());
         return VacationDto.builder()
                 .vacationId(taskDto.getId())
                 .employeeProfileId(employeeProfileId)
-                .startDate(startDate)
-                .endDate(endDate)
-                .assigners(la)
+                .startDate(Long.valueOf(startDate))
+                .endDate(Long.valueOf(endDate))
+                .assigners(assigners)
                 .status(taskDto.getStatus().getStatus())
                 .build();
     }
@@ -51,53 +82,25 @@ public class VacationMapper {
     private String trimEgarIdFromEmail(String email){
         return email.substring(0,email.indexOf('@'));
     }
+
+
+    private AssignerDto mapAssigner(String a) {
+        TaskDto e = taskClient.getTasksByCustomFields(ORG_STRUCTURE_LIST_ID, CustomFieldRequest.create()
+                .setFieldId(CU_EGAR_ID)
+                .setOperator("=")
+                .setValue(a)).getFirstTask();
+        String fullName = String.format("%s %s %s", e.<TextFieldDto>customField(FIRSTNAME_ID).getValue(),
+                e.<TextFieldDto>customField(LASTNAME_ID).getValue(),
+                e.<TextFieldDto>customField(LASTNAME_ID).getValue());
+        String avatarUrl = e.<AttachmentFieldDto>customField(AVA_ID).getValue().stream()
+                .findFirst()
+                .map(AttachmentDto::getUrl)
+                .orElse(null);
+        return AssignerDto.builder()
+                .orgStructureId(e.getId())
+                .fullName(fullName)
+                .avatarUrl(avatarUrl)
+                .build();
+    };
+
 }
-
-
-//"status": {
-//        "id": "subcat180311910_sc156545942_rIcopcWR",
-//        "status": "новый",
-//        "color": "#d3d3d3",
-//        "orderindex": 0,
-//        "type": "open"
-//        },
-
-// "status": {
-//         "id": "subcat180311910_sc156545942_w2XJMHgo",
-//         "status": "в процессе",
-//         "color": "#f9d900",
-//         "orderindex": 6,
-//         "type": "custom"
-//         },
-
-//"status": {
-//        "id": "subcat180311910_sc156545942_pdD65bGE",
-//        "status": "согласован",
-//        "color": "#04A9F4",
-//        "orderindex": 5,
-//        "type": "custom"
-//        },
-
-//"status": {
-//        "id": "subcat180311910_sc156545942_PpKdymx7",
-//        "status": "завершен",
-//        "color": "#6bc950",
-//        "orderindex": 7,
-//        "type": "closed"
-//        },
-
-//"status": {
-//        "id": "subcat180311910_sc156545942_8Gqmlkpf",
-//        "status": "согл-ть у куратора",
-//        "color": "#0231E8",
-//        "orderindex": 1,
-//        "type": "custom"
-//        },
-
-//"status": {
-//        "id": "subcat180311910_sc156545942_e3G5twb4",
-//        "status": "оформление в кадрах",
-//        "color": "#0231E8",
-//        "orderindex": 4,
-//        "type": "custom"
-//        },

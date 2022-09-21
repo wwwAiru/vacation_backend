@@ -15,4 +15,10 @@ public interface VacationRepository {
     VacationDto saveVacation(VacationDto vacationDto);
 
     VacationDto updateVacation(String vacationId, VacationDto vacationDto);
+
+    List<VacationDto> findVacationByEgarId(String egarId, Integer listId);
+
+    List<VacationDto> findVacationByListIdByStatus(List<String> vacationIdList, String status);
+
+    List<VacationDto> findVacationByEgarIdByStatus(String egarId, Integer profileListId, String status);
 }
