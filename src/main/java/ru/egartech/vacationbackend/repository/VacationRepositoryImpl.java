@@ -26,7 +26,6 @@ public class VacationRepositoryImpl implements VacationRepository {
 
     private final TaskClient taskClient;
     private final VacationMapper vacationMapper;
-
     private final VacationClickUpListIdConfiguration cf;
     private final ProfileClickUpListIdConfiguration pcf;
 
@@ -49,7 +48,7 @@ public class VacationRepositoryImpl implements VacationRepository {
         RequestTaskDto createTaskDto = CreateTaskDto.builder()
                 .name(name)
                 .build();
-        int vacationListId = Integer.parseInt(pcf.getLists().get(String.valueOf(profileListId)).get("vacation_list"));
+        int vacationListId = Integer.parseInt(pcf.getLists().get(profileListId).get("vacation_list"));
         TaskDto newTaskDto = taskClient.createTask(vacationListId, createTaskDto);
         UpdateTaskDto updateTaskDto = UpdateTaskDto.builder()
                 .id(newTaskDto.getId())

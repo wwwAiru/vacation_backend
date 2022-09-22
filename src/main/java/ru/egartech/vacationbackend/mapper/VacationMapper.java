@@ -76,15 +76,14 @@ public class VacationMapper {
                 .endDate(Long.valueOf(endDate))
                 .assigners(assigners)
                 .status(taskDto.getStatus().getStatus())
+                .statusType(VacationDto.StatusTypeEnum.fromValue(taskDto.getStatus().getType()))
+                .statusId(taskDto.getStatus().getId())
                 .build();
     }
 
     private String trimEgarIdFromEmail(String email){
         return email.substring(0,email.indexOf('@'));
     }
-
-
-   String s =  "https://api.clickup.com/api/v2/list/204546384/task?subtasks=true&custom_fields=[{\"field_id\":\"3ccda2f7-5228-4ce1-b6f7-3f37a3056330\",\"operator\":\"=\",\"value\":\"42531032\"}]";
 
     private AssignerDto mapAssigner(String a) {
         TaskDto e = taskClient.getTasksByCustomFields(ORG_STRUCTURE_LIST_ID,

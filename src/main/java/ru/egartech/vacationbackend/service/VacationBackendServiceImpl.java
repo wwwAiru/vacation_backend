@@ -2,9 +2,6 @@ package ru.egartech.vacationbackend.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.egartech.sdk.api.TaskClient;
-import ru.egartech.sdk.dto.task.deserialization.TaskDto;
-import ru.egartech.vacationbackend.EgarIdNullExceptions;
 import ru.egartech.vacationbackend.model.VacationApprovalReqDto;
 import ru.egartech.vacationbackend.model.VacationDayRemainDto;
 import ru.egartech.vacationbackend.model.VacationDto;
@@ -32,43 +29,45 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
 
     @Override
     public VacationDto addVacationRequest(VacationApprovalReqDto vacationApprovalReqDto) {
-        Long endDate = Long.sum(vacationApprovalReqDto.getStartDate(),
-                TimeUnit.DAYS.toMillis(vacationApprovalReqDto.getCountDay()));
         return vacationRepository.saveVacation(VacationDto.builder()
-                .employeeProfileId(vacationApprovalReqDto.getEmployeeProfileId())
-                .startDate(vacationApprovalReqDto.getStartDate())
-                .endDate(endDate)
-                .build(), vacationApprovalReqDto.getListProfileId());
+                        .employeeProfileId(vacationApprovalReqDto.getEmployeeProfileId())
+                        .startDate(vacationApprovalReqDto.getStartDate())
+                        .endDate(calculateEndDate(vacationApprovalReqDto.getStartDate(), vacationApprovalReqDto.getCountDay()))
+                        .build(),
+                vacationApprovalReqDto.getListProfileId());
     }
 
     @Override
-    public VacationDto findVacationById(String vacationId, String listId) {
+    public VacationDto findVacationById(String vacationId) {
         return vacationRepository.getVacationById(vacationId);
     }
 
     @Override
-    public VacationDayRemainDto getRemainVacationDays(Long jobStartDate, Integer listId, List<String> vacationId,
-                                                      String egarId) {
-        if(egarId != null){
-            List<VacationDto> lvOff = vacationRepository.findVacationByEgarIdByStatus(egarId, listId, "done");
-            Integer dayRemain = calculateDayRemain(lvOff, jobStartDate);
-            return VacationDayRemainDto.builder()
-                    .vacationDayRemain(dayRemain)
-                    .build();
-        }
-        else if (!vacationId.isEmpty()){
-            List<VacationDto> lvOff = vacationRepository.findVacationByListIdByStatus(vacationId, "done");
-            Integer dayRemain = calculateDayRemain(lvOff, jobStartDate);
-            return VacationDayRemainDto.builder()
-                    .vacationDayRemain(dayRemain)
-                    .build();
-        }
-        else throw new EgarIdNullExceptions("Egar id not be Null");
+    public VacationDayRemainDto getRemainVacationDays(Long jobStartDate, List<String> vacationIds) {
+        List<VacationDto> lvOff = vacationRepository.findVacationByListIdByStatus(vacationIds, "done");
+        Integer dayRemain = calculateDayRemain(lvOff, jobStartDate);
+        return VacationDayRemainDto.builder()
+                .vacationDayRemain(dayRemain)
+                .build();
     }
 
     @Override
-    public List<VacationDto> getVacation(List<String> vacationIds, String egarId, Long startDate, Long endDate, Integer profileListId) {
-        if(egarId != null){
+    public VacationDayRemainDto getRemainVacationDaysByEgarId(String egarId, Long jobStartDate, Integer profileListId) {
+        List<VacationDto> lvOff = vacationRepository.findVacationByEgarIdByStatus(egarId, profileListId, "done");
+        Integer dayRemain = calculateDayRemain(lvOff, jobStartDate);
+        return VacationDayRemainDto.builder()
+                .vacationDayRemain(dayRemain)
+                .build();
+    }
+
+    @Override
+    public List<VacationDto> getVacation(List<String> vacationIds) {
+        return vacationRepository.getVacationsByListId(vacationIds);
+    }
+
+    @Override
+    public List<VacationDto> getVacationsByEgarId(String egarId, Integer profileListId, Long startDate, Long endDate) {
+
             if(startDate != null & endDate != null){
                 return vacationRepository.findVacationByEgarId(egarId, profileListId).stream()
                         .filter(isIncludesTimeInterval(startDate, endDate))
@@ -86,12 +85,35 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
                         .filter(isIncludesTimeInterval(startDate, endDate))
                         .collect(Collectors.toList());
             }
-        }
-        else if(!vacationIds.isEmpty()){
-            return vacationRepository.getVacationsByListId(vacationIds);
-        }
-        else throw new EgarIdNullExceptions("Egar id not be Null");
+
     }
+
+//    @Override
+//    public List<VacationDto> getVacation(List<String> vacationIds, String egarId, Long startDate, Long endDate, Integer profileListId) {
+//        if(egarId != null){
+//            if(startDate != null & endDate != null){
+//                return vacationRepository.findVacationByEgarId(egarId, profileListId).stream()
+//                        .filter(isIncludesTimeInterval(startDate, endDate))
+//                        .collect(Collectors.toList());
+//            }
+//            else {
+//                startDate = LocalDateTime.now().with(firstDayOfYear())
+//                        .atZone(ZoneId.systemDefault())
+//                        .toInstant().toEpochMilli();
+//                endDate = LocalDateTime.now().with(lastDayOfYear())
+//                        .atZone(ZoneId.systemDefault())
+//                        .toInstant().toEpochMilli();
+//                return vacationRepository.findVacationByEgarId(egarId, profileListId)
+//                        .stream()
+//                        .filter(isIncludesTimeInterval(startDate, endDate))
+//                        .collect(Collectors.toList());
+//            }
+//        }
+//        else if(!vacationIds.isEmpty()){
+//            return vacationRepository.getVacationsByListId(vacationIds);
+//        }
+//        else throw new EgarIdNullExceptions("Egar id not be Null");
+//    }
 
     @Override
     public VacationDto updateVacationById(String vacationId, VacationDto vacationDto) {
@@ -111,6 +133,10 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
                 .multiply(BigDecimal.valueOf(experienceInMonths));
         Long dayRemain = md.subtract(BigDecimal.valueOf(countVacationDayOff)).longValue();
         return dayRemain.intValue();
+    }
+
+    private Long calculateEndDate(Long startDate, Integer countDay){
+        return Long.sum(startDate, TimeUnit.DAYS.toMillis(countDay));
     }
 
 }
