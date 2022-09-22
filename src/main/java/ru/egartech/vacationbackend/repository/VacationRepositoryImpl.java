@@ -68,7 +68,7 @@ public class VacationRepositoryImpl implements VacationRepository {
                 .customFields(getBindField(vacationDto, updateTask.getList().getId()))
                 .build();
         TaskDto updatedTask = taskClient.updateTask(updateTaskDto);
-        return vacationMapper.toVacation(updateTask);
+        return vacationMapper.toVacation(updatedTask);
     }
 
     @Override
@@ -106,7 +106,7 @@ public class VacationRepositoryImpl implements VacationRepository {
                 .fieldId(pcf.getLists().get(profileListId).get("egar_id"))
                 .operator("=")
                 .value(egarId).build()).getFirstTask();
-        RelationshipFieldDto vacationsField = e.customField(pcf.getLists().get(profileListId).get("vacation_list"));
+        RelationshipFieldDto vacationsField = e.customField(pcf.getLists().get(profileListId).get("vacation_list_id"));
         List<RelationshipValueDto> vac = vacationsField.getValue();
         return vac.stream().map(RelationshipValueDto::getId).toList();
     }

@@ -36,14 +36,6 @@ class VacationBackendServiceImplTest {
                     .build()))
             .build();
 
-
-    @BeforeEach
-    void init(){
-
-
-
-    }
-
     @Test
     void findVacationById() {
         VacationRepository vacationRepository = mock(VacationRepositoryImpl.class);
