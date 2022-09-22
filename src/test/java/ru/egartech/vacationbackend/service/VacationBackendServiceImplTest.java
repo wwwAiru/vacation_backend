@@ -3,6 +3,7 @@ package ru.egartech.vacationbackend.service;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 import ru.egartech.sdk.api.TaskClient;
 import ru.egartech.sdk.dto.task.deserialization.TaskDto;
 
@@ -21,6 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.doReturn;
 import static org.mockito.Mockito.mock;
 
+@SpringBootTest
 class VacationBackendServiceImplTest {
 
     VacationDto vacationDto = VacationDto.builder()
@@ -48,16 +50,30 @@ class VacationBackendServiceImplTest {
     @Test
     void getVacation() {
         VacationRepository vacationRepository = mock(VacationRepositoryImpl.class);
-        doReturn(List.of(vacationDto)).when(vacationRepository).findVacationByEgarId("username", 87654282);
+        doReturn(List.of(vacationDto)).when(vacationRepository).findVacationByEgarId("username",180311895);
         VacationsBackendService vacationsBackendService = new VacationBackendServiceImpl(vacationRepository);
         List<VacationDto> t = vacationsBackendService.getVacation(null, "username",
-                null, null, 87654282);
+                null, null, 180311895);
 
         assertNotNull(t);
         assertNotNull(t.get(0));
 
-        List<VacationDto> t2 = vacationsBackendService.getVacation(null, null, 165990599999L,
-                165990599998L, 87654282);
+        List<VacationDto> t2 = vacationsBackendService.getVacation(null, "username", 165990599999L,
+                165990599998L,180311895);
         assertTrue(t2.isEmpty());
+    }
+
+    @Test
+    void addVacationRequest() {
+
+
+    }
+
+    @Test
+    void getRemainVacationDays() {
+    }
+
+    @Test
+    void updateVacationById() {
     }
 }

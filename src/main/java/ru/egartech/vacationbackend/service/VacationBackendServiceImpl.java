@@ -66,8 +66,6 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
         else throw new EgarIdNullExceptions("Egar id not be Null");
     }
 
-
-
     @Override
     public List<VacationDto> getVacation(List<String> vacationIds, String egarId, Long startDate, Long endDate, Integer profileListId) {
         if(egarId != null){
