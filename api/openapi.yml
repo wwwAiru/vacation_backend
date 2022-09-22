@@ -11,6 +11,8 @@ tags:
 
 paths:
 
+
+
   /vacations:
     post:
       tags:
@@ -39,23 +41,41 @@ paths:
     get:
       tags:
         - vacations backend
-      summary: Получение списка отпусков принадлежащих пользователю
+      summary: Получение списка отпусков принадлежащих пользователю по списку Id
       description: Получение списка отпусков пользователя, для просмотра статуса
       operationId: getVacation
       parameters:
         - name: vacation_ids
           in: query
-          description: параметр для получения списка отпусков по по массиву id отпусков, игнорируется если указан egar_id, дополнительные параметры start_date и end_date игнорируются совместно с этим параметром
-          required: false
+          description: параметр для получения списка отпусков по по массиву id отпусков
+          required: true
           explode: false
           schema:
             type: array
             items:
               type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Vacation'
+
+  /vacations/{profile_list_id}/{egar_id}:
+    get:
+      tags:
+        - vacations backend
+      summary: Получение списка отпусков пользователя по Egar id
+      description: d
+      operationId: getVacationsByEgarId
+      parameters:
         - name: egar_id
-          in: query
-          description: параметр для получения списка отпусков по Egar Id, дополнительно можно указать start_date и end_date
-          required: false
+          in: path
+          description: параметр для получения списка отпусков по Egar Id, обязательно применять совместно с profile_list_id, дополнительно можно указать start_date и end_date
+          required: true
           allowEmptyValue: true
           schema:
             type: string
@@ -74,9 +94,9 @@ paths:
             type: integer
             format: int64
         - name: profile_list_id
-          in: query
-          required: false
-          description: обязательный параметр profile_list_id, указывает конткретный лист к которому привязан сотрудник
+          in: path
+          required: true
+          description: обязательный параметр profile_list_id, указывает конкретный лист к которому привязан сотрудник
           schema:
             type: integer
       responses:
@@ -103,12 +123,12 @@ paths:
           required: true
           schema:
             type: string
-        - name: list_id
-          in: query
-          required: true
-          description: необязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
-          schema:
-            type: string
+      #        - name: profile_list_id
+      #          in: query
+      #          required: true
+      #          description: необязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
+      #          schema:
+      #            type: string
       responses:
         200:
           description: successful operation
@@ -150,27 +170,18 @@ paths:
                 items:
                   $ref: '#/components/schemas/Violations'
 
-  /vacations/remain:
+  /vacations/remain/{profile_list_id}/{egar_id}:
     get:
       tags:
         - vacations backend
-      summary: Получение количества оставшихся дней отпуска
-      description: Получение количества оставшихся дней отпусков
-      operationId: getRemainVacationDays
+      summary: Получение количества оставшихся дней отпуска по Egar ID
+      description: Получение количества оставшихся дней отпусков по Egar ID
+      operationId: getRemainVacationDaysByEgarId
       parameters:
-        - name: vacation_id
-          in: query
-          description: параметр для получения оставшихся дней по по массиву id отпусков, игнорируется если указан egar_id, дополнительные параметры start_date и end_date игнорируются совместно с этим параметром
-          required: false
-          explode: false
-          schema:
-            type: array
-            items:
-              type: string
         - name: egar_id
-          in: query
+          in: path
           description: параметр для получения списка отпусков по Egar Id, дополнительно можно указать start_date и end_date
-          required: false
+          required: true
           allowEmptyValue: true
           schema:
             type: string
@@ -181,10 +192,10 @@ paths:
           schema:
             type: integer
             format: int64
-        - name: list_id
-          in: query
+        - name: profile_list_id
+          in: path
           required: true
-          description: обязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
+          description: обязательный параметр list_id, указывает конкретный лист к которому привязан сотрудник
           schema:
             type: integer
       responses:
@@ -201,18 +212,55 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 
+  /vacations/remain:
+    get:
+      tags:
+        - vacations backend
+      summary: Получение количества оставшихся дней отпуска по списку Id
+      description: Получение количества оставшихся дней отпусков
+      operationId: getRemainVacationDays
+      parameters:
+        - name: vacation_ids
+          in: query
+          description: параметр для получения оставшихся дней по по массиву id отпусков, игнорируется если указан egar_id, дополнительные параметры start_date и end_date игнорируются совместно с этим параметром
+          required: false
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: job_start_date
+          in: query
+          description: дата начала работы сотрудника
+          required: true
+          schema:
+            type: integer
+            format: int64
+
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VacationDayRemain'
+        404:
+          description: User or Vacation not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+
 components:
   schemas:
-
     Vacation:
       type: object
       properties:
-
         vacation_id:
           type: string
           example: 2wmahab
           readOnly: true
-
         employee_profile_id:
           type: string
           example: 2rgq20y
@@ -231,6 +279,16 @@ components:
         status:
           type: string
           example: новый
+        status_type:
+          type: string
+          enum:
+            - open
+            - custom
+            - done
+            - closed
+        status_id:
+          type: string
+
 
     VacationApprovalReq:
       type: object
