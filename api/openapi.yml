@@ -7,7 +7,7 @@ info:
 tags:
   - name: vacations backend
     description: Отправка заявки на отпуск, получение списка отпусков,
-      обновление данных отпуска, получение колличества дней отпуска
+      обновление данных отпуска, получение количества дней отпуска
 
 paths:
 
@@ -41,9 +41,9 @@ paths:
         - vacations backend
       summary: Получение списка отпусков принадлежащих пользователю
       description: Получение списка отпусков пользователя, для просмотра статуса
-      operationId: getVacationUser
+      operationId: getVacation
       parameters:
-        - name: vacation_id
+        - name: vacation_ids
           in: query
           description: параметр для получения списка отпусков по по массиву id отпусков, игнорируется если указан egar_id, дополнительные параметры start_date и end_date игнорируются совместно с этим параметром
           required: false
@@ -64,19 +64,21 @@ paths:
           required: false
           description: дата начала временного промежутка для поиска отпусков, применяется вместе с end_date и egar_id
           schema:
-            type: string
+            type: integer
+            format: int64
         - name: end_date
           in: query
           required: false
           description: дата окончания временного промежутка для поиска отпусков, применяется вместе с start_date и egar_id
           schema:
-            type: string
-        - name: list_id
+            type: integer
+            format: int64
+        - name: profile_list_id
           in: query
           required: false
-          description: необязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
+          description: обязательный параметр profile_list_id, указывает конткретный лист к которому привязан сотрудник
           schema:
-            type: string
+            type: integer
       responses:
         200:
           description: successful operation
@@ -103,7 +105,7 @@ paths:
             type: string
         - name: list_id
           in: query
-          required: false
+          required: true
           description: необязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
           schema:
             type: string
@@ -172,30 +174,19 @@ paths:
           allowEmptyValue: true
           schema:
             type: string
-        - name: start_date
-          in: query
-          required: false
-          description: дата начала временного промежутка, применяется вместе с end_date и egar_id
-          schema:
-            type: string
-        - name: end_date
-          in: query
-          required: false
-          description: дата окончания временного промежутка, применяется вместе с start_date и egar_id
-          schema:
-            type: string
         - name: job_start_date
           in: query
           description: дата начала работы сотрудника
           required: true
           schema:
-            type: string
+            type: integer
+            format: int64
         - name: list_id
           in: query
-          required: false
-          description: необязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
+          required: true
+          description: обязательный параметр list_id, указывает конткретный лист к которому привязан сотрудник
           schema:
-            type: string
+            type: integer
       responses:
         200:
           description: successful operation
@@ -216,9 +207,12 @@ components:
     Vacation:
       type: object
       properties:
+
         vacation_id:
           type: string
           example: 2wmahab
+          readOnly: true
+
         employee_profile_id:
           type: string
           example: 2rgq20y
@@ -227,11 +221,13 @@ components:
           items:
             $ref: '#/components/schemas/Assigner'
         start_date:
-          type: string
+          type: integer
+          format: int64
           example: 1662065042485
         end_date:
-          type: string
-          example: 16620182435
+          type: integer
+          format: int64
+          example: 1662018243585
         status:
           type: string
           example: новый
@@ -239,37 +235,45 @@ components:
     VacationApprovalReq:
       type: object
       properties:
-        start_date:
+        employee_profile_id:
           type: string
+        list_profile_id:
+          type: integer
+        start_date:
+          type: integer
+          format: int64
           example: 1662065042485
         count_day:
           type: integer
-          format: int8
           minimum: 2
           maximum: 14
           example: 14
       required:
         - start_date
         - count_day
+        - employee_profile_id
+        - list_profile_id
 
     Assigner:
       type: object
       properties:
-        egar_id:
+        org_structure_id:
           type: string
-        username:
+          example: 2vj3zgb
+        full_name:
+          type: string
+          example: Иванов Иван Иванович
+        avatar_url:
           type: string
 
     VacationDayRemain:
       type: object
       properties:
-        profile_id:
-          type: string
-          description: "id таски с карточкой сотрудника, которому принадлежит оставшиеся дни"
         vacation_day_remain:
-          type: number
-          description: "колличество дней отпуска"
+          type: integer
+          description: "количество дней отпуска"
           example: 2
+
 
     Violation:
       type: object
