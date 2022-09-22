@@ -50,14 +50,14 @@ class VacationBackendServiceImplTest {
         VacationRepository vacationRepository = mock(VacationRepositoryImpl.class);
         doReturn(List.of(vacationDto)).when(vacationRepository).findVacationByEgarId("username", 87654282);
         VacationsBackendService vacationsBackendService = new VacationBackendServiceImpl(vacationRepository);
-        List<VacationDto> t = vacationsBackendService.getVacation(87654282, null,
-                "username", null, null);
+        List<VacationDto> t = vacationsBackendService.getVacation(null, "username",
+                null, null, 87654282);
 
         assertNotNull(t);
         assertNotNull(t.get(0));
 
-        List<VacationDto> t2 = vacationsBackendService.getVacation(87654282, null, "username",
-                165990599998L, 165990599999L);
+        List<VacationDto> t2 = vacationsBackendService.getVacation(null, null, 165990599999L,
+                165990599998L, 87654282);
         assertTrue(t2.isEmpty());
     }
 }
