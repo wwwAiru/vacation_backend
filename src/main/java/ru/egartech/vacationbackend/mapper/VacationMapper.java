@@ -84,11 +84,14 @@ public class VacationMapper {
     }
 
 
+   String s =  "https://api.clickup.com/api/v2/list/204546384/task?subtasks=true&custom_fields=[{\"field_id\":\"3ccda2f7-5228-4ce1-b6f7-3f37a3056330\",\"operator\":\"=\",\"value\":\"42531032\"}]";
+
     private AssignerDto mapAssigner(String a) {
-        TaskDto e = taskClient.getTasksByCustomFields(ORG_STRUCTURE_LIST_ID, CustomFieldRequest.create()
-                .setFieldId(CU_EGAR_ID)
-                .setOperator("=")
-                .setValue(a)).getFirstTask();
+        TaskDto e = taskClient.getTasksByCustomFields(ORG_STRUCTURE_LIST_ID,
+                true, CustomFieldRequest.builder()
+                        .fieldId(CU_EGAR_ID)
+                        .operator("=")
+                        .value(a).build()).getFirstTask();
         String fullName = String.format("%s %s %s", e.<TextFieldDto>customField(FIRSTNAME_ID).getValue(),
                 e.<TextFieldDto>customField(LASTNAME_ID).getValue(),
                 e.<TextFieldDto>customField(LASTNAME_ID).getValue());

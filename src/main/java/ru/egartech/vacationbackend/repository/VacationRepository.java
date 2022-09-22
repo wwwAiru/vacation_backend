@@ -12,7 +12,7 @@ public interface VacationRepository {
 
     List<VacationDto> getVacationsByListId(List<String> vacationIdList);
 
-    VacationDto saveVacation(VacationDto vacationDto);
+    VacationDto saveVacation(VacationDto vacationDto, Integer profileListId);
 
     VacationDto updateVacation(String vacationId, VacationDto vacationDto);
 

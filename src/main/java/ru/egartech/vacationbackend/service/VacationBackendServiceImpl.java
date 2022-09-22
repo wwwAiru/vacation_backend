@@ -38,7 +38,7 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
                 .employeeProfileId(vacationApprovalReqDto.getEmployeeProfileId())
                 .startDate(vacationApprovalReqDto.getStartDate())
                 .endDate(endDate)
-                .build());
+                .build(), vacationApprovalReqDto.getListProfileId());
     }
 
     @Override

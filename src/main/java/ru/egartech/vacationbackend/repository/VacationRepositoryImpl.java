@@ -22,11 +22,10 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component
-public class VacationRepositoryImpl implements VacationRepository{
+public class VacationRepositoryImpl implements VacationRepository {
 
     private final TaskClient taskClient;
     private final VacationMapper vacationMapper;
-    private final Integer LIST_ID = 180311910;
 
     private final VacationClickUpListIdConfiguration cf;
     private final ProfileClickUpListIdConfiguration pcf;
@@ -44,42 +43,37 @@ public class VacationRepositoryImpl implements VacationRepository{
     }
 
     @Override
-    public VacationDto saveVacation(VacationDto vacationDto) {
+    public VacationDto saveVacation(VacationDto vacationDto, Integer profileListId) {
         TaskDto employeeProfile = taskClient.getTaskById(vacationDto.getEmployeeProfileId(), true);
         String name = employeeProfile.getName().replace("Сотрудник:", "Отпуск:");
-        RequestTaskDto createTaskDto = CreateTaskDto.ofName(name);
-        TaskDto newTaskDto = taskClient.createTask(LIST_ID, createTaskDto);
-        UpdateTaskDto updateTaskDto = UpdateTaskDto
-                .ofTaskId(newTaskDto.getId())
-                .linkTask(cf.getLists().get(LIST_ID).get("employee_profile_id"), employeeProfile.getId())
-                .bindCustomFields(getBindField(vacationDto));
+        RequestTaskDto createTaskDto = CreateTaskDto.builder()
+                .name(name)
+                .build();
+        int vacationListId = Integer.parseInt(pcf.getLists().get(String.valueOf(profileListId)).get("vacation_list"));
+        TaskDto newTaskDto = taskClient.createTask(vacationListId, createTaskDto);
+        UpdateTaskDto updateTaskDto = UpdateTaskDto.builder()
+                .id(newTaskDto.getId())
+                .customFields(getBindField(vacationDto, vacationListId))
+                .customField(BindFieldDto.linkTask(cf.getLists().get(vacationListId).get("employee_profile_id"), employeeProfile.getId()))
+                .build();
         TaskDto updateTask = taskClient.updateTask(updateTaskDto);
         return vacationMapper.toVacation(updateTask);
     }
 
     @Override
     public VacationDto updateVacation(String vacationId, VacationDto vacationDto) {
-        UpdateTaskDto updateTaskDto = UpdateTaskDto
-                .ofTaskId(vacationId)
-                .bindCustomFields(getBindField(vacationDto));
-        TaskDto updateTask = taskClient.updateTask(updateTaskDto);
+        TaskDto updateTask = taskClient.getTaskById(vacationId, true);
+        UpdateTaskDto updateTaskDto = UpdateTaskDto.builder()
+                .id(vacationId)
+                .customFields(getBindField(vacationDto, updateTask.getList().getId()))
+                .build();
+        TaskDto updatedTask = taskClient.updateTask(updateTaskDto);
         return vacationMapper.toVacation(updateTask);
     }
 
     @Override
     public List<VacationDto> findVacationByEgarId(String egarId, Integer listId) {
-
-        TaskDto e = taskClient.getTasksByCustomFields(listId, CustomFieldRequest.create()
-                .setFieldId(pcf.getLists().get(listId).get("egar_id"))
-                .setOperator("=")
-                .setValue(egarId)).getFirstTask();
-
-        RelationshipFieldDto vacationsField = e.customField(pcf.getLists().get(listId).get("vacation_list_id"));
-        List<RelationshipValueDto> vac = vacationsField.getValue();
-
-        List<String> ids = vac.stream().map(RelationshipValueDto::getId).toList();
-
-        return ids.stream()
+        return getListVacationIds(egarId, listId).stream()
                 .map(v -> vacationMapper.toVacation(taskClient.getTaskById(v, true)))
                 .collect(Collectors.toList());
     }
@@ -95,28 +89,26 @@ public class VacationRepositoryImpl implements VacationRepository{
 
     @Override
     public List<VacationDto> findVacationByEgarIdByStatus(String egarId, Integer profileListId, String status) {
-
-        TaskDto e = taskClient.getTasksByCustomFields(profileListId, CustomFieldRequest.create()
-                .setFieldId(pcf.getLists().get(profileListId).get("egar_id"))
-                .setOperator("=")
-                .setValue(egarId)).getFirstTask();
-
-        RelationshipFieldDto vacationsField = e.customField(pcf.getLists().get(profileListId).get("vacation_list_id"));
-        List<RelationshipValueDto> vac = vacationsField.getValue();
-
-        List<String> ids = vac.stream().map(RelationshipValueDto::getId).toList();
-
-        return ids.stream()
+        return getListVacationIds(egarId, profileListId).stream()
                 .map(t -> taskClient.getTaskById(t, true))
                 .filter(t -> t.getStatus().getType().equals(status))
                 .map(vacationMapper::toVacation)
                 .collect(Collectors.toList());
     }
 
+    private List<BindFieldDto> getBindField(VacationDto vacationDto, Integer vacationListId) {
+        return List.of(BindFieldDto.of(cf.getLists().get(vacationListId).get("start_date"), vacationDto.getStartDate()),
+                BindFieldDto.of(cf.getLists().get(vacationListId).get("end_date"), vacationDto.getEndDate()));
+    }
 
-    private List<BindFieldDto> getBindField(VacationDto vacationDto){
-        return List.of(BindFieldDto.of(cf.getLists().get(LIST_ID).get("start_date"), vacationDto.getStartDate()),
-                       BindFieldDto.of(cf.getLists().get(LIST_ID).get("end_date"), vacationDto.getEndDate()));
+    private List<String> getListVacationIds(String egarId, Integer profileListId) {
+        TaskDto e = taskClient.getTasksByCustomFields(profileListId, false, CustomFieldRequest.builder()
+                .fieldId(pcf.getLists().get(profileListId).get("egar_id"))
+                .operator("=")
+                .value(egarId).build()).getFirstTask();
+        RelationshipFieldDto vacationsField = e.customField(pcf.getLists().get(profileListId).get("vacation_list"));
+        List<RelationshipValueDto> vac = vacationsField.getValue();
+        return vac.stream().map(RelationshipValueDto::getId).toList();
     }
 
 }
