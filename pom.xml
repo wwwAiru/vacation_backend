@@ -101,7 +101,7 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/vacation-contract.yml</inputSpec>
+                            <inputSpec>${project.basedir}/api/openapi.yml</inputSpec>
                             <generatorName>spring-codegen</generatorName>
                             <apiPackage>ru.egartech.vacationbackend</apiPackage>
                             <modelPackage>ru.egartech.vacationbackend.model</modelPackage>

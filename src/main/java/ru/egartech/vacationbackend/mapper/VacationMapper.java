@@ -1,7 +1,6 @@
 package ru.egartech.vacationbackend.mapper;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import ru.egartech.sdk.api.TaskClient;
@@ -17,14 +16,9 @@ import ru.egartech.vacationbackend.configure.VacationClickUpListIdConfiguration;
 import ru.egartech.vacationbackend.model.VacationDto;
 import ru.egartech.vacationbackend.model.AssignerDto;
 
-import java.util.Iterator;
+
 import java.util.List;
-import java.util.Spliterators;
-import java.util.function.Function;
-import java.util.function.Supplier;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
+
 
 @Component
 @RequiredArgsConstructor
@@ -33,19 +27,19 @@ public class VacationMapper {
     private final VacationClickUpListIdConfiguration lc;
     private final TaskClient taskClient;
 
-    @Value("${org_structure_list_id}")
+    @Value("${org_structure.list_id}")
     private Integer ORG_STRUCTURE_LIST_ID;
-    @Value("${cu_egar_id}")
+    @Value("${org_structure.cu_egar_id}")
     private String CU_EGAR_ID;
-    @Value("${firstname}")
+    @Value("${org_structure.firstname}")
     private String FIRSTNAME_ID;
-    @Value("${lastname}")
+    @Value("${org_structure.lastname}")
     private String LASTNAME_ID;
-    @Value("${otc}")
-    private String OTC_ID;
-    @Value("${ava}")
-    private String AVA_ID;
-    @Value("${root_task_org_struct}")
+    @Value("${org_structure.patronymic}")
+    private String PATRONYMIC_ID;
+    @Value("${org_structure.avatar}")
+    private String AVATAR_ID;
+    @Value("${org_structure.root_task_org_struct}")
     private String ROOT_TASK_ORG_STRUCT;
 
     public VacationDto toVacation(TaskDto taskDto){
@@ -93,8 +87,8 @@ public class VacationMapper {
                         .value(a).build()).getFirstTask();
         String fullName = String.format("%s %s %s", e.<TextFieldDto>customField(FIRSTNAME_ID).getValue(),
                 e.<TextFieldDto>customField(LASTNAME_ID).getValue(),
-                e.<TextFieldDto>customField(LASTNAME_ID).getValue());
-        String avatarUrl = e.<AttachmentFieldDto>customField(AVA_ID).getValue().stream()
+                e.<TextFieldDto>customField(PATRONYMIC_ID).getValue());
+        String avatarUrl = e.<AttachmentFieldDto>customField(AVATAR_ID).getValue().stream()
                 .findFirst()
                 .map(AttachmentDto::getUrl)
                 .orElse(null);

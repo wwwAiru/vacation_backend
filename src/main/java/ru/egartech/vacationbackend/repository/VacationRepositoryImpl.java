@@ -43,19 +43,19 @@ public class VacationRepositoryImpl implements VacationRepository {
 
     @Override
     public VacationDto saveVacation(VacationDto vacationDto, Integer profileListId) {
-        TaskDto employeeProfile = taskClient.getTaskById(vacationDto.getEmployeeProfileId(), true);
-        String name = employeeProfile.getName().replace("Сотрудник:", "Отпуск:");
-        RequestTaskDto createTaskDto = CreateTaskDto.builder()
+        var employeeProfile = taskClient.getTaskById(vacationDto.getEmployeeProfileId(), true);
+        var name = employeeProfile.getName().replace("Сотрудник:", "Отпуск:");
+        var createTaskDto = CreateTaskDto.builder()
                 .name(name)
                 .build();
         int vacationListId = Integer.parseInt(pcf.getLists().get(profileListId).get("vacation_list"));
-        TaskDto newTaskDto = taskClient.createTask(vacationListId, createTaskDto);
-        UpdateTaskDto updateTaskDto = UpdateTaskDto.builder()
+        var newTaskDto = taskClient.createTask(vacationListId, createTaskDto);
+        var updateTaskDto = UpdateTaskDto.builder()
                 .id(newTaskDto.getId())
                 .customFields(getBindField(vacationDto, vacationListId))
                 .customField(BindFieldDto.linkTask(cf.getLists().get(vacationListId).get("employee_profile_id"), employeeProfile.getId()))
                 .build();
-        TaskDto updateTask = taskClient.updateTask(updateTaskDto);
+        var updateTask = taskClient.updateTask(updateTaskDto);
         return vacationMapper.toVacation(updateTask);
     }
 
