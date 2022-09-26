@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -14,6 +13,7 @@ import ru.egartech.sdk.dto.task.deserialization.TaskDto;
 import ru.egartech.sdk.dto.task.deserialization.TasksDto;
 import ru.egartech.vacationbackend.AbstractSpringContext;
 import ru.egartech.vacationbackend.model.VacationDto;
+import ru.egartech.vacationbackend.model.AssignerDto;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,7 +50,7 @@ class VacationMapperTest extends AbstractSpringContext {
         VacationDto expect = VacationDto.builder()
                 .vacationId("2wmahab")
                 .employeeProfileId("2rgq20y")
-                .assigners(List.of(ru.egartech.vacationbackend.model.AssignerDto.builder()
+                .assigners(List.of(AssignerDto.builder()
                         .orgStructureId("2vj3zk9")
                         .fullName("Фамилия Имя Отчество")
                         .build()))
