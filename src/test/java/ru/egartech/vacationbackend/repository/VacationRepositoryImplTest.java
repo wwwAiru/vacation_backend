@@ -43,8 +43,7 @@ class VacationRepositoryImplTest extends AbstractSpringContext {
 
     @BeforeEach
     void init() throws IOException {
-        File f =  ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX
-                    .concat("task.json"));
+        File f =  ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX.concat("task.json"));
         File f2 = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX.concat("assigner.json"));
         File profileFile = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX.concat("profile.json"));
         File profilesFile = ResourceUtils.getFile(ResourceUtils.CLASSPATH_URL_PREFIX.concat("profiles.json"));
@@ -89,8 +88,9 @@ class VacationRepositoryImplTest extends AbstractSpringContext {
 
     @Test
     void updateVacation() {
-        when(taskClient.getTaskById(any(),anyBoolean())).thenReturn(profileTask);
+        when(taskClient.getTaskById(any(),anyBoolean())).thenReturn(vacationTask);
         when(taskClient.updateTask(any())).thenReturn(vacationTask);
+        when(taskClient.getTasksByCustomFields(anyInt(), anyBoolean(), any())).thenReturn(assignersTasks);
         var vacation = VacationDto.builder()
                 .vacationId("2wmahab")
                 .employeeProfileId("2rgq20y")
