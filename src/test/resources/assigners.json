@@ -1,0 +1,2899 @@
+{
+  "tasks": [
+    {
+      "id": "2rgq20y",
+      "custom_id": null,
+      "name": "Сотрудник: Николаев Игорь Алексеевич",
+      "text_content": null,
+      "description": null,
+      "status": {
+        "status": "в работе",
+        "color": "#0231E8",
+        "type": "custom",
+        "orderindex": 1
+      },
+      "orderindex": "53832.00018140000000000000000000000000",
+      "date_created": "1657775303282",
+      "date_updated": "1663851133675",
+      "date_closed": null,
+      "archived": false,
+      "creator": {
+        "id": 42465764,
+        "username": "Руслан Якупов",
+        "color": "#b388ff",
+        "email": "ryakupov@egartech.ru",
+        "profilePicture": null
+      },
+      "assignees": [],
+      "watchers": [],
+      "checklists": [],
+      "tags": [],
+      "parent": null,
+      "priority": null,
+      "due_date": null,
+      "start_date": null,
+      "points": null,
+      "time_estimate": null,
+      "custom_fields": [
+        {
+          "id": "7e110a3d-31c1-47b0-a269-22daaa527746",
+          "name": "Больничные",
+          "type": "list_relationship",
+          "type_config": {
+            "fields": [
+              {
+                "name": "Status",
+                "field": "status",
+                "width": 100,
+                "hidden": false
+              }
+            ],
+            "subcategory_id": "210315847",
+            "linked_subcategory_access": true,
+            "subcategory_inverted_name": "ЦКР / Сотрудники / Больничные"
+          },
+          "date_created": "1661769525245",
+          "hide_from_guests": false,
+          "value": [
+            {
+              "id": "2wmagcr",
+              "name": "Больничный: Николай Игорь Алексеевич",
+              "status": "новый",
+              "color": "#d3d3d3",
+              "custom_type": null,
+              "team_id": "4597045",
+              "deleted": false,
+              "url": "https://app.clickup.com/t/2wmagcr",
+              "access": true
+            }
+          ],
+          "required": false
+        },
+        {
+          "id": "386eb593-8638-4534-8153-91f411b2cc52",
+          "name": "Грейд (Заменить на \"040 Грейд\" и удалить)",
+          "type": "drop_down",
+          "type_config": {
+            "default": 0,
+            "placeholder": null,
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "8039c591-3536-431f-98cd-6b992c07cd03",
+                "name": "1",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "becd7748-3ef7-4e0c-9a82-1c66ec0585f7",
+                "name": "2",
+                "color": null,
+                "orderindex": 1
+              },
+              {
+                "id": "db750a03-5c51-498f-b369-016edac99350",
+                "name": "3",
+                "color": null,
+                "orderindex": 2
+              },
+              {
+                "id": "1247044f-86c3-4dc1-affe-af438ae4216f",
+                "name": "4",
+                "color": null,
+                "orderindex": 3
+              },
+              {
+                "id": "c30ddff2-274c-4ca1-8679-79f3b2c4ab73",
+                "name": "5",
+                "color": null,
+                "orderindex": 4
+              }
+            ]
+          },
+          "date_created": "1621931247866",
+          "hide_from_guests": false,
+          "value": 2,
+          "required": false
+        },
+        {
+          "id": "b2c2a7b0-6377-4177-917d-846d49e5a013",
+          "name": "Занятость",
+          "type": "list_relationship",
+          "type_config": {
+            "fields": [
+              {
+                "name": "Status",
+                "field": "status",
+                "width": 100,
+                "hidden": false
+              }
+            ],
+            "subcategory_id": "180311911",
+            "linked_subcategory_access": true,
+            "subcategory_inverted_name": "ЦКР / Труд / Занятость"
+          },
+          "date_created": "1662962266027",
+          "hide_from_guests": false,
+          "value": [
+            {
+              "id": "2z4kcma",
+              "name": "Занятость: МКБ - Николаев Игорь Алексеевич",
+              "status": "согл-ие даты старта",
+              "color": "#0231E8",
+              "custom_type": null,
+              "team_id": "4597045",
+              "deleted": false,
+              "url": "https://app.clickup.com/t/2z4kcma",
+              "access": true
+            },
+            {
+              "id": "2z4g3d7",
+              "name": "Занятость: НРД - Николаев Игорь Алексеевич",
+              "status": "активна",
+              "color": "#02BCD4",
+              "custom_type": null,
+              "team_id": "4597045",
+              "deleted": false,
+              "url": "https://app.clickup.com/t/2z4g3d7",
+              "access": true
+            }
+          ],
+          "required": false
+        },
+        {
+          "id": "a0fc2f68-fcee-4c80-9d3d-c165e7e9e658",
+          "name": "Обеспечение",
+          "type": "list_relationship",
+          "type_config": {
+            "fields": [
+              {
+                "name": "Status",
+                "field": "status",
+                "width": 100,
+                "hidden": false
+              }
+            ],
+            "subcategory_id": "180311898",
+            "linked_subcategory_access": true,
+            "subcategory_inverted_name": "ЦКР / Сотрудники / Обеспечение"
+          },
+          "date_created": "1661769383918",
+          "hide_from_guests": false,
+          "value": [
+            {
+              "id": "2znnxdm",
+              "name": "Обеспечение: Николаев Игорь Алексеевич",
+              "status": "новое",
+              "color": "#d3d3d3",
+              "custom_type": null,
+              "team_id": "4597045",
+              "deleted": false,
+              "url": "https://app.clickup.com/t/2znnxdm",
+              "access": true
+            },
+            {
+              "id": "2zg3zuw",
+              "name": "Обеспечение: Николаев Игорь Алексеевич",
+              "status": "новое",
+              "color": "#d3d3d3",
+              "custom_type": null,
+              "team_id": "4597045",
+              "deleted": false,
+              "url": "https://app.clickup.com/t/2zg3zuw",
+              "access": true
+            },
+            {
+              "id": "2za7vwm",
+              "name": "Обеспечение: Николаев Игорь Алексеевич",
+              "status": "новое",
+              "color": "#d3d3d3",
+              "custom_type": null,
+              "team_id": "4597045",
+              "deleted": false,
+              "url": "https://app.clickup.com/t/2za7vwm",
+              "access": true
+            }
+          ],
+          "required": false
+        },
+        {
+          "id": "856d3fd6-b982-4085-aa67-65d60bf41bb7",
+          "name": "Отпуска",
+          "type": "list_relationship",
+          "type_config": {
+            "fields": [
+              {
+                "name": "Status",
+                "field": "status",
+                "width": 100,
+                "hidden": false
+              }
+            ],
+            "subcategory_id": "180311910",
+            "linked_subcategory_access": true,
+            "subcategory_inverted_name": "ЦКР / Сотрудники / Отпуска"
+          },
+          "date_created": "1661769327743",
+          "hide_from_guests": false,
+          "value": [
+            {
+              "id": "2wmahab",
+              "name": "Отпуск: Николаев Игорь Алексеевич",
+              "status": "согласован",
+              "color": "#04A9F4",
+              "custom_type": null,
+              "team_id": "4597045",
+              "deleted": false,
+              "url": "https://app.clickup.com/t/2wmahab",
+              "access": true
+            }
+          ],
+          "required": false
+        },
+        {
+          "id": "2ac3ec0f-2cf5-49b3-9124-e911b74a6e20",
+          "name": "Предложения",
+          "type": "list_relationship",
+          "type_config": {
+            "fields": [
+              {
+                "name": "Status",
+                "field": "status",
+                "width": 100,
+                "hidden": false
+              }
+            ],
+            "subcategory_id": "180311902",
+            "linked_subcategory_access": true,
+            "subcategory_inverted_name": "ЦКР / Труд/ Предложения"
+          },
+          "date_created": "1657184392657",
+          "hide_from_guests": false,
+          "required": false
+        },
+        {
+          "id": "adc61b90-377a-49c0-8e14-a6450d685a81",
+          "name": "010 Тип задачи",
+          "type": "drop_down",
+          "type_config": {
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "a460492a-2600-4699-8cd7-ac91f47403ac",
+                "name": "Встреча",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "38823f41-d71a-4a0b-8905-9396028497f6",
+                "name": "Программа",
+                "color": null,
+                "orderindex": 1
+              },
+              {
+                "id": "5c9b5585-130b-4e04-aec2-d868337a80ac",
+                "name": "Проект",
+                "color": null,
+                "orderindex": 2
+              },
+              {
+                "id": "f5ae8bf5-1251-48f2-baae-94c4b2024789",
+                "name": "Подпроект",
+                "color": null,
+                "orderindex": 3
+              },
+              {
+                "id": "f471177c-9fc3-43f7-a819-889243b1a2a4",
+                "name": "Этап",
+                "color": null,
+                "orderindex": 4
+              },
+              {
+                "id": "5c71439e-22cd-42e8-8102-6c2c1b9014a3",
+                "name": "Работа",
+                "color": null,
+                "orderindex": 5
+              },
+              {
+                "id": "d790e788-98a0-45bd-ab02-e419a61c61d6",
+                "name": "Веха",
+                "color": null,
+                "orderindex": 6
+              },
+              {
+                "id": "05c94e63-d14f-460c-b58b-1f45e568586c",
+                "name": "Собеседование",
+                "color": null,
+                "orderindex": 7
+              },
+              {
+                "id": "83128b6e-8868-4b67-90c1-0afa4a79f915",
+                "name": "Занятость",
+                "color": null,
+                "orderindex": 8
+              },
+              {
+                "id": "4fd6bd12-1484-4698-85da-dcbb3ef9e4c2",
+                "name": "Предложение",
+                "color": null,
+                "orderindex": 9
+              },
+              {
+                "id": "4dc5ebdc-92b6-4b61-9c1a-760037c69997",
+                "name": "Индексация",
+                "color": null,
+                "orderindex": 10
+              },
+              {
+                "id": "78ae7025-d5b8-40ec-9954-35c8543fb61a",
+                "name": "Сотрудник",
+                "color": null,
+                "orderindex": 11
+              },
+              {
+                "id": "3a319fec-e486-465b-b9b2-d94c87868b49",
+                "name": "Контакт",
+                "color": null,
+                "orderindex": 12
+              },
+              {
+                "id": "20fc972e-2e61-496b-aa70-de159dce0245",
+                "name": "Запрос",
+                "color": null,
+                "orderindex": 13
+              },
+              {
+                "id": "b9ffec27-04f5-4fd5-beab-347555fca34d",
+                "name": "Заказчик",
+                "color": null,
+                "orderindex": 14
+              },
+              {
+                "id": "b0f5e6f4-d02a-4cd6-a364-ac02521c0ed4",
+                "name": "Отпуск",
+                "color": null,
+                "orderindex": 15
+              },
+              {
+                "id": "918f54e7-0a12-4e96-993b-f8cb0412fec0",
+                "name": "Сертификация",
+                "color": null,
+                "orderindex": 16
+              },
+              {
+                "id": "70a04bcb-1a1b-492e-a002-73cc4d9ca096",
+                "name": "Грейдирование",
+                "color": null,
+                "orderindex": 17
+              },
+              {
+                "id": "315b9cdf-2ab1-477a-a1ea-295afcda7be6",
+                "name": "Кандидат",
+                "color": null,
+                "orderindex": 18
+              },
+              {
+                "id": "1390e158-d24a-4b8d-92ab-52c8453190ad",
+                "name": "Обязательство",
+                "color": null,
+                "orderindex": 19
+              },
+              {
+                "id": "944787e9-51bf-41ed-8e4d-c9e2eca686f8",
+                "name": "Опыт",
+                "color": null,
+                "orderindex": 20
+              },
+              {
+                "id": "af5f6570-25f4-4c21-81fc-3318d203da7a",
+                "name": "Сертификат",
+                "color": null,
+                "orderindex": 21
+              },
+              {
+                "id": "7a46cbe6-21d2-4601-a6ff-bd1cf08b77fa",
+                "name": "Оффер",
+                "color": null,
+                "orderindex": 22
+              },
+              {
+                "id": "65a191a9-a37d-43ec-a01a-65e93e2b94e1",
+                "name": "Bug Report",
+                "color": null,
+                "orderindex": 23
+              },
+              {
+                "id": "51ace602-9eda-41bd-a6ac-b0377ab74d72",
+                "name": "Обеспечение",
+                "color": null,
+                "orderindex": 24
+              },
+              {
+                "id": "63e80efa-d5c2-47f9-93ab-670959f6c827",
+                "name": "Грейдизация",
+                "color": null,
+                "orderindex": 25
+              },
+              {
+                "id": "973c01bc-491a-4608-95e7-ea7d6b4ce17f",
+                "name": "Тест",
+                "color": null,
+                "orderindex": 26
+              },
+              {
+                "id": "7b1a88b0-38c7-4c4d-9adc-a599c87807ab",
+                "name": "Подрядчик",
+                "color": null,
+                "orderindex": 27
+              },
+              {
+                "id": "71b8080e-0e36-43f1-bfe6-5445d5d6771a",
+                "name": "Статистика",
+                "color": "#fff",
+                "orderindex": 28
+              },
+              {
+                "id": "046f7dae-0b18-4aa6-9061-ee9c075fe946",
+                "name": "Feature",
+                "color": null,
+                "orderindex": 29
+              },
+              {
+                "id": "0708290d-c217-47ca-a86a-0cd90f327aeb",
+                "name": "HotFix",
+                "color": null,
+                "orderindex": 30
+              },
+              {
+                "id": "d5facc95-62fb-4d72-ae6d-c2c981d026a5",
+                "name": "Improvement",
+                "color": null,
+                "orderindex": 31
+              },
+              {
+                "id": "2464c2c9-20ba-45ac-9541-a26dd8dc276c",
+                "name": "Bugfix",
+                "color": null,
+                "orderindex": 32
+              },
+              {
+                "id": "33fe1578-ec28-4082-8ddd-67581abc3eeb",
+                "name": "Занять",
+                "color": "#e50000",
+                "orderindex": 33
+              },
+              {
+                "id": "d7300681-b894-43d8-b888-9e54657e2a5c",
+                "name": "Release",
+                "color": "#fff",
+                "orderindex": 34
+              }
+            ]
+          },
+          "date_created": "1611835187872",
+          "hide_from_guests": false,
+          "value": 11,
+          "required": false
+        },
+        {
+          "id": "a34aa1f8-0ffc-4c1e-af06-f324b653610c",
+          "name": "011 Проекты",
+          "type": "labels",
+          "type_config": {
+            "options": [
+              {
+                "id": "a6946333-0f4a-49a2-b62a-8a1f93e9dac7",
+                "label": "НРД",
+                "color": "#fff"
+              },
+              {
+                "id": "4b840034-fb3c-4eec-93f2-759363291248",
+                "label": "НРД / НТЭД",
+                "color": "#fff"
+              },
+              {
+                "id": "e8b8d7c4-6285-4086-9382-b4d68f538f05",
+                "label": "НРД / ПИФ",
+                "color": null
+              },
+              {
+                "id": "413d494d-c39a-4973-a508-1e03b05fc8b7",
+                "label": "НРД / КД",
+                "color": null
+              },
+              {
+                "id": "c6f7a5d0-e8be-4af6-9562-563d48fb7f28",
+                "label": "НРД / ДКУ",
+                "color": null
+              },
+              {
+                "id": "69a0b4b0-4ad1-4183-9759-082b213077aa",
+                "label": "НРД / СУО",
+                "color": null
+              },
+              {
+                "id": "3eca0f7a-8f2e-4336-92d6-b1a1151c9777",
+                "label": "НРД / ЕКА",
+                "color": "#fff"
+              },
+              {
+                "id": "40e4dd14-9052-4864-a6b5-dc2a5fd67a09",
+                "label": "НРД / W8",
+                "color": null
+              },
+              {
+                "id": "f70fe12c-a4f7-4594-b33a-bfda3de5c71f",
+                "label": "НРД / ИПК",
+                "color": "#fff"
+              },
+              {
+                "id": "b1809038-931f-43c3-9f04-bf92f0eca4cc",
+                "label": "НРД / ЭДО",
+                "color": "#fff"
+              },
+              {
+                "id": "d80ea534-4048-4148-b908-952c6a38a02d",
+                "label": "НРД / Транзит",
+                "color": "#fff"
+              },
+              {
+                "id": "f70b01e6-f9e5-4754-b83a-8355320a022a",
+                "label": "НРД / ДСЦЛ",
+                "color": "#fff"
+              },
+              {
+                "id": "920f32f5-7882-4751-b3f4-e433c0933e7f",
+                "label": "НРД / Списки",
+                "color": "#fff"
+              },
+              {
+                "id": "3bc5ae31-7dbd-43e0-a5dd-2883bc33477e",
+                "label": "НРД / Ядро",
+                "color": "#fff"
+              },
+              {
+                "id": "dea13ba4-61c1-4a48-84ad-571000826173",
+                "label": "НРД / Админка",
+                "color": "#fff"
+              },
+              {
+                "id": "6b993b2f-6bd8-4158-af5a-85934fa1aff1",
+                "label": "МКБ",
+                "color": null
+              },
+              {
+                "id": "69feda52-32fb-40b0-9215-e25f26dc11bf",
+                "label": "МКБ / Индивидуальные тарифы",
+                "color": "#fff"
+              },
+              {
+                "id": "0e5b035d-c824-412e-8cd8-5676c664b53a",
+                "label": "МКБ - ДБО",
+                "color": "#fff"
+              },
+              {
+                "id": "8673b93d-67f4-411a-8b4d-a7de04dcbff0",
+                "label": "МКБ / ВБО (ДБО ЮЛ)",
+                "color": "#fff"
+              },
+              {
+                "id": "5d67ed93-a61c-403f-88c7-647f88c33181",
+                "label": "МКБ / Интернет-банк",
+                "color": "#fff"
+              },
+              {
+                "id": "e014dc0d-0739-4d83-a3e8-f19388c7b2c7",
+                "label": "Мосбиржа / ЕКБД",
+                "color": "#fff"
+              },
+              {
+                "id": "7c7d6676-bb0a-4426-91a8-de9c0eb799c8",
+                "label": "РГС",
+                "color": null
+              },
+              {
+                "id": "c4095b08-f7f4-4100-b6c1-cc1d6fecf8ac",
+                "label": "НКЦ",
+                "color": null
+              },
+              {
+                "id": "dd54e773-bb16-406b-a50e-1097e9b4efbe",
+                "label": "Ренкредит",
+                "color": null
+              },
+              {
+                "id": "6b43de85-0dd8-4b2d-8a08-219e9ebf4ef2",
+                "label": "Ренкредит / ДБО",
+                "color": "#fff"
+              },
+              {
+                "id": "36e7cc88-23db-432c-9655-762d44530793",
+                "label": "Ренкредит / Брокеридж",
+                "color": "#fff"
+              },
+              {
+                "id": "4459824d-b117-439c-853a-e3fbe8d80485",
+                "label": "Ренкредит / DWH",
+                "color": "#fff"
+              },
+              {
+                "id": "2f453b52-538e-4022-89f4-fe0b339041ae",
+                "label": "Сбер",
+                "color": null
+              },
+              {
+                "id": "e0d205f2-005a-4766-bced-f10d0b2e9470",
+                "label": "Сбер / TSM",
+                "color": "#fff"
+              },
+              {
+                "id": "3f3e45df-e383-4241-9e8b-22485a658c0a",
+                "label": "ВБРР",
+                "color": "#fff"
+              },
+              {
+                "id": "457afa54-5a47-4b57-9a6c-5ddf9bc49e80",
+                "label": "Открытие",
+                "color": "#fff"
+              },
+              {
+                "id": "cc42624c-9ef7-44db-a221-28c1c919665b",
+                "label": "АкБарс",
+                "color": "#fff"
+              },
+              {
+                "id": "fc15817f-6223-408a-af10-46c9ecb4a8f8",
+                "label": "IBM DataPower",
+                "color": "#fff"
+              },
+              {
+                "id": "5e7208e0-a0b0-4170-a762-9061e7c8d5f9",
+                "label": "Kubernetes",
+                "color": "#fff"
+              },
+              {
+                "id": "601fd31f-2d7f-42dc-9ee9-762585da2ecf",
+                "label": "DevOps / Ansible",
+                "color": "#fff"
+              },
+              {
+                "id": "7222426e-1763-4b64-8cb9-045d1e254e14",
+                "label": "TeamCity",
+                "color": "#fff"
+              },
+              {
+                "id": "6e45f1b9-c1c8-4f86-a5bc-cf6a941660ca",
+                "label": "Сбер / ОКР",
+                "color": "#fff"
+              },
+              {
+                "id": "2e8777d0-1b05-4550-9c25-bb01038d5a72",
+                "label": "МКБ / База Цен",
+                "color": "#fff"
+              },
+              {
+                "id": "66fdb5ac-128c-402f-95fa-2bb32e9ed058",
+                "label": "Стрим",
+                "color": "#fff"
+              },
+              {
+                "id": "519246a4-6728-4581-b4d3-029c667c6207",
+                "label": "НРД / Рефакторинг КД",
+                "color": "#fff"
+              },
+              {
+                "id": "f129e516-ddca-401d-9420-6ec7aeec643d",
+                "label": "МКБ - Платформа МКБ-Онлайн",
+                "color": "#fff"
+              },
+              {
+                "id": "049e2d69-d200-499f-be95-7c5598c8fd5d",
+                "label": "Открытие / HelpMe",
+                "color": "#fff"
+              },
+              {
+                "id": "13d1aff6-4ea5-4bb5-8c24-6205654ef15f",
+                "label": "ОБрокер",
+                "color": "#fff"
+              },
+              {
+                "id": "50d6d7d3-51aa-42e3-9e36-fbea70db5cf1",
+                "label": "Терминал",
+                "color": "#fff"
+              },
+              {
+                "id": "4c0c3736-b766-4541-93df-b79ba9f6700d",
+                "label": "Ренкредит / Интеграция",
+                "color": "#fff"
+              },
+              {
+                "id": "fc920874-d7c5-42ad-9c1f-3486b0403e07",
+                "label": "Ренкредит / DFS",
+                "color": "#fff"
+              },
+              {
+                "id": "50552fae-2c3a-47ef-9fca-8c5d402a5ad2",
+                "label": "Ренкредит / ARSnova",
+                "color": "#fff"
+              },
+              {
+                "id": "9e9d9625-a04d-4af5-bada-c2f102726a26",
+                "label": "Мосбиржа",
+                "color": "#fff"
+              },
+              {
+                "id": "784500cd-969c-4b94-a34e-352137282066",
+                "label": "Ренкредит / ФПБО",
+                "color": "#fff"
+              },
+              {
+                "id": "92e8106a-ebea-4798-a353-f72530d46a08",
+                "label": "ГПБ",
+                "color": "#fff"
+              },
+              {
+                "id": "57545fb4-851f-4bf2-9051-806d17622f49",
+                "label": "ВБРР / E4",
+                "color": "#fff"
+              },
+              {
+                "id": "462adb56-2e54-4104-86f2-6b8eb5899ead",
+                "label": "X5",
+                "color": "#fff"
+              },
+              {
+                "id": "d0e90b4d-0b0d-4ba5-a59e-56fecd5a8718",
+                "label": "МКБ / Кольцо Урала",
+                "color": "#fff"
+              },
+              {
+                "id": "5f57b810-1edf-48e0-837b-5aa47a166c68",
+                "label": "МКБ / Приложение МКБ-Онлайн",
+                "color": "#fff"
+              },
+              {
+                "id": "4e0bfd54-0efe-4c8c-84d3-11a0a076d3f9",
+                "label": "МКБ / Веб-чекер",
+                "color": "#fff"
+              },
+              {
+                "id": "6e0a6499-581f-4898-8adf-71cd0e92d366",
+                "label": "НРД / СБМ",
+                "color": "#fff"
+              },
+              {
+                "id": "123462ba-536c-4d31-b433-7c85964cd801",
+                "label": "EGAR - CUERP",
+                "color": "#fff"
+              },
+              {
+                "id": "d0f6fd42-6868-4b87-a971-31da52e7b568",
+                "label": "НРД - НБК",
+                "color": "#fff"
+              },
+              {
+                "id": "8f59ce1b-95c5-4c1d-8cf9-9c47bc5950c6",
+                "label": "ВТБ - ДТРКБ 4К - Мониторинг",
+                "color": "#fff"
+              },
+              {
+                "id": "29d9f91e-b0ec-47d6-bfa6-b4949f3263ba",
+                "label": "ВТБ - ДТРКБ ТБ - Опер-ый CRM КБ",
+                "color": "#fff"
+              },
+              {
+                "id": "a4aab577-2077-4f1c-a374-bf6ce92b9573",
+                "label": "ВТБ - ДТРКБ ТБ - РКО - Развитие",
+                "color": "#fff"
+              },
+              {
+                "id": "bae5d42c-6c24-4055-8600-0eb047895083",
+                "label": "ВТБ - ДТРКБ ТБ - КК360",
+                "color": "#fff"
+              },
+              {
+                "id": "1bb774d6-62d5-4cff-97b2-92c5437f05d1",
+                "label": "ВТБ - ДТРКБ 4К - ЦДР-РА",
+                "color": "#fff"
+              },
+              {
+                "id": "66ea53ea-6610-413a-a533-905336bcf426",
+                "label": "ВТБ - ДТРКБ ТБ - РКО - Онбординг",
+                "color": "#fff"
+              },
+              {
+                "id": "23a831db-811a-4e19-8662-3dd586e239da",
+                "label": "МКБ / Кредитный конвеер",
+                "color": "#fff"
+              },
+              {
+                "id": "382e0ba7-3127-483b-904f-748c62ef2384",
+                "label": "Ламода / LWMS Dev",
+                "color": "#fff"
+              },
+              {
+                "id": "02226a1b-66ab-42b0-941a-83455ef0286c",
+                "label": "МТСД / MTS.ru",
+                "color": "#fff"
+              },
+              {
+                "id": "d1d22430-dd05-4ef1-9f6d-58b8214d98c7",
+                "label": "УРАЛСИБ / Бизнес Online",
+                "color": "#fff"
+              },
+              {
+                "id": "549a926a-a349-4b8f-8b4d-d5e1253683e4",
+                "label": "Сбер - Operations",
+                "color": "#fff"
+              },
+              {
+                "id": "84baec26-175b-4360-b269-9d23b64e3e84",
+                "label": "РГС / НПС",
+                "color": "#fff"
+              },
+              {
+                "id": "8d35e60e-e5e3-4401-bbfb-8e90bd37114f",
+                "label": "МКБИ",
+                "color": "#fff"
+              },
+              {
+                "id": "441ff509-5b0f-4a26-94db-41ad1f1613e2",
+                "label": "НРД - Быстр. каб.",
+                "color": "#fff"
+              },
+              {
+                "id": "675c3985-295d-4706-a4c9-59445a40bed0",
+                "label": "АкБарс / Единый платежный центр",
+                "color": "#fff"
+              },
+              {
+                "id": "8541ec41-d3f8-4821-92f4-1f5972521e28",
+                "label": "Сбер - Operations - ЦОД",
+                "color": "#fff"
+              },
+              {
+                "id": "b1739364-0165-4922-b7df-b5fb87574dde",
+                "label": "Сбер - Operations - Smart Solutions",
+                "color": "#fff"
+              },
+              {
+                "id": "5e934113-eb2d-41bd-acb5-c04e5779aad9",
+                "label": "НРД - ЦФА",
+                "color": "#fff"
+              },
+              {
+                "id": "a83619f9-8291-4c29-841b-d541186fc7ea",
+                "label": "Сбер - Operations - УС3",
+                "color": "#fff"
+              },
+              {
+                "id": "ff0bf04d-5bbb-4949-98b1-b65f15e4517b",
+                "label": "Сбер - Operations - СБП",
+                "color": "#fff"
+              },
+              {
+                "id": "7d504daa-1682-4ee6-ad11-c99354356e49",
+                "label": "Сбер - Operations - РМК",
+                "color": "#fff"
+              },
+              {
+                "id": "453b482c-8785-4b0a-a7fd-32569ce1e32d",
+                "label": "Сбер - Депозитарий",
+                "color": "#fff"
+              },
+              {
+                "id": "2ea24ee5-89ac-43bf-be60-902330c5b613",
+                "label": "МКБ - КиП",
+                "color": "#fff"
+              },
+              {
+                "id": "c3f8c26d-aef2-47d3-802f-f59d45f30222",
+                "label": "АК Барс / Анализ бизнес-метрик на Qlik Sense",
+                "color": "#fff"
+              },
+              {
+                "id": "d04d86d2-3158-4bdb-bf07-94c23a50f15b",
+                "label": "Ренкредит / МФО",
+                "color": "#fff"
+              },
+              {
+                "id": "787d9dba-9701-4498-ac67-aa47c90947af",
+                "label": "Ренкредит / DevOps",
+                "color": "#fff"
+              },
+              {
+                "id": "e4e43e0b-8394-41b6-a957-8648aa3af1b6",
+                "label": "Ренкредит / Архив",
+                "color": "#fff"
+              },
+              {
+                "id": "c4aa40fe-45e2-4129-b640-aaf27e56d768",
+                "label": "НРД - Команда Agile",
+                "color": "#fff"
+              },
+              {
+                "id": "6c8f10d6-a20e-43a0-a127-85c140c7b106",
+                "label": "Ренкредит / Чат-боты",
+                "color": "#fff"
+              },
+              {
+                "id": "ebc027bc-84ee-4629-ad82-d9250fd09d3a",
+                "label": "Иннотех ВТБ / ДБО 2.0",
+                "color": "#fff"
+              },
+              {
+                "id": "79c9a508-55ba-4b57-8d44-00d590937924",
+                "label": "Ренкредит / CRM",
+                "color": "#fff"
+              },
+              {
+                "id": "f7ffc61f-2431-4288-b9aa-023dab60a03d",
+                "label": "МКБ / Холдинг",
+                "color": "#fff"
+              },
+              {
+                "id": "ffd7cd2c-ca28-4911-9c90-13cd0fcb7c93",
+                "label": "МКБ / ETL",
+                "color": "#fff"
+              },
+              {
+                "id": "cabaa69a-fd94-430f-9738-0ebae0690fc1",
+                "label": "X5 / TPOS",
+                "color": "#fff"
+              },
+              {
+                "id": "0fe3ef3a-49d0-4267-9d71-a1be776a892c",
+                "label": "Ренкредит / НКД",
+                "color": "#fff"
+              },
+              {
+                "id": "24d11d7a-6ae8-4ad7-ab77-6381ad641c09",
+                "label": "Nokian",
+                "color": "#fff"
+              },
+              {
+                "id": "5c0d7190-12ce-4bc8-919f-58acca5eda59",
+                "label": "Ренкредит / Way4",
+                "color": "#fff"
+              },
+              {
+                "id": "5715eb3b-ab44-4cbc-b7d9-ccbffc59334a",
+                "label": "АкБарс / Цифровые инвестиции",
+                "color": "#fff"
+              },
+              {
+                "id": "95ab6856-0887-4527-9b77-cad8c11ef5ed",
+                "label": "АкБарс / Интерфейс платежного центра",
+                "color": "#fff"
+              },
+              {
+                "id": "354357c4-6f95-4220-97cf-4cdd607878da",
+                "label": "АкБарс / Развитие КЦ",
+                "color": "#fff"
+              },
+              {
+                "id": "e524e143-e2c4-4336-8653-60d1fac3d4f5",
+                "label": "АкБарс / ЦК ТУД",
+                "color": "#fff"
+              },
+              {
+                "id": "7bd5397d-b12f-45ee-b080-bb8b53b34aa9",
+                "label": "АкБарс / Решения для маркетплейсов",
+                "color": "#fff"
+              },
+              {
+                "id": "6e94dfbf-03e8-4e27-aee9-42f70fb722a9",
+                "label": "АкБарс / Коробочное предложение",
+                "color": "#fff"
+              },
+              {
+                "id": "ea383785-c52a-46e1-afbc-f830128dc194",
+                "label": "МКБ / SAS",
+                "color": "#fff"
+              },
+              {
+                "id": "7715afba-9152-431e-b3f5-6cd98b7b7770",
+                "label": "X5 / Цифровая маркировка товара",
+                "color": "#fff"
+              },
+              {
+                "id": "8fd6c0e7-5be1-4455-b371-2d0a70cde90c",
+                "label": "НСПК - Виджет СБП",
+                "color": "#fff"
+              },
+              {
+                "id": "c1ea7074-988a-4a50-8fdb-935cb0032327",
+                "label": "НСПК",
+                "color": "#fff"
+              },
+              {
+                "id": "28d25661-6237-4aca-be53-b0d297ab6b43",
+                "label": "НРД/Аламеда",
+                "color": "#fff"
+              },
+              {
+                "id": "ca6dff88-a420-4609-ad6c-270181ee1f2c",
+                "label": "МКБ DWH",
+                "color": "#fff"
+              },
+              {
+                "id": "13cdc758-82ce-4023-bbcc-4ebd2899c884",
+                "label": "МКБ Чат-боты",
+                "color": "#fff"
+              },
+              {
+                "id": "13b725bc-e9ff-4869-a6c6-f30c7f21db97",
+                "label": "Ренкредит/SME",
+                "color": "#fff"
+              },
+              {
+                "id": "6ecf1baa-f59b-406b-89b7-7469ec5eabc7",
+                "label": "Ренкредит/24/7",
+                "color": "#fff"
+              },
+              {
+                "id": "ec268d8f-c2ff-4257-b22c-5efd7e9d3221",
+                "label": "ОБрокер/Риски",
+                "color": "#fff"
+              },
+              {
+                "id": "4a3dee66-ddd5-4379-9cd8-24b03bf9af1c",
+                "label": "ОБрокер/Внутренний учет",
+                "color": "#fff"
+              },
+              {
+                "id": "ca6dc50f-95b0-4fb6-bcb9-6f45a743bd9a",
+                "label": "Инкахран",
+                "color": "#fff"
+              },
+              {
+                "id": "ca27c9e3-6956-462b-9671-16056a7fc5f4",
+                "label": "МКБ/Кредитный конвейер",
+                "color": "#fff"
+              },
+              {
+                "id": "251cce65-78ba-48eb-8b30-eaf0b95f6252",
+                "label": "МКБ/ЮЛ",
+                "color": "#fff"
+              },
+              {
+                "id": "6ae29445-6d97-4595-83d8-36cf69fc4122",
+                "label": "МКБ/Core Stream",
+                "color": "#fff"
+              },
+              {
+                "id": "594294cc-d549-4d6d-98b5-e5e2a24b6170",
+                "label": "МКБ/ Единое окно",
+                "color": "#fff"
+              },
+              {
+                "id": "8ef769a0-49d7-4ad0-b395-373d8290fdc2",
+                "label": "МКБ/Экосистема",
+                "color": "#fff"
+              },
+              {
+                "id": "09bea841-1bb1-41fc-b5b5-898d8520b52e",
+                "label": "МКБ/ЭКД",
+                "color": "#fff"
+              },
+              {
+                "id": "46c97709-3da4-4720-b863-b6c00f444fae",
+                "label": "МКБ/Андеррайтинг",
+                "color": "#fff"
+              },
+              {
+                "id": "06dffb90-f32d-4a3e-81da-e79c5f2e832a",
+                "label": "МКБ/Карты",
+                "color": "#fff"
+              },
+              {
+                "id": "79cade13-5661-4f17-8a44-751ea25fb038",
+                "label": "МКБ/Обновление АТМ",
+                "color": "#fff"
+              },
+              {
+                "id": "0684511e-1149-4582-ae3a-c4000e3b3123",
+                "label": "МКБ / Перезапуск ИБ",
+                "color": "#fff"
+              },
+              {
+                "id": "0b09e682-b7ab-44a3-acc0-17d85622ffcb",
+                "label": "МКБ/mcb bo",
+                "color": "#fff"
+              },
+              {
+                "id": "e72cdef0-4f98-43d5-9f60-4619e4e26998",
+                "label": "МКБ/Siebel",
+                "color": "#fff"
+              },
+              {
+                "id": "2f7bf02b-1370-4199-bbf3-7834eb380711",
+                "label": "X5 / Касса",
+                "color": "#fff"
+              },
+              {
+                "id": "d2a97e7c-e353-4a20-814c-a6588dd10648",
+                "label": "Ренкредит/Стат анализ",
+                "color": "#fff"
+              },
+              {
+                "id": "30a911a3-e5c0-43af-9ec7-1ddae9365674",
+                "label": "Сбер - Логистика",
+                "color": "#fff"
+              },
+              {
+                "id": "cf08dfa7-3651-4e7b-90c7-da20be173684",
+                "label": "Ингосстрах Инвест",
+                "color": "#fff"
+              },
+              {
+                "id": "6d0a62f5-2960-46d9-a8e9-bc95bb8f44e0",
+                "label": "X5 / Моб ПО - Доставка",
+                "color": "#fff"
+              },
+              {
+                "id": "eecb4f56-504d-4c0d-8846-fcd5475ea271",
+                "label": "EGAR",
+                "color": "#fff"
+              },
+              {
+                "id": "938ae24e-c7d5-43ea-a161-e0660411969b",
+                "label": "РГС/DWH",
+                "color": "#fff"
+              }
+            ]
+          },
+          "date_created": "1611315717466",
+          "hide_from_guests": false,
+          "value": [
+            "6b993b2f-6bd8-4158-af5a-85934fa1aff1"
+          ],
+          "required": false
+        },
+        {
+          "id": "6efec6e2-1645-49d4-973b-8a15f93c407e",
+          "name": "020 Фамилия",
+          "type": "short_text",
+          "type_config": {},
+          "date_created": "1615985916322",
+          "hide_from_guests": false,
+          "value": "Николаев",
+          "required": false
+        },
+        {
+          "id": "4caa94ed-8bee-422f-8c35-088faf321fba",
+          "name": "021 Имя",
+          "type": "short_text",
+          "type_config": {},
+          "date_created": "1615985927632",
+          "hide_from_guests": false,
+          "value": "Игорь",
+          "required": false
+        },
+        {
+          "id": "f73b08e3-03f2-4c8b-9d27-84347daa716a",
+          "name": "023 Отчество",
+          "type": "short_text",
+          "type_config": {},
+          "date_created": "1615985937883",
+          "hide_from_guests": false,
+          "value": "Алексеевич",
+          "required": false
+        },
+        {
+          "id": "bf015492-98e8-42f9-91a4-c802c988283a",
+          "name": "024 Локация",
+          "type": "drop_down",
+          "type_config": {
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "d3486013-f690-4295-8dc8-b212b1f61363",
+                "name": "Любая",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "cb1b7cb0-d606-4c7a-809d-dd947e1b346b",
+                "name": "Любая в РФ",
+                "color": null,
+                "orderindex": 1
+              },
+              {
+                "id": "2eb9bcb8-2944-4084-af01-a975f196242c",
+                "name": "Москва",
+                "color": null,
+                "orderindex": 2
+              },
+              {
+                "id": "0d95c092-c47f-47b2-b23a-4303a2bdc38d",
+                "name": "Регионы",
+                "color": null,
+                "orderindex": 3
+              },
+              {
+                "id": "139e61fd-6693-4877-a4d7-95169e64c1db",
+                "name": "Казань",
+                "color": null,
+                "orderindex": 4
+              },
+              {
+                "id": "569720c2-bf56-4e63-a9ca-2a6b248a4df8",
+                "name": "Гомель",
+                "color": null,
+                "orderindex": 5
+              },
+              {
+                "id": "37a412e3-4ef0-43a2-81e2-19fd888b90c1",
+                "name": "Владимир",
+                "color": null,
+                "orderindex": 6
+              },
+              {
+                "id": "68adf77b-360f-4091-9582-e6581f9e19ac",
+                "name": "Санкт-Петербург",
+                "color": null,
+                "orderindex": 7
+              },
+              {
+                "id": "1daae635-7c7d-4a71-9d45-3899297c1d0a",
+                "name": "Уфа",
+                "color": null,
+                "orderindex": 8
+              },
+              {
+                "id": "657cd552-20fd-4b65-b58f-796e0d049df1",
+                "name": "Новосибирск",
+                "color": null,
+                "orderindex": 9
+              },
+              {
+                "id": "b5de30a0-c477-4139-aef4-44c53139a4ea",
+                "name": "Мурманск",
+                "color": null,
+                "orderindex": 10
+              },
+              {
+                "id": "876ab2b9-ada7-4a93-b684-1028071d6c2a",
+                "name": "Екатеринбург",
+                "color": null,
+                "orderindex": 11
+              },
+              {
+                "id": "701b3f41-8833-4c20-ace7-c543fd77c6e1",
+                "name": "Ставрополь",
+                "color": null,
+                "orderindex": 12
+              },
+              {
+                "id": "f7af4d62-3aba-4fa7-aa37-ff88a1c99157",
+                "name": "Самара",
+                "color": null,
+                "orderindex": 13
+              },
+              {
+                "id": "f0d240b4-27bb-495a-83d8-16924714dac7",
+                "name": "Сочи",
+                "color": null,
+                "orderindex": 14
+              },
+              {
+                "id": "8d4f1013-82f5-4dd2-91e3-a500b0eb6394",
+                "name": "Смоленск",
+                "color": null,
+                "orderindex": 15
+              },
+              {
+                "id": "658add2d-01e5-4558-afb2-2eb5d6709782",
+                "name": "Томск",
+                "color": null,
+                "orderindex": 16
+              },
+              {
+                "id": "25092450-71f3-4795-9ae4-ea06c02b8967",
+                "name": "Севастополь",
+                "color": null,
+                "orderindex": 17
+              },
+              {
+                "id": "cdcd08b2-3626-4147-bfbd-6a58206cb4c5",
+                "name": "Зеленоград",
+                "color": null,
+                "orderindex": 18
+              },
+              {
+                "id": "c74279ce-1301-42d6-bea9-a4c80af8dc91",
+                "name": "Ростов-на-Дону",
+                "color": null,
+                "orderindex": 19
+              },
+              {
+                "id": "eb7ea77e-ad4f-41ed-98ea-6332b4c14464",
+                "name": "Выборг",
+                "color": null,
+                "orderindex": 20
+              },
+              {
+                "id": "c51d0a82-e948-404e-bb5e-c632d73c1322",
+                "name": "Калининград",
+                "color": null,
+                "orderindex": 21
+              },
+              {
+                "id": "c5c1ae39-4ef9-418a-8d83-edba61f47c26",
+                "name": "Тверь",
+                "color": null,
+                "orderindex": 22
+              },
+              {
+                "id": "587f018b-57c8-4824-b0b3-c3cc6f1f9c76",
+                "name": "Тула",
+                "color": null,
+                "orderindex": 23
+              },
+              {
+                "id": "4d95df8e-1a62-4792-a7a2-374026decfca",
+                "name": "Иркутск (МСК+5)",
+                "color": null,
+                "orderindex": 24
+              },
+              {
+                "id": "f5548b92-db12-4edc-a71a-8835691fa5f5",
+                "name": "Краснодар",
+                "color": null,
+                "orderindex": 25
+              },
+              {
+                "id": "6b8dde0e-476b-44a9-a852-89a2e33946e0",
+                "name": "Ижевск",
+                "color": null,
+                "orderindex": 26
+              },
+              {
+                "id": "eb6b9a01-a537-4684-87ca-a16e25fc9292",
+                "name": "Череповец",
+                "color": null,
+                "orderindex": 27
+              },
+              {
+                "id": "75b0841d-58a6-4e45-ad42-05bee47499de",
+                "name": "Иваново",
+                "color": null,
+                "orderindex": 28
+              },
+              {
+                "id": "a461826f-d577-452d-b7dd-e991c59b678f",
+                "name": "Луганск",
+                "color": null,
+                "orderindex": 29
+              },
+              {
+                "id": "3945ec18-26e1-4997-8828-8f86bb095c34",
+                "name": "Оренбург",
+                "color": null,
+                "orderindex": 30
+              },
+              {
+                "id": "88155053-7c1f-428f-9bd3-8752185672fd",
+                "name": "Минск",
+                "color": null,
+                "orderindex": 31
+              },
+              {
+                "id": "ceda59ba-08a2-400b-bd2a-43854beec5f0",
+                "name": "Махачкала",
+                "color": null,
+                "orderindex": 32
+              },
+              {
+                "id": "2880a2e7-d487-421b-8029-316ae01a9642",
+                "name": "Бишкек",
+                "color": null,
+                "orderindex": 33
+              },
+              {
+                "id": "a5bd1443-ee1c-4e59-8d83-d43f18af995c",
+                "name": "Дубна",
+                "color": null,
+                "orderindex": 34
+              },
+              {
+                "id": "7a97ad40-a93c-44a5-a716-b6445328731e",
+                "name": "Тольятти",
+                "color": null,
+                "orderindex": 35
+              },
+              {
+                "id": "f457f03e-ffe3-4143-8581-bc160527eeb7",
+                "name": "Ош",
+                "color": null,
+                "orderindex": 36
+              },
+              {
+                "id": "6beb2d42-89d3-4f91-aa53-5d5114cd48e0",
+                "name": "Каспийск",
+                "color": null,
+                "orderindex": 37
+              },
+              {
+                "id": "f07408b5-11ec-474e-a127-2eb1c5bb0213",
+                "name": "Пермь",
+                "color": null,
+                "orderindex": 38
+              },
+              {
+                "id": "7da77fab-9cfe-4e38-b860-d8f29d1595b2",
+                "name": "Йошкар-Ола",
+                "color": null,
+                "orderindex": 39
+              },
+              {
+                "id": "9403a8a9-aa69-42f4-8f88-9509fd1fbb37",
+                "name": "Челябинск",
+                "color": null,
+                "orderindex": 40
+              },
+              {
+                "id": "ae1fa933-298f-497c-ac30-a04f122a92c2",
+                "name": "Белгород",
+                "color": null,
+                "orderindex": 41
+              },
+              {
+                "id": "3fdd52dd-0d95-4801-a5ce-7f77a10f2238",
+                "name": "Иннополис",
+                "color": null,
+                "orderindex": 42
+              },
+              {
+                "id": "f4004fea-4019-4bf9-b28d-abf3c894bb62",
+                "name": "Волгоград",
+                "color": null,
+                "orderindex": 43
+              },
+              {
+                "id": "689b8b7c-63b6-459b-8213-86a7c2b65bd7",
+                "name": "Пенза",
+                "color": null,
+                "orderindex": 44
+              },
+              {
+                "id": "38e67e4a-c1a2-4592-9c23-bd2654de8532",
+                "name": "Астрахань",
+                "color": null,
+                "orderindex": 45
+              },
+              {
+                "id": "05adf1e2-8e85-4739-9a35-19683a178466",
+                "name": "Нижний Новгород",
+                "color": null,
+                "orderindex": 46
+              },
+              {
+                "id": "44f0d36e-d607-4504-8b22-7a66550dc220",
+                "name": "Ереван",
+                "color": null,
+                "orderindex": 47
+              },
+              {
+                "id": "d4d05222-8133-472a-919d-891d15aad5b6",
+                "name": "Рязань",
+                "color": null,
+                "orderindex": 48
+              },
+              {
+                "id": "03c82de7-0ba0-4ae7-86df-d451f35a1f92",
+                "name": "Орел",
+                "color": null,
+                "orderindex": 49
+              },
+              {
+                "id": "69209a5f-0843-430e-812c-0594b2d5c942",
+                "name": "Ярославль",
+                "color": null,
+                "orderindex": 50
+              },
+              {
+                "id": "d40d2f8c-398a-43bd-b7f5-797a760c9ca1",
+                "name": "Калуга",
+                "color": null,
+                "orderindex": 51
+              },
+              {
+                "id": "3f48e21b-97c1-4245-8217-f638fbf7e577",
+                "name": "Красноярск",
+                "color": null,
+                "orderindex": 52
+              },
+              {
+                "id": "6950a770-2578-4914-b49c-6380757271f2",
+                "name": "Новомосковск",
+                "color": null,
+                "orderindex": 53
+              },
+              {
+                "id": "1849e46a-40b4-4738-ba75-60a13fa3bd7a",
+                "name": "Омск",
+                "color": null,
+                "orderindex": 54
+              },
+              {
+                "id": "d11c9f7d-4bc9-4046-84c6-de5241b3f463",
+                "name": "Кемерово",
+                "color": null,
+                "orderindex": 55
+              },
+              {
+                "id": "dc0ef770-8133-4396-a08d-a05ba60b935c",
+                "name": "Динская",
+                "color": null,
+                "orderindex": 56
+              },
+              {
+                "id": "224b5d55-63bd-44ef-841a-0c75774a43e7",
+                "name": "Алчевск",
+                "color": null,
+                "orderindex": 57
+              },
+              {
+                "id": "0ea0aa56-3526-4f58-a274-8549d5c2bee8",
+                "name": "Нижневартовск",
+                "color": null,
+                "orderindex": 58
+              },
+              {
+                "id": "1d5872a8-7ed2-4d09-bab0-0fe2d06fe942",
+                "name": "Брянск",
+                "color": null,
+                "orderindex": 59
+              },
+              {
+                "id": "96ac927a-b71f-45eb-adf9-dbf5d57e8b37",
+                "name": "Чебоксары",
+                "color": null,
+                "orderindex": 60
+              },
+              {
+                "id": "81b184e8-f86f-4f30-965c-075459091108",
+                "name": "Новокузнецк",
+                "color": null,
+                "orderindex": 61
+              },
+              {
+                "id": "0f85eb9d-46e7-4e35-afd9-3ad37773226d",
+                "name": "Вологда",
+                "color": null,
+                "orderindex": 62
+              },
+              {
+                "id": "9fe553a8-b200-4184-90dc-461a34ed4238",
+                "name": "Таганрог",
+                "color": null,
+                "orderindex": 63
+              },
+              {
+                "id": "46deabcb-3063-448d-9474-0e9f37da669b",
+                "name": "Саранск",
+                "color": null,
+                "orderindex": 64
+              },
+              {
+                "id": "89a03508-988a-4209-a4b3-c3609c48e82f",
+                "name": "Саратов",
+                "color": null,
+                "orderindex": 65
+              },
+              {
+                "id": "1bc8ee35-babf-4e8c-9ec1-589d52b39db0",
+                "name": "Сургут",
+                "color": null,
+                "orderindex": 66
+              },
+              {
+                "id": "4f00f7c5-56f5-4d07-9084-917f684e29b2",
+                "name": "Коломна",
+                "color": null,
+                "orderindex": 67
+              },
+              {
+                "id": "8411a4ba-33cf-4511-a3cc-1afa3e75873b",
+                "name": "Березники",
+                "color": null,
+                "orderindex": 68
+              },
+              {
+                "id": "51b5d5d6-6ef7-445f-b97f-a1640c05bd91",
+                "name": "Старый Оскол",
+                "color": null,
+                "orderindex": 69
+              },
+              {
+                "id": "7eb63abd-bbec-4694-9be0-fc10a12ed19a",
+                "name": "Новороссийск",
+                "color": null,
+                "orderindex": 70
+              },
+              {
+                "id": "fa83c024-5d61-468b-bc10-be58546425e8",
+                "name": "Светлогорск",
+                "color": null,
+                "orderindex": 71
+              },
+              {
+                "id": "9aeadd0c-b603-4839-8b60-f7b6893f09bb",
+                "name": "Украина",
+                "color": null,
+                "orderindex": 72
+              },
+              {
+                "id": "a2918d55-8ddc-4a9a-9cf7-0a42306718b5",
+                "name": "Ханты-Мансийск",
+                "color": null,
+                "orderindex": 73
+              },
+              {
+                "id": "77469c53-327d-4b19-a4a6-d11fe5f2677a",
+                "name": "Сыктывкар",
+                "color": null,
+                "orderindex": 74
+              },
+              {
+                "id": "d4170b64-a22d-48a1-8d4e-b4dbd69b1cf1",
+                "name": "Новочеркасск",
+                "color": null,
+                "orderindex": 75
+              },
+              {
+                "id": "ac4325e0-3b52-44e5-a85a-3ef79250acc8",
+                "name": "Фрязино",
+                "color": null,
+                "orderindex": 76
+              },
+              {
+                "id": "c0f198a5-4521-4770-be11-d6e082739c4f",
+                "name": "Кемерево",
+                "color": null,
+                "orderindex": 77
+              },
+              {
+                "id": "dbc6b208-6f48-4d9b-82b1-359217f1f2d7",
+                "name": "Набережные Челны",
+                "color": null,
+                "orderindex": 78
+              },
+              {
+                "id": "27c21227-1e47-480e-b3bd-c57bebb43ef5",
+                "name": "Барнаул",
+                "color": null,
+                "orderindex": 79
+              },
+              {
+                "id": "cdf11b87-c862-40f0-a82b-556950b34438",
+                "name": "Воронеж",
+                "color": null,
+                "orderindex": 80
+              },
+              {
+                "id": "92b42ccf-32a5-417c-9dd8-1417dd516291",
+                "name": "Киров",
+                "color": null,
+                "orderindex": 81
+              },
+              {
+                "id": "c61918f2-4615-4bbf-843d-48ee70bd8615",
+                "name": "Кострома",
+                "color": null,
+                "orderindex": 82
+              },
+              {
+                "id": "d72911a6-c34d-489b-8363-c27550251be9",
+                "name": "Великий Новгород",
+                "color": null,
+                "orderindex": 83
+              },
+              {
+                "id": "54e13916-acc3-40ed-a732-a091514440f3",
+                "name": "Тюмень",
+                "color": null,
+                "orderindex": 84
+              },
+              {
+                "id": "05a1e6de-1199-4219-8ebf-b4ed13db2b71",
+                "name": "Чита",
+                "color": null,
+                "orderindex": 85
+              },
+              {
+                "id": "405049ca-f85e-4c05-8f7e-5a2873152f56",
+                "name": "Симферополь",
+                "color": null,
+                "orderindex": 86
+              },
+              {
+                "id": "9cbf8d67-1d04-40ac-b378-da4f4a6e2e60",
+                "name": "Нижнекамск",
+                "color": null,
+                "orderindex": 87
+              },
+              {
+                "id": "7fc2c8a6-99c1-425c-a763-68f105f48e45",
+                "name": "Рыбинск",
+                "color": null,
+                "orderindex": 88
+              },
+              {
+                "id": "1d5b6a14-4344-4fbe-bd3d-386ff36d6b3f",
+                "name": "Хабаровск",
+                "color": null,
+                "orderindex": 89
+              },
+              {
+                "id": "a0977aaa-1587-4e53-bd1d-00a86bc21918",
+                "name": "Подольск",
+                "color": null,
+                "orderindex": 90
+              },
+              {
+                "id": "9fd93e6b-fa32-41f0-8dac-c56b713024b2",
+                "name": "Пушкино",
+                "color": null,
+                "orderindex": 91
+              },
+              {
+                "id": "6313700c-35e4-44c3-91ee-28b2622002b1",
+                "name": "Комсомольск-на-Амуре",
+                "color": null,
+                "orderindex": 92
+              },
+              {
+                "id": "8192481e-935b-4f91-b465-0fb9b37a9fae",
+                "name": "Видное",
+                "color": null,
+                "orderindex": 93
+              },
+              {
+                "id": "132f2503-b529-464e-ab96-8ccd85d7cee5",
+                "name": "Магнитогорск",
+                "color": null,
+                "orderindex": 94
+              },
+              {
+                "id": "636e82d2-2be9-46c3-8a6e-52ec3fe2a88d",
+                "name": "Воткинск",
+                "color": null,
+                "orderindex": 95
+              },
+              {
+                "id": "1a3196bb-bed6-4b0d-9f74-00c13a616c29",
+                "name": "Нахабино",
+                "color": null,
+                "orderindex": 96
+              },
+              {
+                "id": "04744b5d-aaa3-4e08-a093-07986bd16084",
+                "name": "Ульяновск",
+                "color": null,
+                "orderindex": 97
+              },
+              {
+                "id": "0783d95e-485e-436c-89a1-b80ae27fc3a9",
+                "name": "Курск",
+                "color": null,
+                "orderindex": 98
+              },
+              {
+                "id": "06e0606c-679b-4640-b65d-e4060260d5b9",
+                "name": "Шахты",
+                "color": null,
+                "orderindex": 99
+              },
+              {
+                "id": "81f6a852-6e4f-46e9-94a8-b3313979df2f",
+                "name": "Владикавказ",
+                "color": null,
+                "orderindex": 100
+              },
+              {
+                "id": "598f784a-d336-4060-9a11-a499ba7450e1",
+                "name": "Раменское",
+                "color": null,
+                "orderindex": 101
+              },
+              {
+                "id": "00228545-034e-4e65-8da3-68d488d212c2",
+                "name": "Киев",
+                "color": null,
+                "orderindex": 102
+              },
+              {
+                "id": "0bbf9778-2ac7-4ea2-b187-125a88d61f6c",
+                "name": "Киселевск (Кемеровская обл)",
+                "color": null,
+                "orderindex": 103
+              },
+              {
+                "id": "655eb56a-4add-41fb-827a-b8649b98f21f",
+                "name": "Алматы (Казахстан)",
+                "color": null,
+                "orderindex": 104
+              },
+              {
+                "id": "69646f56-cdd0-442c-9ea9-e48f45addba0",
+                "name": "Ревда",
+                "color": null,
+                "orderindex": 105
+              },
+              {
+                "id": "c3c7d87c-4d27-4e8a-8ae2-0b28a11faaed",
+                "name": "Ростов",
+                "color": null,
+                "orderindex": 106
+              },
+              {
+                "id": "af69ff4c-04b2-40f6-a6c5-cf1afaf65157",
+                "name": "Красногорск",
+                "color": null,
+                "orderindex": 107
+              },
+              {
+                "id": "4a1db0ae-c9ec-4904-891a-1394f3199493",
+                "name": "Архангельск",
+                "color": null,
+                "orderindex": 108
+              },
+              {
+                "id": "f3194869-e5a0-44ac-acfc-d04b7cebf297",
+                "name": "Егорьевск",
+                "color": null,
+                "orderindex": 109
+              },
+              {
+                "id": "c3ddf03b-f325-4ddb-86d3-ee87b484d332",
+                "name": "Ирбит",
+                "color": null,
+                "orderindex": 110
+              },
+              {
+                "id": "376555a6-ab2b-4255-8149-8752ca9ebd5b",
+                "name": "Электросталь",
+                "color": null,
+                "orderindex": 111
+              },
+              {
+                "id": "eda3e6a7-44e8-46e8-9d08-ac08209ad0ae",
+                "name": "Кузнецк (Пензенская обл.)",
+                "color": null,
+                "orderindex": 112
+              },
+              {
+                "id": "16b68408-18a6-45dd-b57a-ba8fe7ec18c4",
+                "name": "Нур-Султан",
+                "color": null,
+                "orderindex": 113
+              },
+              {
+                "id": "c3273c6c-8956-4bf6-b62a-d117869e8f21",
+                "name": "РФ, Беларусь, Казахстан",
+                "color": null,
+                "orderindex": 114
+              },
+              {
+                "id": "d6d211a3-4c5f-46b0-a3bd-aa672b4a7fc4",
+                "name": "Уральск",
+                "color": null,
+                "orderindex": 115
+              },
+              {
+                "id": "b58bde2b-364a-471b-81e8-c31e625c78b4",
+                "name": "Одинцово (Московская обл.)",
+                "color": null,
+                "orderindex": 116
+              },
+              {
+                "id": "ef222d59-9199-4ce6-8005-3246b05ca21e",
+                "name": "Лесной (Свердловская обл.)",
+                "color": null,
+                "orderindex": 117
+              },
+              {
+                "id": "77886642-d5d3-4cca-98d7-5dac3f23fbc5",
+                "name": "Миасс",
+                "color": null,
+                "orderindex": 118
+              },
+              {
+                "id": "49c52794-47be-4ad0-b7ad-29ccb29d2075",
+                "name": "Баку",
+                "color": null,
+                "orderindex": 119
+              },
+              {
+                "id": "888e74f5-9205-44ff-8823-01ad0a2219b7",
+                "name": "Димитровград (Ульяновская обл.)",
+                "color": null,
+                "orderindex": 120
+              },
+              {
+                "id": "bc256ab4-067f-4274-8146-00a683be7e72",
+                "name": "муром",
+                "color": null,
+                "orderindex": 121
+              },
+              {
+                "id": "38fbd414-c9d2-43b3-a9bc-9f3aa5bc3b1e",
+                "name": "Турция",
+                "color": null,
+                "orderindex": 122
+              },
+              {
+                "id": "5f01d1a9-5240-49b8-b236-5026aa26a604",
+                "name": "Таиланд",
+                "color": null,
+                "orderindex": 123
+              },
+              {
+                "id": "592892ba-e08d-41d8-be13-614816d435de",
+                "name": "Караганда (Казахстан)",
+                "color": null,
+                "orderindex": 124
+              },
+              {
+                "id": "ad12f758-557f-42ea-a3eb-6f8b0f3dc0e4",
+                "name": "Тирасполь",
+                "color": null,
+                "orderindex": 125
+              },
+              {
+                "id": "6b0c9f8f-687d-4c11-9a0d-4a7040478d67",
+                "name": "ОАЭ",
+                "color": null,
+                "orderindex": 126
+              },
+              {
+                "id": "3b6fad18-95e2-456b-9bf7-d01bb76792b5",
+                "name": "Израиль",
+                "color": null,
+                "orderindex": 127
+              },
+              {
+                "id": "5bafe6c6-443a-43da-aa5e-04df1d1622ff",
+                "name": "Офис Заказчика",
+                "color": null,
+                "orderindex": 128
+              },
+              {
+                "id": "3beb9a8a-2d97-4dd0-b248-5f3f816af4bd",
+                "name": "Гибрид (удаленно/офис заказчика)",
+                "color": null,
+                "orderindex": 129
+              },
+              {
+                "id": "54242887-6a55-4134-abb3-8f53194fcd5a",
+                "name": "Любая в РФ, Беларуссия",
+                "color": null,
+                "orderindex": 130
+              }
+            ]
+          },
+          "date_created": "1611118707661",
+          "hide_from_guests": false,
+          "value": 21,
+          "required": false
+        },
+        {
+          "id": "e200f52c-087a-4419-ab83-59c1ba5a11a9",
+          "name": "025 Гражданство",
+          "type": "drop_down",
+          "type_config": {
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "142ee6dd-717c-416a-9d2b-d20ccbc6c233",
+                "name": "Россия",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "02d15331-1d76-4317-bf85-f1875cbb79ff",
+                "name": "Беларусь",
+                "color": null,
+                "orderindex": 1
+              },
+              {
+                "id": "12b46306-9c73-4647-bab1-cbeddddaab57",
+                "name": "Абхазия",
+                "color": null,
+                "orderindex": 2
+              },
+              {
+                "id": "4155b571-73f4-4226-807d-f3fd822af281",
+                "name": "Армения",
+                "color": null,
+                "orderindex": 3
+              },
+              {
+                "id": "f87eb097-a3b8-428a-9fbe-83f6cf0cabce",
+                "name": "Казахстан",
+                "color": null,
+                "orderindex": 4
+              },
+              {
+                "id": "b1442201-c361-440d-9ba7-513b7db5dcbc",
+                "name": "Кыргызстан",
+                "color": null,
+                "orderindex": 5
+              },
+              {
+                "id": "e887629e-46da-4eda-b378-080a7aa63b84",
+                "name": "Узбекистан",
+                "color": null,
+                "orderindex": 6
+              },
+              {
+                "id": "b3f0eded-dba5-4b6b-9057-432325257adc",
+                "name": "Украина",
+                "color": null,
+                "orderindex": 7
+              },
+              {
+                "id": "b3213477-8986-4820-ac55-737fb338241e",
+                "name": "Таджикистан",
+                "color": null,
+                "orderindex": 8
+              },
+              {
+                "id": "dcd0ea4c-fe03-491d-aacb-02121047c344",
+                "name": "Азербайджан",
+                "color": null,
+                "orderindex": 9
+              },
+              {
+                "id": "c1a14236-063b-4a52-8d82-e099d0feb243",
+                "name": "Приднестровская Молдавская Республика",
+                "color": null,
+                "orderindex": 10
+              }
+            ]
+          },
+          "date_created": "1618665350643",
+          "hide_from_guests": false,
+          "value": 0,
+          "required": false
+        },
+        {
+          "id": "067faabc-cc18-45f7-bcba-8399ba6438c3",
+          "name": "026 Пол",
+          "type": "drop_down",
+          "type_config": {
+            "default": 0,
+            "placeholder": null,
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "9bde6f5e-5d4f-4cf0-bcdd-5c93776140dc",
+                "name": "Мужской",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "a39e8288-a167-4747-8f23-08eb0a141809",
+                "name": "Женский",
+                "color": null,
+                "orderindex": 1
+              }
+            ]
+          },
+          "date_created": "1618664261035",
+          "hide_from_guests": false,
+          "value": 0,
+          "required": false
+        },
+        {
+          "id": "15b5edd5-7b26-4a2b-9def-e0c211731265",
+          "name": "027 Дата рождения",
+          "type": "date",
+          "type_config": {},
+          "date_created": "1611685778619",
+          "hide_from_guests": false,
+          "value": "519177600000",
+          "required": false
+        },
+        {
+          "id": "948c4322-be0e-473a-9f54-52b1cb6d428b",
+          "name": "030 Инструмент тех-ий",
+          "type": "labels",
+          "type_config": {
+            "options": [
+              {
+                "id": "f14457e2-ee8b-4663-ba87-e25786ae51a6",
+                "label": "Java",
+                "color": "#667684"
+              },
+              {
+                "id": "dc8cc115-179b-4643-ac2f-af88472cac11",
+                "label": "Java / Java 11",
+                "color": "#fff"
+              },
+              {
+                "id": "3de79154-1b3e-4cfb-a62e-ce39bd670742",
+                "label": "Java / Java EE",
+                "color": "#fff"
+              },
+              {
+                "id": "7b41863c-4667-48b2-8ed4-98ae79a88bf1",
+                "label": "Java / Spring",
+                "color": null
+              },
+              {
+                "id": "1a9b063b-ef72-4985-9a8a-2c41cef3e3f3",
+                "label": "Java / Spring Boot",
+                "color": "#fff"
+              },
+              {
+                "id": "3d0a2ed0-1bab-4891-9cc3-19360d30f635",
+                "label": "Java / Spring Security",
+                "color": null
+              },
+              {
+                "id": "293935ab-077d-439a-992e-a90b43e09433",
+                "label": "Java / Spring Data",
+                "color": null
+              },
+              {
+                "id": "65851c41-693d-454d-a230-c4461bd81d63",
+                "label": "Java / Spring MVC",
+                "color": "#fff"
+              },
+              {
+                "id": "28eaff38-7d34-44a8-8cd6-6ba749efeb57",
+                "label": "Java / EclipseLink",
+                "color": "#fff"
+              },
+              {
+                "id": "edcb8cc9-ab51-4e2b-a028-c65fb5ca6543",
+                "label": "Java / Hibernate",
+                "color": "#fff"
+              },
+              {
+                "id": "de6ddefe-9074-4cc2-9081-841857c82c90",
+                "label": "Java / Cuba Platform",
+                "color": "#fff"
+              },
+              {
+                "id": "570709eb-229b-494f-8888-621a0e5eb47a",
+                "label": "Java / Camunda",
+                "color": "#fff"
+              },
+              {
+                "id": "63c9c8e2-a58e-46a9-868d-03a8ba16eb46",
+                "label": "Java / Oracle SOA Suite",
+                "color": "#fff"
+              },
+              {
+                "id": "2a580788-9a8e-4af4-951e-1991bfcb6fb1",
+                "label": ".NET",
+                "color": "#667684"
+              },
+              {
+                "id": "dbefd0a1-e2b1-48e7-bb82-f45664c9afe2",
+                "label": ".NET / .NET Core",
+                "color": "#fff"
+              },
+              {
+                "id": "d37f3ce0-8257-4a18-9c89-0239e6440513",
+                "label": ".NET / ASP.NET Core",
+                "color": "#fff"
+              },
+              {
+                "id": "ad566ad2-fb79-40e8-8dd0-6d2b263a6c6b",
+                "label": ".NET / ASP .NET",
+                "color": "#fff"
+              },
+              {
+                "id": "f8660cd6-4066-4e2c-9cb1-cdde2af8a7e6",
+                "label": ".NET / ASP.NET",
+                "color": "#fff"
+              },
+              {
+                "id": "cbc6b85c-09bc-4aae-9a9b-57ba016071f9",
+                "label": "ETL",
+                "color": "#fff"
+              },
+              {
+                "id": "e21b872e-4629-470e-872f-0c42c85a0cd7",
+                "label": "ETL / Informatica",
+                "color": "#fff"
+              },
+              {
+                "id": "ec8717cc-aee5-4b6a-b8ac-2b24402501d6",
+                "label": "PowerDesigner",
+                "color": "#fff"
+              },
+              {
+                "id": "721b2ffe-d1cb-4b4d-b671-a6dfd6814c00",
+                "label": "Oracle Insbridge",
+                "color": "#fff"
+              },
+              {
+                "id": "14fdea45-06b2-415e-a63a-45da37e7bbcb",
+                "label": "Oracle Rate Engine",
+                "color": "#fff"
+              },
+              {
+                "id": "e737f96c-014e-49be-91b9-2a66b38004da",
+                "label": "JavaScript",
+                "color": "#667684"
+              },
+              {
+                "id": "1d62f79f-f669-4030-9470-86cc3222d1c8",
+                "label": "JavaScript / Vue.js",
+                "color": "#fff"
+              },
+              {
+                "id": "1abb2b71-b51c-46ce-92b3-46be34a43027",
+                "label": "JavaScript / Vuex",
+                "color": "#fff"
+              },
+              {
+                "id": "a59bc551-be60-4d72-b610-97a2e7ae479a",
+                "label": "JavaScript / Vuetify.js",
+                "color": "#fff"
+              },
+              {
+                "id": "253c2d42-7727-4b63-aa1a-63cdfb8b8acf",
+                "label": "JavaScript / jQuery",
+                "color": "#fff"
+              },
+              {
+                "id": "f89e4467-c41b-48cc-9766-0ddba98c3240",
+                "label": "JavaScript / Angular",
+                "color": "#fff"
+              },
+              {
+                "id": "d623ace5-7a4d-48ab-8078-65933486b8b6",
+                "label": "JavaScript / AngularJS",
+                "color": "#fff"
+              },
+              {
+                "id": "8322f27b-8e6c-44ad-b4ba-850360d06f15",
+                "label": "JavaScript / React",
+                "color": "#fff"
+              },
+              {
+                "id": "3e873c74-ef66-4985-a88c-00d5537a5778",
+                "label": "JavaScript / TypeScript",
+                "color": "#fff"
+              },
+              {
+                "id": "476e80dd-faef-4c1f-914e-97a048d38124",
+                "label": "JavaScript / npm",
+                "color": "#fff"
+              },
+              {
+                "id": "d0971508-400e-493e-96d5-b653588d8925",
+                "label": "DevOps",
+                "color": "#667684"
+              },
+              {
+                "id": "c9d30af4-8ce6-4a51-b5ac-e348ee7fe4cf",
+                "label": "DevOps / Ansible",
+                "color": "#fff"
+              },
+              {
+                "id": "b2302ae9-a90b-48b7-a8b5-f46d723a13cd",
+                "label": "MSA",
+                "color": "#fff"
+              },
+              {
+                "id": "44806117-3048-4b5b-869a-8beccddde97d",
+                "label": "MSA / Kubernetes",
+                "color": "#fff"
+              },
+              {
+                "id": "605732af-e68d-446f-a753-1ab518f601ef",
+                "label": "Docker",
+                "color": "#fff"
+              },
+              {
+                "id": "f55553a9-c9f4-4f1f-b514-7547128e071d",
+                "label": "Kafka",
+                "color": "#fff"
+              },
+              {
+                "id": "106fc701-4c63-4978-91fe-d3176cec16ce",
+                "label": "HTML",
+                "color": "#fff"
+              },
+              {
+                "id": "bff629ee-9ef8-4e3e-8053-8f34e22c6068",
+                "label": "CSS",
+                "color": "#fff"
+              },
+              {
+                "id": "d28d59ab-1083-49b6-8089-5832b1b70beb",
+                "label": "iOS",
+                "color": "#667684"
+              },
+              {
+                "id": "334d2b08-7abd-4181-a15d-082f0c975106",
+                "label": "Android",
+                "color": "#667684"
+              },
+              {
+                "id": "ceb67667-9cef-4b6b-a050-e999c212666f",
+                "label": "Тестирование",
+                "color": "#fff"
+              },
+              {
+                "id": "6f5b7bc8-785a-47e6-8e09-3315729526a5",
+                "label": "Тестирование / АТ",
+                "color": "#fff"
+              },
+              {
+                "id": "2de0f300-6134-400a-a2a6-d413890c2654",
+                "label": "Тестирование / ФТ",
+                "color": "#fff"
+              },
+              {
+                "id": "1772996d-fe6b-40b2-b2c9-a13288ee334f",
+                "label": "Тестирование / НТ",
+                "color": "#fff"
+              },
+              {
+                "id": "c2ba3b00-1763-4a05-bd52-e8452c5be509",
+                "label": "Git",
+                "color": "#fff"
+              },
+              {
+                "id": "6cfde7bf-4bdc-4fde-80dc-3813459a1ce6",
+                "label": "iOS / SWIFT",
+                "color": "#fff"
+              },
+              {
+                "id": "f78895cd-fb27-4b06-a79e-2827b7c6a9fc",
+                "label": "Rabbit MQ",
+                "color": "#fff"
+              },
+              {
+                "id": "8a04e1fd-4d40-4f76-9d98-59e614ec9afc",
+                "label": "Apache Camel",
+                "color": "#fff"
+              },
+              {
+                "id": "6ddbdb41-6e13-466c-acd7-cd027bd34352",
+                "label": "Python",
+                "color": "#667684"
+              },
+              {
+                "id": "2d5d2335-b0a3-4635-abd9-f18f54baab90",
+                "label": "PHP",
+                "color": "#667684"
+              },
+              {
+                "id": "1076d42e-8acf-4dbf-ba90-a67c82bc3f06",
+                "label": "SQL",
+                "color": "#667684"
+              },
+              {
+                "id": "d3111d3f-3174-4b00-b991-bee052a7dd8e",
+                "label": "SQL / T-SQL",
+                "color": "#fff"
+              },
+              {
+                "id": "5267557a-ea32-44a4-9496-8ecd12f6c74e",
+                "label": "SQL / Oracle DB / PLSQL",
+                "color": "#fff"
+              },
+              {
+                "id": "fba6b118-f52e-4b2a-8631-9de5c564490c",
+                "label": "Oracle Siebel CRM",
+                "color": "#fff"
+              },
+              {
+                "id": "84f7457d-8223-444d-a60a-20d09cfad003",
+                "label": "PostgreSQL",
+                "color": "#fff"
+              },
+              {
+                "id": "79dc2d8f-e7ab-45a4-b9a4-76d0c8c7fc0a",
+                "label": "No SQL",
+                "color": "#fff"
+              },
+              {
+                "id": "7fa69673-6c21-4a3f-b041-e865f5485835",
+                "label": "No SQL / MongoDB",
+                "color": "#fff"
+              },
+              {
+                "id": "3e771128-8e41-41ee-8ed7-3b8bd9c28019",
+                "label": "Аналитик",
+                "color": "#fff"
+              },
+              {
+                "id": "dbd312da-8742-433d-a5d6-09ddf6f40775",
+                "label": "IBM API Connect",
+                "color": "#fff"
+              },
+              {
+                "id": "95cfafe7-f4ed-4aad-ad7a-c1e18f9ac12e",
+                "label": "C++",
+                "color": "#fff"
+              },
+              {
+                "id": "79f5c7a7-526f-499e-a837-da8cd5cf415c",
+                "label": "C++ / QT",
+                "color": "#fff"
+              },
+              {
+                "id": "a228d817-69c9-4312-8e26-3ac5058c8cdc",
+                "label": "JavaScript / React-native",
+                "color": "#fff"
+              },
+              {
+                "id": "bceea541-1cb4-4b9d-a356-6b54b4408eb4",
+                "label": "No SQL / ClickHouse",
+                "color": "#fff"
+              },
+              {
+                "id": "893b69b2-c3af-40ac-a0c5-e354911932c4",
+                "label": "Vertica",
+                "color": "#fff"
+              },
+              {
+                "id": "8a98f926-af84-4581-97d6-1c199d6a3110",
+                "label": "1С (1C)",
+                "color": "#fff"
+              },
+              {
+                "id": "0f98fe37-553d-4254-8753-6250df8044f0",
+                "label": "Unity",
+                "color": "#fff"
+              },
+              {
+                "id": "97217a78-c1fa-4113-9c8e-3b56deab45f1",
+                "label": "SQL / MS SQL Server",
+                "color": "#fff"
+              },
+              {
+                "id": "63e4288c-0d22-4385-bf20-fa58b665eb31",
+                "label": "MS Dynamics",
+                "color": "#fff"
+              },
+              {
+                "id": "5b3121bf-dd8a-4d4e-a014-7ab5a0dbcf32",
+                "label": "Qlick",
+                "color": "#fff"
+              },
+              {
+                "id": "cc4cec21-9ada-4d19-a556-975784e4ce9e",
+                "label": "Разработка",
+                "color": "#fff"
+              },
+              {
+                "id": "17d7d648-f0f9-46ae-88db-3d27125d7b23",
+                "label": "Guidewire - Gosu",
+                "color": "#fff"
+              },
+              {
+                "id": "62df2313-d8ab-4bc8-ae69-bcd932800ec9",
+                "label": "Apache NiFi",
+                "color": "#fff"
+              },
+              {
+                "id": "fd3b223a-6377-43e0-a4a5-8ab9e9d04b8a",
+                "label": "Apache Superset",
+                "color": "#fff"
+              }
+            ]
+          },
+          "date_created": "1611666137029",
+          "hide_from_guests": false,
+          "value": [
+            "dc8cc115-179b-4643-ac2f-af88472cac11"
+          ],
+          "required": false
+        },
+        {
+          "id": "e7e89fd8-c5a6-4ae9-84ff-00bf3292033e",
+          "name": "040 Грейд",
+          "type": "drop_down",
+          "type_config": {
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "148e006c-ff33-4405-90d2-bf3d5cecd27f",
+                "name": "Junior (0)",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "ff5d6736-faa8-41b8-a6c8-f05713167b12",
+                "name": "Junior (1)",
+                "color": null,
+                "orderindex": 1
+              },
+              {
+                "id": "23a24e31-ee61-4fb3-b246-dc019ab846b9",
+                "name": "Junior+ (2)",
+                "color": null,
+                "orderindex": 2
+              },
+              {
+                "id": "5442f6bf-3323-4401-ad1e-6a71517f275b",
+                "name": "Middle (3)",
+                "color": null,
+                "orderindex": 3
+              },
+              {
+                "id": "9259f073-9358-4b4a-97ea-33e1b8eb5e70",
+                "name": "Middle+ (4)",
+                "color": null,
+                "orderindex": 4
+              },
+              {
+                "id": "9c998546-d6b0-4431-9eb3-1ef3ae65d1ac",
+                "name": "Senior (5)",
+                "color": null,
+                "orderindex": 5
+              },
+              {
+                "id": "0e7fd850-36d3-4089-89a0-db7d9b4be920",
+                "name": "Senior+ (6)",
+                "color": null,
+                "orderindex": 6
+              }
+            ]
+          },
+          "date_created": "1611155091301",
+          "hide_from_guests": false,
+          "value": 3,
+          "required": false
+        },
+        {
+          "id": "159a46bb-b8f7-41c8-a226-2a523e9b7403",
+          "name": "080 Контакт: Тел. моб.",
+          "type": "phone",
+          "type_config": {},
+          "date_created": "1611118050148",
+          "hide_from_guests": false,
+          "value": "+7 937 456 98 67",
+          "required": false
+        },
+        {
+          "id": "2a07e135-3447-4254-aac0-6676fe3b352a",
+          "name": "081 Контакт: Email личный",
+          "type": "email",
+          "type_config": {},
+          "date_created": "1612442115642",
+          "hide_from_guests": false,
+          "value": "qwe@mail.ru",
+          "required": false
+        },
+        {
+          "id": "5c6128d2-1c1f-420d-890a-e85afd61b123",
+          "name": "082 Контакт: Email рабочий",
+          "type": "email",
+          "type_config": {},
+          "date_created": "1611118008342",
+          "hide_from_guests": false,
+          "value": "username@egartech.ru",
+          "required": false
+        },
+        {
+          "id": "01b8770a-ba4a-48e4-8673-d157d110a446",
+          "name": "082 Образование",
+          "type": "short_text",
+          "type_config": {},
+          "date_created": "1618665718531",
+          "hide_from_guests": false,
+          "value": "Высшее",
+          "required": false
+        },
+        {
+          "id": "6f023e63-c487-40cb-8eb3-bb582557e4a0",
+          "name": "083 Контакт: Skype",
+          "type": "short_text",
+          "type_config": {},
+          "date_created": "1611580526844",
+          "hide_from_guests": false,
+          "value": "username",
+          "required": false
+        },
+        {
+          "id": "7dcb1177-6071-40c0-83dc-5c1b45cc7a3c",
+          "name": "085 Контакт: Телеграм",
+          "type": "short_text",
+          "type_config": {},
+          "date_created": "1616757824926",
+          "hide_from_guests": false,
+          "value": "@username",
+          "required": false
+        },
+        {
+          "id": "eb239dbb-41eb-4589-b3b6-2af86edb5895",
+          "name": "087 Контакт: WhatsApp, URL",
+          "type": "url",
+          "type_config": {},
+          "date_created": "1646220168762",
+          "hide_from_guests": false,
+          "value": "https://wa.me/15551234567",
+          "required": false
+        },
+        {
+          "id": "836c9684-0c71-4714-aff2-900b0ded0685",
+          "name": "_egar_id",
+          "type": "short_text",
+          "type_config": {},
+          "date_created": "1662114554799",
+          "hide_from_guests": false,
+          "value": "username",
+          "required": false
+        },
+        {
+          "id": "d01ad323-e69b-4413-9d57-256613e62ee0",
+          "name": "Аватар",
+          "type": "attachment",
+          "type_config": {},
+          "date_created": "1661332541052",
+          "hide_from_guests": false,
+          "value": [
+            {
+              "id": "c9372130-1753-4f77-b79d-f7b8c0a3b18a.png",
+              "date": "1663077250036",
+              "title": "изображение_2022-09-13_165406813.png",
+              "type": 11,
+              "source": 1,
+              "version": 0,
+              "extension": "png",
+              "thumbnail_small": "https://t4597045.p.clickup-attachments.com/t4597045/c9372130-1753-4f77-b79d-f7b8c0a3b18a_small.png",
+              "thumbnail_medium": "https://t4597045.p.clickup-attachments.com/t4597045/c9372130-1753-4f77-b79d-f7b8c0a3b18a/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2022-09-13_165406813.png",
+              "thumbnail_large": "https://t4597045.p.clickup-attachments.com/t4597045/c9372130-1753-4f77-b79d-f7b8c0a3b18a/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2022-09-13_165406813.png",
+              "is_folder": null,
+              "mimetype": "image/png",
+              "hidden": false,
+              "parent_id": "d01ad323-e69b-4413-9d57-256613e62ee0",
+              "size": 174,
+              "total_comments": 0,
+              "resolved_comments": 0,
+              "user": {
+                "id": 42517824,
+                "username": "Стенькин Александр",
+                "email": "astenkin@egartech.ru",
+                "initials": "СА",
+                "color": "#08c7e0",
+                "profilePicture": null
+              },
+              "deleted": false,
+              "orientation": null,
+              "url": "https://t4597045.p.clickup-attachments.com/t4597045/c9372130-1753-4f77-b79d-f7b8c0a3b18a/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2022-09-13_165406813.png",
+              "parent_comment_type": null,
+              "parent_comment_parent": null,
+              "email_data": null,
+              "url_w_query": "https://t4597045.p.clickup-attachments.com/t4597045/c9372130-1753-4f77-b79d-f7b8c0a3b18a/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2022-09-13_165406813.png?view=open",
+              "url_w_host": "https://t4597045.p.clickup-attachments.com/t4597045/c9372130-1753-4f77-b79d-f7b8c0a3b18a/%D0%B8%D0%B7%D0%BE%D0%B1%D1%80%D0%B0%D0%B6%D0%B5%D0%BD%D0%B8%D0%B5_2022-09-13_165406813.png"
+            }
+          ],
+          "required": false
+        },
+        {
+          "id": "ea8cc2d2-4255-4cf8-b207-0b96ff6e4987",
+          "name": "Дата выхода",
+          "type": "date",
+          "type_config": {},
+          "date_created": "1623307284746",
+          "hide_from_guests": false,
+          "value": "1618016400000",
+          "required": false
+        },
+        {
+          "id": "3443f67a-a297-4169-a344-9808db10bb4f",
+          "name": "Дата ухода",
+          "type": "date",
+          "type_config": {},
+          "date_created": "1624371805551",
+          "hide_from_guests": false,
+          "required": false
+        },
+        {
+          "id": "5fae66ad-87ba-4ac2-b020-7b1758f56baf",
+          "name": "Специализация",
+          "type": "drop_down",
+          "type_config": {
+            "default": 0,
+            "placeholder": null,
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "c7c1b8b8-7761-49ca-99c5-0152c16ccf59",
+                "name": "Разработчик .Net (Backend)",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "fc8c12ec-5f2a-41e4-922b-aed29aa35eb9",
+                "name": "Разработчик .Net+Angular (Full-stack)",
+                "color": null,
+                "orderindex": 1
+              },
+              {
+                "id": "a4d11edd-e583-4919-9646-d1a4015f83ac",
+                "name": "Разработчик .Net+React (Full-stack)",
+                "color": null,
+                "orderindex": 2
+              },
+              {
+                "id": "92a76021-a4f8-477d-9021-d14e5a3c30a1",
+                "name": "Разработчик Java (Backend)",
+                "color": null,
+                "orderindex": 3
+              },
+              {
+                "id": "5f13a08d-f64f-4af7-a583-8d65a019d32b",
+                "name": "Разработчик JavaScript (Core)",
+                "color": null,
+                "orderindex": 4
+              },
+              {
+                "id": "2d9cf589-a371-4a3e-9487-910cbe245f05",
+                "name": "Аналитик",
+                "color": null,
+                "orderindex": 5
+              },
+              {
+                "id": "83cefea3-371d-4e82-ad55-462e25dd77eb",
+                "name": "Тестировщик",
+                "color": null,
+                "orderindex": 6
+              }
+            ]
+          },
+          "date_created": "1615986225338",
+          "hide_from_guests": false,
+          "value": 4,
+          "required": false
+        },
+        {
+          "id": "33064c03-b21f-4f93-b74d-b2ef4b081208",
+          "name": "Специализация основная",
+          "type": "drop_down",
+          "type_config": {
+            "default": 0,
+            "placeholder": null,
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "9f510b4e-6e34-4d1c-92f1-8628fdf23a83",
+                "name": "Разработчик",
+                "color": "#b5bcc2",
+                "orderindex": 0
+              },
+              {
+                "id": "872b5cca-be4c-4acc-9c7c-7514ebe6510b",
+                "name": "Аналитик",
+                "color": "#a8aaab",
+                "orderindex": 1
+              },
+              {
+                "id": "8b0b648c-aaa3-49aa-8591-5db4439a5615",
+                "name": "Тестировщик",
+                "color": "#808081",
+                "orderindex": 2
+              }
+            ]
+          },
+          "date_created": "1637588570540",
+          "hide_from_guests": false,
+          "value": 0,
+          "required": false
+        },
+        {
+          "id": "4f271e0a-1e4f-4aa6-b4fa-dbb7cb3fa20a",
+          "name": "Филиал",
+          "type": "drop_down",
+          "type_config": {
+            "new_drop_down": true,
+            "options": [
+              {
+                "id": "eb03abda-915e-4fdb-b7ef-712fba28bea7",
+                "name": "Московский",
+                "color": null,
+                "orderindex": 0
+              },
+              {
+                "id": "2c9032de-bf00-482a-91c7-3ca96196f8f3",
+                "name": "Самарский",
+                "color": null,
+                "orderindex": 1
+              },
+              {
+                "id": "ad5e28b5-2912-4ade-b291-57dc52a25825",
+                "name": "Гомельский",
+                "color": null,
+                "orderindex": 2
+              },
+              {
+                "id": "26ad0fa4-00ea-4680-8005-d9a5734a636f",
+                "name": "Махачкалинский",
+                "color": null,
+                "orderindex": 3
+              },
+              {
+                "id": "5f404ce0-64ed-4087-a04a-7d1aea037c39",
+                "name": "Брянский",
+                "color": null,
+                "orderindex": 4
+              },
+              {
+                "id": "988b2c06-37d5-45be-81bf-a10af2bb1cad",
+                "name": "Пензенский",
+                "color": null,
+                "orderindex": 5
+              },
+              {
+                "id": "1eb29ead-ba28-48bd-b393-d569a5608a4c",
+                "name": "Томский",
+                "color": null,
+                "orderindex": 6
+              },
+              {
+                "id": "1be7b32c-b1a6-474a-b3a7-a05cd24d7a5f",
+                "name": "Владимирский",
+                "color": null,
+                "orderindex": 7
+              }
+            ]
+          },
+          "date_created": "1627626508713",
+          "hide_from_guests": false,
+          "value": 5,
+          "required": false
+        }
+      ],
+      "dependencies": [],
+      "linked_tasks": [],
+      "team_id": "4597045",
+      "url": "https://app.clickup.com/t/2rgq20y",
+      "permission_level": "create",
+      "list": {
+        "id": "180311895",
+        "name": "ЦКР / Сотрудники / Разработчики",
+        "access": true
+      },
+      "project": {
+        "id": "102323668",
+        "name": "CUERP (DEV2)",
+        "hidden": false,
+        "access": true
+      },
+      "folder": {
+        "id": "102323668",
+        "name": "CUERP (DEV2)",
+        "hidden": false,
+        "access": true
+      },
+      "space": {
+        "id": "6857652"
+      }
+    }
+  ]
+}

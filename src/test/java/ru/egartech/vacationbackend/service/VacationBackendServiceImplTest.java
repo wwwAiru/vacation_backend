@@ -11,15 +11,15 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.egartech.vacationbackend.AbstractSpringContext;
 import ru.egartech.vacationbackend.repository.VacationRepository;
 
-import ru.egartech.vacationbackend.service.VacationsBackendService;
-
 import ru.egartech.vacationbackend.model.VacationDto;
-import ru.egartech.vacationbackend.model.AssignerDto;
 import ru.egartech.vacationbackend.model.VacationApprovalReqDto;
 import ru.egartech.vacationbackend.util.VacationTestTemplate;
-import ru.egartech.vacationbackend.util.dateMills;
+import ru.egartech.vacationbackend.util.DateMills;
 
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -33,19 +33,18 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
     private VacationDto validVacation;
 
     @Autowired
-    private VacationsBackendService vacationsBackendService;
+    private ru.egartech.vacationbackend.service.VacationsBackendService vacationsBackendService;
 
     @BeforeEach
     void setMockOutput() {
         validVacation = VacationTestTemplate.getValid();
-
-        when(vacationRepository.findVacationByEgarId("username",180311895)).thenReturn(List.of(validVacation));
+        when(vacationRepository.findVacationsByEgarId("username",180311895)).thenReturn(List.of(validVacation));
     }
 
     @DisplayName("Test find vacation by id")
     @Test
     void findVacationById() {
-        when(vacationRepository.getVacationById("2wmaha")).thenReturn(validVacation);
+        when(vacationRepository.getVacationById("2wmaha")).thenReturn(Optional.of(validVacation));
         VacationDto t = vacationsBackendService.findVacationById("2wmaha");
         assertEquals(validVacation, t);
     }
@@ -61,40 +60,59 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
 
     @Test
     void checkCalculationOfVacationDates() {
+        //Валидный отпуск который должен прийти в VacationRepository из сервиса
         var vacationFromService = VacationDto.builder()
                 .employeeProfileId("2wrahmn")
-                .startDate(dateMills.of("08-08-2022 00:00:00")) //Sun Aug 07 2022 21:00:00 1659906000000L
-                .endDate(dateMills.of("21-08-2022 23:59:59"))
+                .startDate(DateMills.of("08-08-2022 00:00:00")) //Sun Aug 07 2022 21:00:00 1659906000000L
+                .endDate(DateMills.of("21-08-2022 23:59:59"))
                 .build();
-        validVacation.setStartDate(dateMills.of("08-08-2022 00:00:00"));
+        validVacation.setStartDate(DateMills.of("08-08-2022 00:00:00"));
+        validVacation.setEndDate(DateMills.of("21-08-2022 23:59:59"));
         when(vacationRepository.saveVacation(vacationFromService, 180311895)).thenReturn(validVacation);
-        VacationApprovalReqDto v = VacationApprovalReqDto.builder()
-                .startDate(dateMills.of("08-08-2022 00:00:00"))
+        var vacationApprovalReq = VacationApprovalReqDto.builder()
+                .startDate(DateMills.of("08-08-2022 00:00:00"))
                 .employeeProfileId("2wrahmn")
                 .countDay(14)
                 .listProfileId(180311895)
                 .build();
-        VacationDto expected = vacationsBackendService.addVacationRequest(v);
-        assertEquals(v.getStartDate(), expected.getStartDate());
-        assertEquals(dateMills.of("21-08-2022 23:59:59"), expected.getEndDate());
+        VacationDto expected = vacationsBackendService.addVacationRequest(vacationApprovalReq);
+        assertEquals(vacationApprovalReq.getStartDate(), expected.getStartDate());
+        assertEquals(DateMills.of("21-08-2022 23:59:59"), expected.getEndDate());
     }
 
     @Test
-    void getRemainVacationDays() {
-        when(vacationRepository.findVacationByEgarIdByStatus(any(), anyInt(), any())).thenReturn(List.of(validVacation));
-
-//        vacationsBackendService.getRemainVacationDays(LocalDateTime.of(2022, 8, 23,))
-
+    void getRemainVacationDaysByEgarId() {
+        var vacationFirst = VacationTestTemplate.getValid();
+        var vacationSecond = VacationTestTemplate.getValid();
+        //первый отпуск 14 дней
+        vacationFirst.setStartDate(DateMills.of("01-03-2022 00:00:00"));
+        vacationFirst.setEndDate(DateMills.of("14-03-2022 23:59:59"));
+        //второй отпуск 8 дней
+        vacationSecond.setStartDate(DateMills.of("01-08-2022 00:00:00"));
+        vacationSecond.setEndDate(DateMills.of("08-08-2022 23:59:59"));
+        when(vacationRepository.findVacationsByEgarIdByStatus(any(), anyInt(), any()))
+                .thenReturn(List.of(vacationFirst, vacationSecond));
+        //дата начала работы год назад
+        Long jobStartDate = LocalDateTime.now().minusYears(1L).atZone(ZoneId.systemDefault())
+                .toInstant()
+                .toEpochMilli();
+        var expectVacationDays = vacationsBackendService.getRemainVacationDaysByEgarId("username",
+                jobStartDate,
+                180311895);
+        //14 + 8 = 22 дня отгуляно, и 28 - 22 = 6 осталось
+        assertEquals(6, expectVacationDays.getVacationDayRemain());
     }
 
     @Test
     void updateVacationById() {
-
+        when(vacationRepository.updateVacation(validVacation.getVacationId(), validVacation)).thenReturn(validVacation);
+        var expected = vacationsBackendService.updateVacationById(validVacation.getVacationId(),validVacation);
+        assertEquals(validVacation, expected);
     }
 
     @Test
     void getVacationsByEgarIdWithoutEndDateAndStartDate() {
-        when(vacationRepository.findVacationByEgarId("username", 180311895)).thenReturn(List.of(validVacation));
+        when(vacationRepository.findVacationsByEgarId("username", 180311895)).thenReturn(List.of(validVacation));
         List<VacationDto> t = vacationsBackendService.getVacationsByEgarId("username", 180311895, null, null);
         assertNotNull(t);
         assertNotNull(t.get(0));
@@ -103,35 +121,58 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
 
     @Test
     void getVacationsByEgarIdWithEndDateAndStartDate() {
-        VacationDto expectVacation = VacationDto.builder()
-                .vacationId("2wmahab")
-                .employeeProfileId("2wrahmn")
-                .status("новый")
-                .startDate(dateMills.of("08-08-2022 00:00:00")) //Sun Aug 07 2022 21:00:00 1659906000000L
-                .endDate(dateMills.of("21-08-2022 23:59:59"))
-                .assigners(List.of(AssignerDto.builder()
-                        .fullName("Иванов Иван Иванович")
-                        .avatarUrl("https://clickup.ru/avatar.png")
-                        .orgStructureId("3rtrfmk")
-                        .build()))
-                .statusId("subcat180311910_sc156545942_pdD65bGE")
-                .statusType(VacationDto.StatusTypeEnum.DONE)
-                .build();
-
-        when(vacationRepository.findVacationByEgarId("username", 180311895)).thenReturn(List.of(expectVacation));
+        when(vacationRepository.findVacationsByEgarId("username", 180311895)).thenReturn(List.of(validVacation));
         List<VacationDto> t = vacationsBackendService.getVacationsByEgarId(
                 "username",
                 180311895,
-                dateMills.of("07-08-2022 23:59:00"),
-                dateMills.of("08-08-2022 00:00:01")
+                DateMills.of("07-08-2022 23:59:00"),
+                DateMills.of("08-08-2022 00:00:01")
         );
         assertNotNull(t);
         assertNotNull(t.get(0));
-        assertEquals(expectVacation, t.get(0));
+        assertEquals(validVacation, t.get(0));
     }
 
     @Test
-    void getVacationsByEgarIdWithEndDateAndStartDate2(){
+    void getVacationsByEgarIdWithoutTimeInterval(){
+        var vacationBeforeTimeInterval = VacationTestTemplate.getValid();
+        var vacationAfterTimeInterval = VacationTestTemplate.getValid();
+        vacationBeforeTimeInterval.setStartDate(DateMills.of("07-08-2022 23:59:59"));
+        vacationAfterTimeInterval.setStartDate(DateMills.of("08-08-2022 00:00:02"));
+        when(vacationRepository.findVacationsByEgarId("username", 180311895))
+                .thenReturn(List.of(validVacation, vacationBeforeTimeInterval, vacationAfterTimeInterval));
+        List<VacationDto> t = vacationsBackendService.getVacationsByEgarId(
+                "username",
+                180311895,
+                DateMills.of("08-08-2022 00:00:00"),
+                DateMills.of("08-08-2022 00:00:01")
+        );
+        assertNotNull(t);
+        assertEquals(1, t.size());
+        assertNotNull(t.get(0));
+        assertEquals(validVacation, t.get(0));
+    }
 
+    @Test
+    void getRemainVacationDays() {
+        var vacationFirst = VacationTestTemplate.getValid();
+        var vacationSecond = VacationTestTemplate.getValid();
+        //первый отпуск 14 дней
+        vacationFirst.setStartDate(DateMills.of("01-03-2022 00:00:00"));
+        vacationFirst.setEndDate(DateMills.of("14-03-2022 23:59:59"));
+        //второй отпуск 8 дней
+        vacationSecond.setStartDate(DateMills.of("01-08-2022 00:00:00"));
+        vacationSecond.setEndDate(DateMills.of("08-08-2022 23:59:59"));
+
+        when(vacationRepository.findVacationsByListIdByStatus(anyList(), any()))
+                .thenReturn(List.of(vacationFirst, vacationSecond));
+        //дата начала работы год назад
+        Long jobStartDate = LocalDateTime.now().minusYears(1L).atZone(ZoneId.systemDefault())
+                .toInstant()
+                .toEpochMilli();
+        var expectVacationDays = vacationsBackendService.getRemainVacationDays(
+                jobStartDate, List.of("2cdrtm", "2ghfjd"));
+        //14 + 8 = 22 дня отгуляно, и 28 - 22 = 6 осталось
+        assertEquals(6, expectVacationDays.getVacationDayRemain());
     }
 }
