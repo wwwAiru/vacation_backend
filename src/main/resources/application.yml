@@ -30,9 +30,3 @@ org_structure:
   patronymic: "f73b08e3-03f2-4c8b-9d27-84347daa716a"
   avatar: "d01ad323-e69b-4413-9d57-256613e62ee0"
   root_task_org_struct: "2vj3zgb"
-
-cors:
-  receiver:
-    url: ${CORS_RECEIVER_URL}
-
-

@@ -16,17 +16,6 @@ import java.util.List;
 @EnableWebMvc
 public class WebConfiguration implements WebMvcConfigurer {
 
-    @Value("${cors.receiver.url}")
-    private String receiverUrl;
-
-    @Override
-    public void addCorsMappings(CorsRegistry registry) {
-        WebMvcConfigurer.super.addCorsMappings(registry);
-        registry.addMapping("/**")
-                .allowedMethods("*")
-                .allowedOrigins(receiverUrl);
-    }
-
     @Override
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
