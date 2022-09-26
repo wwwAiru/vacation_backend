@@ -14,8 +14,8 @@ public class VacationTestTemplate {
                 .vacationId("2wmahab")
                 .employeeProfileId("2wrahmn")
                 .status("новый")
-                .startDate(dateMills.of("08-08-2022 00:00:00")) //Sun Aug 07 2022 21:00:00 1659906000000L
-                .endDate(dateMills.of("21-08-2022 23:59:59"))
+                .startDate(DateMills.of("08-08-2022 00:00:00")) //Sun Aug 07 2022 21:00:00 1659906000000L
+                .endDate(DateMills.of("21-08-2022 23:59:59"))
                 .assigners(List.of(ru.egartech.vacationbackend.model.AssignerDto.builder()
                         .fullName("Иванов Иван Иванович")
                         .avatarUrl("https://clickup.ru/avatar.png")

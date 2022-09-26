@@ -1,14 +1,14 @@
 package ru.egartech.vacationbackend.repository;
 
-import org.springframework.stereotype.Repository;
 import ru.egartech.vacationbackend.model.VacationDto;
 
 import java.util.List;
+import java.util.Optional;
 
 
 public interface VacationRepository {
 
-    VacationDto getVacationById(String vacationId);
+    Optional<VacationDto> getVacationById(String vacationId);
 
     List<VacationDto> getVacationsByListId(List<String> vacationIdList);
 
@@ -16,9 +16,9 @@ public interface VacationRepository {
 
     VacationDto updateVacation(String vacationId, VacationDto vacationDto);
 
-    List<VacationDto> findVacationByEgarId(String egarId, Integer listId);
+    List<VacationDto> findVacationsByEgarId(String egarId, Integer listId);
 
-    List<VacationDto> findVacationByListIdByStatus(List<String> vacationIdList, String status);
+    List<VacationDto> findVacationsByListIdByStatus(List<String> vacationIdList, VacationDto.StatusTypeEnum status);
 
-    List<VacationDto> findVacationByEgarIdByStatus(String egarId, Integer profileListId, String status);
+    List<VacationDto> findVacationsByEgarIdByStatus(String egarId, Integer profileListId, VacationDto.StatusTypeEnum status);
 }

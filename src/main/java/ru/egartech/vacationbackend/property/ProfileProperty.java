@@ -1,4 +1,4 @@
-package ru.egartech.vacationbackend.configure;
+package ru.egartech.vacationbackend.property;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -9,6 +9,6 @@ import java.util.Map;
 @Component
 @Data
 @ConfigurationProperties(prefix = "profile")
-public class ProfileClickUpListIdConfiguration {
+public class ProfileProperty {
     private Map<Integer, Map<String, String>> lists;
 }
