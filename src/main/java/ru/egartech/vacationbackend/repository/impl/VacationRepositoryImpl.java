@@ -36,6 +36,7 @@ public class VacationRepositoryImpl implements VacationRepository {
     private static final String START_DATE = "start_date";
     private static final String END_DATE = "end_date";
     private static final String VACATION_LIST_ID = "vacation_list_id";
+    private static final String EGAR_ID = "egar_id";
     private final TaskClient taskClient;
     private final VacationMapper vacationMapper;
     private final VacationProperty cf;
@@ -136,7 +137,7 @@ public class VacationRepositoryImpl implements VacationRepository {
         TaskDto employee;
         try {
             employee = taskClient.getTasksByCustomFields(profileListId, false, CustomFieldRequest.builder()
-                    .fieldId(pcf.getLists().get(profileListId).get("egar_id"))
+                    .fieldId(pcf.getLists().get(profileListId).get(EGAR_ID))
                     .operator("=")
                     .value(egarId).build()).getFirstTask();
         } catch (TaskNotFoundException e){
