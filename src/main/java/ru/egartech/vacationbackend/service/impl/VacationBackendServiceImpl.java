@@ -6,7 +6,7 @@ import ru.egartech.vacationbackend.exception.VacationNotFoundException;
 import ru.egartech.vacationbackend.model.VacationApprovalReqDto;
 import ru.egartech.vacationbackend.model.VacationDayRemainDto;
 import ru.egartech.vacationbackend.model.VacationDto;
-import ru.egartech.vacationbackend.repository.VacationRepository;
+import ru.egartech.vacationbackend.manager.VacationManager;
 import ru.egartech.vacationbackend.service.VacationsBackendService;
 
 import java.math.BigDecimal;
@@ -26,11 +26,11 @@ import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 public class VacationBackendServiceImpl implements VacationsBackendService {
 
     private final Integer VACATION_DAYS_IN_YEAR = 28;
-    private final VacationRepository vacationRepository;
+    private final VacationManager vacationManager;
 
     @Override
     public VacationDto addVacationRequest(VacationApprovalReqDto vacationApprovalReqDto) {
-        return vacationRepository.saveVacation(VacationDto.builder()
+        return vacationManager.saveVacation(VacationDto.builder()
                         .employeeProfileId(vacationApprovalReqDto.getEmployeeProfileId())
                         .startDate(vacationApprovalReqDto.getStartDate())
                         .endDate(calculateEndDate(vacationApprovalReqDto.getStartDate(), vacationApprovalReqDto.getCountDay()))
@@ -40,13 +40,13 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
 
     @Override
     public VacationDto findVacationById(String vacationId) {
-        return vacationRepository.getVacationById(vacationId).orElseThrow(() -> new VacationNotFoundException(
+        return vacationManager.getVacationById(vacationId).orElseThrow(() -> new VacationNotFoundException(
                 String.format("Не удалось найти отпуск с ID: %s", vacationId)));
     }
 
     @Override
     public VacationDayRemainDto getRemainVacationDays(Long jobStartDate, List<String> vacationIds) {
-        List<VacationDto> lvOff = vacationRepository.findVacationsByListIdByStatus(vacationIds, VacationDto.StatusTypeEnum.DONE);
+        List<VacationDto> lvOff = vacationManager.findVacationsByListIdByStatus(vacationIds, VacationDto.StatusTypeEnum.DONE);
         Integer dayRemain = calculateDayRemain(lvOff, jobStartDate);
         return VacationDayRemainDto.builder()
                 .vacationDayRemain(dayRemain)
@@ -55,7 +55,7 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
 
     @Override
     public VacationDayRemainDto getRemainVacationDaysByEgarId(String egarId, Long jobStartDate, Integer profileListId) {
-        List<VacationDto> lvOff = vacationRepository.findVacationsByEgarIdByStatus(egarId, profileListId, VacationDto.StatusTypeEnum.DONE);
+        List<VacationDto> lvOff = vacationManager.findVacationsByEgarIdByStatus(egarId, profileListId, VacationDto.StatusTypeEnum.DONE);
         Integer dayRemain = calculateDayRemain(lvOff, jobStartDate);
         return VacationDayRemainDto.builder()
                 .vacationDayRemain(dayRemain)
@@ -64,13 +64,13 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
 
     @Override
     public List<VacationDto> getVacation(List<String> vacationIds) {
-        return vacationRepository.getVacationsByListId(vacationIds);
+        return vacationManager.getVacationsByListId(vacationIds);
     }
 
     @Override
     public List<VacationDto> getVacationsByEgarId(String egarId, Integer profileListId, Long startDate, Long endDate) {
             if(startDate != null & endDate != null){
-                return vacationRepository.findVacationsByEgarId(egarId, profileListId).stream()
+                return vacationManager.findVacationsByEgarId(egarId, profileListId).stream()
                         .filter(isIncludesTimeInterval(startDate, endDate))
                         .collect(Collectors.toList());
             }
@@ -81,7 +81,7 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
                 endDate = LocalDateTime.now().with(lastDayOfYear())
                         .atZone(ZoneId.systemDefault())
                         .toInstant().toEpochMilli();
-                return vacationRepository.findVacationsByEgarId(egarId, profileListId)
+                return vacationManager.findVacationsByEgarId(egarId, profileListId)
                         .stream()
                         .filter(isIncludesTimeInterval(startDate, endDate))
                         .collect(Collectors.toList());
@@ -91,7 +91,7 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
 
     @Override
     public VacationDto updateVacationById(String vacationId, VacationDto vacationDto) {
-        return vacationRepository.updateVacation(vacationId, vacationDto);
+        return vacationManager.updateVacation(vacationId, vacationDto);
     }
 
     private Predicate<VacationDto> isIncludesTimeInterval(Long startDate, Long endDate){

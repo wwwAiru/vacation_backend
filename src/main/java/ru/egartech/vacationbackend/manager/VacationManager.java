@@ -1,4 +1,4 @@
-package ru.egartech.vacationbackend.repository;
+package ru.egartech.vacationbackend.manager;
 
 import ru.egartech.vacationbackend.model.VacationDto;
 
@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface VacationRepository {
+public interface VacationManager {
 
     Optional<VacationDto> getVacationById(String vacationId);
 

@@ -1,4 +1,4 @@
-package ru.egartech.vacationbackend.repository.impl;
+package ru.egartech.vacationbackend.manager.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -21,7 +21,7 @@ import ru.egartech.vacationbackend.property.ProfileProperty;
 import ru.egartech.vacationbackend.mapper.VacationMapper;
 import ru.egartech.vacationbackend.property.VacationProperty;
 import ru.egartech.vacationbackend.model.VacationDto;
-import ru.egartech.vacationbackend.repository.VacationRepository;
+import ru.egartech.vacationbackend.manager.VacationManager;
 
 import java.util.List;
 import java.util.Optional;
@@ -29,7 +29,7 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Component
-public class VacationRepositoryImpl implements VacationRepository {
+public class VacationManagerImpl implements VacationManager {
 
     private static final String VACATION_LIST = "vacation_list";
     private static final String EMPLOYEE_PROFILE_ID = "employee_profile_id";

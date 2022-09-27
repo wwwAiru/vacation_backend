@@ -1,4 +1,4 @@
-package ru.egartech.vacationbackend.repository;
+package ru.egartech.vacationbackend.manager;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -25,13 +25,13 @@ import ru.egartech.vacationbackend.model.VacationDto;
 import ru.egartech.vacationbackend.util.DateMills;
 
 @ExtendWith(MockitoExtension.class)
-class VacationRepositoryImplTest extends AbstractSpringContext {
+class VacationManagerImplTest extends AbstractSpringContext {
 
     @MockBean
     TaskClient taskClient;
 
     @Autowired
-    VacationRepository vacationRepository;
+    VacationManager vacationManager;
 
     @Autowired
     ObjectMapper objectMapper;
@@ -57,7 +57,7 @@ class VacationRepositoryImplTest extends AbstractSpringContext {
     void getVacationById() {
         when(taskClient.getTaskById(any(), anyBoolean())).thenReturn(vacationTask);
         when(taskClient.getTasksByCustomFields(anyInt(), anyBoolean(), any())).thenReturn(assignersTasks);
-        var v = vacationRepository.getVacationById("2wmahab");
+        var v = vacationManager.getVacationById("2wmahab");
         assertTrue(v.isPresent());
     }
 
@@ -65,7 +65,7 @@ class VacationRepositoryImplTest extends AbstractSpringContext {
     void getVacationsByListId() {
         when(taskClient.getTaskById(any(), anyBoolean())).thenReturn(vacationTask);
         when(taskClient.getTasksByCustomFields(anyInt(), anyBoolean(), any())).thenReturn(assignersTasks);
-        List<VacationDto> v = vacationRepository.getVacationsByListId(List.of("2wmahab"));
+        List<VacationDto> v = vacationManager.getVacationsByListId(List.of("2wmahab"));
         assertNotNull(v);
         assertEquals(1, v.size());
     }
@@ -82,7 +82,7 @@ class VacationRepositoryImplTest extends AbstractSpringContext {
                 .startDate(DateMills.of("01-01-2022 00:00:00"))
                 .endDate(DateMills.of("14-01-2022 23:59:59"))
                 .build();
-        VacationDto expect = vacationRepository.saveVacation(vacation, 180311895);
+        VacationDto expect = vacationManager.saveVacation(vacation, 180311895);
         assertNotNull(expect);
     }
 
@@ -97,7 +97,7 @@ class VacationRepositoryImplTest extends AbstractSpringContext {
                 .startDate(DateMills.of("01-01-2022 00:00:00"))
                 .endDate(DateMills.of("14-01-2022 23:59:59"))
                 .build();
-        VacationDto expect = vacationRepository.updateVacation("2wmahab", vacation);
+        VacationDto expect = vacationManager.updateVacation("2wmahab", vacation);
         assertNotNull(expect);
     }
 
@@ -105,7 +105,7 @@ class VacationRepositoryImplTest extends AbstractSpringContext {
     void findVacationByEgarId() {
         when(taskClient.getTaskById(any(),anyBoolean())).thenReturn(vacationTask);
         when(taskClient.getTasksByCustomFields(anyInt(), anyBoolean(), any())).thenReturn(profilesTasks);
-        List<VacationDto> expect = vacationRepository.findVacationsByEgarId("username", 180311895);
+        List<VacationDto> expect = vacationManager.findVacationsByEgarId("username", 180311895);
         assertNotNull(expect);
         assertEquals(1, expect.size());
         assertNotNull(expect.get(0));

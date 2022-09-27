@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.egartech.vacationbackend.AbstractSpringContext;
-import ru.egartech.vacationbackend.repository.VacationRepository;
+import ru.egartech.vacationbackend.manager.VacationManager;
 
 import ru.egartech.vacationbackend.model.VacationDto;
 import ru.egartech.vacationbackend.model.VacationApprovalReqDto;
@@ -28,7 +28,7 @@ import static org.mockito.Mockito.*;
 class VacationBackendServiceImplTest extends AbstractSpringContext {
 
     @MockBean
-    private VacationRepository vacationRepository;
+    private VacationManager vacationManager;
 
     private VacationDto validVacation;
 
@@ -38,20 +38,20 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
     @BeforeEach
     void setMockOutput() {
         validVacation = VacationTestTemplate.getValid();
-        when(vacationRepository.findVacationsByEgarId("username",180311895)).thenReturn(List.of(validVacation));
+        when(vacationManager.findVacationsByEgarId("username",180311895)).thenReturn(List.of(validVacation));
     }
 
     @DisplayName("Test find vacation by id")
     @Test
     void findVacationById() {
-        when(vacationRepository.getVacationById("2wmaha")).thenReturn(Optional.of(validVacation));
+        when(vacationManager.getVacationById("2wmaha")).thenReturn(Optional.of(validVacation));
         VacationDto t = vacationsBackendService.findVacationById("2wmaha");
         assertEquals(validVacation, t);
     }
 
     @Test
     void getVacation() {
-        when(vacationRepository.getVacationsByListId(List.of("2wmaha"))).thenReturn(List.of(validVacation));
+        when(vacationManager.getVacationsByListId(List.of("2wmaha"))).thenReturn(List.of(validVacation));
         List<VacationDto> t = vacationsBackendService.getVacation(List.of("2wmaha"));
         assertNotNull(t);
         assertNotNull(t.get(0));
@@ -68,7 +68,7 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
                 .build();
         validVacation.setStartDate(DateMills.of("08-08-2022 00:00:00"));
         validVacation.setEndDate(DateMills.of("21-08-2022 23:59:59"));
-        when(vacationRepository.saveVacation(vacationFromService, 180311895)).thenReturn(validVacation);
+        when(vacationManager.saveVacation(vacationFromService, 180311895)).thenReturn(validVacation);
         var vacationApprovalReq = VacationApprovalReqDto.builder()
                 .startDate(DateMills.of("08-08-2022 00:00:00"))
                 .employeeProfileId("2wrahmn")
@@ -90,7 +90,7 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
         //второй отпуск 8 дней
         vacationSecond.setStartDate(DateMills.of("01-08-2022 00:00:00"));
         vacationSecond.setEndDate(DateMills.of("08-08-2022 23:59:59"));
-        when(vacationRepository.findVacationsByEgarIdByStatus(any(), anyInt(), any()))
+        when(vacationManager.findVacationsByEgarIdByStatus(any(), anyInt(), any()))
                 .thenReturn(List.of(vacationFirst, vacationSecond));
         //дата начала работы год назад
         Long jobStartDate = LocalDateTime.now().minusYears(1L).atZone(ZoneId.systemDefault())
@@ -105,14 +105,14 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
 
     @Test
     void updateVacationById() {
-        when(vacationRepository.updateVacation(validVacation.getVacationId(), validVacation)).thenReturn(validVacation);
+        when(vacationManager.updateVacation(validVacation.getVacationId(), validVacation)).thenReturn(validVacation);
         var expected = vacationsBackendService.updateVacationById(validVacation.getVacationId(),validVacation);
         assertEquals(validVacation, expected);
     }
 
     @Test
     void getVacationsByEgarIdWithoutEndDateAndStartDate() {
-        when(vacationRepository.findVacationsByEgarId("username", 180311895)).thenReturn(List.of(validVacation));
+        when(vacationManager.findVacationsByEgarId("username", 180311895)).thenReturn(List.of(validVacation));
         List<VacationDto> t = vacationsBackendService.getVacationsByEgarId("username", 180311895, null, null);
         assertNotNull(t);
         assertNotNull(t.get(0));
@@ -121,7 +121,7 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
 
     @Test
     void getVacationsByEgarIdWithEndDateAndStartDate() {
-        when(vacationRepository.findVacationsByEgarId("username", 180311895)).thenReturn(List.of(validVacation));
+        when(vacationManager.findVacationsByEgarId("username", 180311895)).thenReturn(List.of(validVacation));
         List<VacationDto> t = vacationsBackendService.getVacationsByEgarId(
                 "username",
                 180311895,
@@ -139,7 +139,7 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
         var vacationAfterTimeInterval = VacationTestTemplate.getValid();
         vacationBeforeTimeInterval.setStartDate(DateMills.of("07-08-2022 23:59:59"));
         vacationAfterTimeInterval.setStartDate(DateMills.of("08-08-2022 00:00:02"));
-        when(vacationRepository.findVacationsByEgarId("username", 180311895))
+        when(vacationManager.findVacationsByEgarId("username", 180311895))
                 .thenReturn(List.of(validVacation, vacationBeforeTimeInterval, vacationAfterTimeInterval));
         List<VacationDto> t = vacationsBackendService.getVacationsByEgarId(
                 "username",
@@ -164,7 +164,7 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
         vacationSecond.setStartDate(DateMills.of("01-08-2022 00:00:00"));
         vacationSecond.setEndDate(DateMills.of("08-08-2022 23:59:59"));
 
-        when(vacationRepository.findVacationsByListIdByStatus(anyList(), any()))
+        when(vacationManager.findVacationsByListIdByStatus(anyList(), any()))
                 .thenReturn(List.of(vacationFirst, vacationSecond));
         //дата начала работы год назад
         Long jobStartDate = LocalDateTime.now().minusYears(1L).atZone(ZoneId.systemDefault())
