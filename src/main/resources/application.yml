@@ -1,13 +1,13 @@
 spring:
   application:
     name: vacation-backend
+  jackson:
+    default-property-inclusion: non_null
 
 clickup:
   api:
     tokens:
       - ${CLICK_UP_API_TOKEN}
-  list:
-    devs: "180311895"
 
 vacation:
   lists:
