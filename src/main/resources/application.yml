@@ -4,23 +4,27 @@ spring:
   jackson:
     default-property-inclusion: non_null
 
+
+
 clickup:
   api:
     tokens:
       - ${CLICK_UP_API_TOKEN}
 
-vacation:
-  lists:
-    180311910:
-      start_date: "58004edd-d04c-4edb-bed8-f6337397fd72"
-      end_date: "879e67e3-eb65-45eb-9a82-94ac94470918"
-      employee_profile_id: "856d3fd6-b982-4085-aa67-65d60bf41bb7"
-profile:
-  lists:
-    180311895:
-      egar_id: "836c9684-0c71-4714-aff2-900b0ded0685"
-      vacation_list_id: "856d3fd6-b982-4085-aa67-65d60bf41bb7"
-      vacation_list: 180311910
+set:
+  vacation:
+    lists:
+      180311910:
+        start_date: "58004edd-d04c-4edb-bed8-f6337397fd72"
+        end_date: "879e67e3-eb65-45eb-9a82-94ac94470918"
+        employee_profile_id: "856d3fd6-b982-4085-aa67-65d60bf41bb7"
+
+  profile:
+    lists:
+      180311895:
+        egar_id: "836c9684-0c71-4714-aff2-900b0ded0685"
+        vacation_list_id: "856d3fd6-b982-4085-aa67-65d60bf41bb7"
+        vacation_list: 180311910
 
 org_structure:
   list_id: 204546384
@@ -30,3 +34,10 @@ org_structure:
   patronymic: "f73b08e3-03f2-4c8b-9d27-84347daa716a"
   avatar: "d01ad323-e69b-4413-9d57-256613e62ee0"
   root_task_org_struct: "2vj3zgb"
+
+#racation1:
+#  lists:
+#    180311910:
+#      start_date: "58004edd-d04c-4edb-bed8-f6337397fd72"
+#      end_date: "879e67e3-eb65-45eb-9a82-94ac94470918"
+#      employee_profile_id: "856d3fd6-b982-4085-aa67-65d60bf41bb7"

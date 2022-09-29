@@ -14,10 +14,10 @@ import ru.egartech.sdk.dto.task.deserialization.customfield.field.text.TextField
 import ru.egartech.sdk.dto.task.serialization.customfield.request.CustomFieldRequest;
 import ru.egartech.sdk.exception.task.TaskNotFoundException;
 import ru.egartech.vacationbackend.exception.AssignerNotFoundException;
+import ru.egartech.vacationbackend.exception.EmployeeNotFoundException;
 import ru.egartech.vacationbackend.property.VacationProperty;
 import ru.egartech.vacationbackend.model.VacationDto;
 import ru.egartech.vacationbackend.model.AssignerDto;
-
 
 import java.util.List;
 
@@ -26,47 +26,37 @@ import java.util.List;
 @RequiredArgsConstructor
 public class VacationMapper {
 
-    private static final String EMPLOYEE_PROFILE_ID = "employee_profile_id";
-    private static final String START_DATE = "start_date";
-    private static final String END_DATE = "end_date";
-    private final VacationProperty lc;
+    private final VacationProperty vacationProperty;
+
     private final TaskClient taskClient;
 
     @Value("${org_structure.list_id}")
-    private Integer ORG_STRUCTURE_LIST_ID;
+    private Integer orgStructureListId;
     @Value("${org_structure.cu_egar_id}")
-    private String CU_EGAR_ID;
+    private String cuEgarId;
     @Value("${org_structure.firstname}")
-    private String FIRSTNAME_ID;
+    private String firstnameId;
     @Value("${org_structure.lastname}")
-    private String LASTNAME_ID;
+    private String lastnameId;
     @Value("${org_structure.patronymic}")
-    private String PATRONYMIC_ID;
+    private String patronymicId;
     @Value("${org_structure.avatar}")
-    private String AVATAR_ID;
-    @Value("${org_structure.root_task_org_struct}")
-    private String ROOT_TASK_ORG_STRUCT;
+    private String avatarId;
 
     public VacationDto toVacation(TaskDto taskDto){
         Integer listId = taskDto.getList().getId();
-        String startDate = taskDto.<TextFieldDto>customField(lc.getLists().get(listId).get(START_DATE)).getValue();
-        String endDate = taskDto.<TextFieldDto>customField(lc.getLists().get(listId).get(END_DATE)).getValue();
-        String employeeProfileId = taskDto.<RelationshipFieldDto>customField(
-                lc.getLists()
-                        .get(listId)
-                        .get(EMPLOYEE_PROFILE_ID))
-                .getValue().stream()
+        String startDate = taskDto.<TextFieldDto>customField(vacationProperty.getItem(listId).getStartDate()).getValue();
+        String endDate = taskDto.<TextFieldDto>customField(vacationProperty.getItem(listId).getEndDate()).getValue();
+        RelationshipFieldDto employeeRelationShip = taskDto.customField(vacationProperty.getItem(listId).getEmployeeProfileId());
+        String employeeProfileId = employeeRelationShip.getValue().stream()
                 .findFirst()
-                .map(RelationshipValueDto::getId).orElse(null);
+                .map(RelationshipValueDto::getId).orElseThrow(() -> new EmployeeNotFoundException("У запрашиваемого отпуска не привязан сотрудник"));
         List<String> assignersCuEgarId = taskDto.getAssigners().stream()
-                .map(a -> a.getId())
+                .map(ru.egartech.sdk.dto.task.deserialization.customfield.assigner.AssignerDto::getId)
                 .toList();
-        List<AssignerDto> assigners = null;
-        if (!assignersCuEgarId.isEmpty()){
-            assigners = assignersCuEgarId.stream()
+        List<AssignerDto> assigners = assignersCuEgarId.stream()
                     .map(this::mapAssigner)
                     .toList();
-        }
         return VacationDto.builder()
                 .vacationId(taskDto.getId())
                 .employeeProfileId(employeeProfileId)
@@ -82,20 +72,19 @@ public class VacationMapper {
     private AssignerDto mapAssigner(String cuEgarId) {
         TaskDto assignerTask;
         try{
-            assignerTask = taskClient.getTasksByCustomFields(ORG_STRUCTURE_LIST_ID,
+            assignerTask = taskClient.getTasksByCustomFields(orgStructureListId,
                             true, CustomFieldRequest.builder()
-                                    .fieldId(CU_EGAR_ID)
-                                    .operator("=")
+                                    .fieldId(this.cuEgarId)
                                     .value(cuEgarId)
                                     .build())
                     .getFirstTask();
         } catch (TaskNotFoundException ex){
             throw new AssignerNotFoundException(String.format("Не удалось найти согласующего с CU EGAR ID: %s", cuEgarId));
         }
-        String fullName = String.format("%s %s %s", assignerTask.<TextFieldDto>customField(LASTNAME_ID).getValue(),
-                assignerTask.<TextFieldDto>customField(FIRSTNAME_ID).getValue(),
-                assignerTask.<TextFieldDto>customField(PATRONYMIC_ID).getValue());
-        String avatarUrl = assignerTask.<AttachmentFieldDto>customField(AVATAR_ID).getValue().stream()
+        String fullName = String.format("%s %s %s", assignerTask.<TextFieldDto>customField(lastnameId).getValue(),
+                assignerTask.<TextFieldDto>customField(firstnameId).getValue(),
+                assignerTask.<TextFieldDto>customField(patronymicId).getValue());
+        String avatarUrl = assignerTask.<AttachmentFieldDto>customField(avatarId).getValue().stream()
                 .findFirst()
                 .map(AttachmentDto::getUrl)
                 .orElse(null);

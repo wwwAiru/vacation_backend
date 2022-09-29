@@ -5,18 +5,16 @@ info:
   version: 1.0.0
 
 tags:
-  - name: vacations backend
+  - name: vacations
     description: Отправка заявки на отпуск, получение списка отпусков,
       обновление данных отпуска, получение количества дней отпуска
 
 paths:
 
-
-
   /vacations:
     post:
       tags:
-        - vacations backend
+        - vacations
       summary: Добавление новой заявки на согласование отпуска
       description: Добавление новой заявки на согласование отпуска
       operationId: addVacationRequest
@@ -40,7 +38,7 @@ paths:
                 $ref: '#/components/schemas/Violations'
     get:
       tags:
-        - vacations backend
+        - vacations
       summary: Получение списка отпусков принадлежащих пользователю по списку Id
       description: Получение списка отпусков пользователя, для просмотра статуса
       operationId: getVacation
@@ -67,7 +65,7 @@ paths:
   /vacations/{profile_list_id}/{egar_id}:
     get:
       tags:
-        - vacations backend
+        - vacations
       summary: Получение списка отпусков пользователя по Egar id
       description: d
       operationId: getVacationsByEgarId
@@ -113,7 +111,7 @@ paths:
 
     get:
       tags:
-        - vacations backend
+        - vacations
       summary: Получение отпуска по ID
       operationId: findVacationById
       parameters:
@@ -139,7 +137,7 @@ paths:
 
     put:
       tags:
-        - vacations backend
+        - vacations
       summary: Обновление данных отпуска
       operationId: updateVacationById
       parameters:
@@ -173,7 +171,7 @@ paths:
   /vacations/remain/{profile_list_id}/{egar_id}:
     get:
       tags:
-        - vacations backend
+        - vacations
       summary: Получение количества оставшихся дней отпуска по Egar ID
       description: Получение количества оставшихся дней отпусков по Egar ID
       operationId: getRemainVacationDaysByEgarId
@@ -215,7 +213,7 @@ paths:
   /vacations/remain:
     get:
       tags:
-        - vacations backend
+        - vacations
       summary: Получение количества оставшихся дней отпуска по списку Id
       description: Получение количества оставшихся дней отпусков
       operationId: getRemainVacationDays

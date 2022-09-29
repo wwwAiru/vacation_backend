@@ -8,7 +8,18 @@ import java.util.Map;
 
 @Component
 @Data
-@ConfigurationProperties(prefix = "profile")
+@ConfigurationProperties(prefix = "set.profile")
 public class ProfileProperty {
-    private Map<Integer, Map<String, String>> lists;
+    private Map<Integer, Item> lists;
+
+    @Data
+    public static class Item {
+        private String egarId;
+        private String vacationListId;
+        private Integer vacationList;
+    }
+
+    public Item getItem(Integer tr){
+        return lists.get(tr);
+    }
 }

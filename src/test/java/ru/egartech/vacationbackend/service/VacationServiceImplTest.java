@@ -25,7 +25,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-class VacationBackendServiceImplTest extends AbstractSpringContext {
+class VacationServiceImplTest extends AbstractSpringContext {
 
     @MockBean
     private VacationManager vacationManager;
@@ -33,7 +33,7 @@ class VacationBackendServiceImplTest extends AbstractSpringContext {
     private VacationDto validVacation;
 
     @Autowired
-    private ru.egartech.vacationbackend.service.VacationsBackendService vacationsBackendService;
+    private ru.egartech.vacationbackend.service.VacationsService vacationsBackendService;
 
     @BeforeEach
     void setMockOutput() {

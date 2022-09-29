@@ -7,7 +7,8 @@ import ru.egartech.vacationbackend.model.VacationApprovalReqDto;
 import ru.egartech.vacationbackend.model.VacationDayRemainDto;
 import ru.egartech.vacationbackend.model.VacationDto;
 import ru.egartech.vacationbackend.manager.VacationManager;
-import ru.egartech.vacationbackend.service.VacationsBackendService;
+import ru.egartech.vacationbackend.service.VacationsService;
+import ru.egartech.vacationbackend.util.DateUtils;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -18,12 +19,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
-import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
+import static java.time.temporal.TemporalAdjusters.*;
 
 @Service
 @RequiredArgsConstructor
-public class VacationBackendServiceImpl implements VacationsBackendService {
+public class VacationServiceImpl implements VacationsService {
 
     private final Integer VACATION_DAYS_IN_YEAR = 28;
     private final VacationManager vacationManager;
@@ -69,24 +69,9 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
 
     @Override
     public List<VacationDto> getVacationsByEgarId(String egarId, Integer profileListId, Long startDate, Long endDate) {
-            if(startDate != null & endDate != null){
-                return vacationManager.findVacationsByEgarId(egarId, profileListId).stream()
-                        .filter(isIncludesTimeInterval(startDate, endDate))
-                        .collect(Collectors.toList());
-            }
-            else {
-                startDate = LocalDateTime.now().with(firstDayOfYear())
-                        .atZone(ZoneId.systemDefault())
-                        .toInstant().toEpochMilli();
-                endDate = LocalDateTime.now().with(lastDayOfYear())
-                        .atZone(ZoneId.systemDefault())
-                        .toInstant().toEpochMilli();
-                return vacationManager.findVacationsByEgarId(egarId, profileListId)
-                        .stream()
-                        .filter(isIncludesTimeInterval(startDate, endDate))
-                        .collect(Collectors.toList());
-            }
-
+        return vacationManager.findVacationsByEgarId(egarId, profileListId).stream()
+                .filter(checkVacationDate(startDate, endDate))
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -94,8 +79,18 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
         return vacationManager.updateVacation(vacationId, vacationDto);
     }
 
-    private Predicate<VacationDto> isIncludesTimeInterval(Long startDate, Long endDate){
-        return v -> v.getStartDate().compareTo(startDate) >= 0 & v.getStartDate().compareTo(endDate) <= 0;
+    private Predicate<VacationDto> checkVacationDate(Long startDate, Long endDate){
+        return v -> {
+            if(startDate != null & endDate != null){
+                return DateUtils.toLocalDate(v.getStartDate()).isAfter(DateUtils.toLocalDate(startDate)) &
+                        DateUtils.toLocalDate(v.getStartDate()).isBefore(DateUtils.toLocalDate(endDate));
+            }else {
+                LocalDate firstDayYear = LocalDate.now().with(firstDayOfYear());
+                LocalDate lastDayYear = LocalDate.now().with(firstDayOfNextYear());
+                return DateUtils.toLocalDate(v.getStartDate()).isAfter(firstDayYear) &
+                        DateUtils.toLocalDate(v.getStartDate()).isBefore(lastDayYear);
+            }
+        };
     }
 
     private Integer calculateDayRemain(List<VacationDto> vacationDone, Long jobStartDate){
@@ -111,6 +106,7 @@ public class VacationBackendServiceImpl implements VacationsBackendService {
     }
 
     private Long calculateEndDate(Long startDate, Integer countDay){
+
         return Long.sum(startDate, TimeUnit.DAYS.toMillis(countDay)) - TimeUnit.SECONDS.toMillis(1L);
     }
 
