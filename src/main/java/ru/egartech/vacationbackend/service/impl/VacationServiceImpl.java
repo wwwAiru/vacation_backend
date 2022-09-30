@@ -85,13 +85,14 @@ public class VacationServiceImpl implements VacationsService {
     private Predicate<VacationDto> checkVacationDate(Long startDate, Long endDate) {
         return v -> {
             if (startDate != null & endDate != null) {
-                return DateUtils.toLocalDate(v.getStartDate()).isAfter(DateUtils.toLocalDate(startDate)) &
-                        DateUtils.toLocalDate(v.getStartDate()).isBefore(DateUtils.toLocalDate(endDate));
+                boolean o = !DateUtils.toLocalDate(startDate).isAfter(DateUtils.toLocalDate(v.getStartDate())) &&
+                        !DateUtils.toLocalDate(endDate).isBefore(DateUtils.toLocalDate(v.getStartDate()));
+                return o;
             } else {
                 LocalDate firstDayYear = LocalDate.now().with(firstDayOfYear());
                 LocalDate lastDayYear = LocalDate.now().with(firstDayOfNextYear());
-                return DateUtils.toLocalDate(v.getStartDate()).isAfter(firstDayYear) &
-                        DateUtils.toLocalDate(v.getStartDate()).isBefore(lastDayYear);
+                return !firstDayYear.isAfter(DateUtils.toLocalDate(v.getStartDate())) &&
+                        !lastDayYear.isBefore(DateUtils.toLocalDate(v.getStartDate()));
             }
         };
     }

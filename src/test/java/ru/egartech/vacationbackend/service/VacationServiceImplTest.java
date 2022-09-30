@@ -136,11 +136,9 @@ class VacationServiceImplTest extends AbstractSpringContext {
     @Test
     void getVacationsByEgarIdWithoutTimeInterval(){
         var vacationBeforeTimeInterval = VacationTestTemplate.getValid();
-        var vacationAfterTimeInterval = VacationTestTemplate.getValid();
         vacationBeforeTimeInterval.setStartDate(DateMills.of("07-08-2022 23:59:59"));
-        vacationAfterTimeInterval.setStartDate(DateMills.of("08-08-2022 00:00:02"));
         when(vacationManager.findVacationsByEgarId("username", 180311895))
-                .thenReturn(List.of(validVacation, vacationBeforeTimeInterval, vacationAfterTimeInterval));
+                .thenReturn(List.of(validVacation, vacationBeforeTimeInterval));
         List<VacationDto> t = vacationsBackendService.getVacationsByEgarId(
                 "username",
                 180311895,
