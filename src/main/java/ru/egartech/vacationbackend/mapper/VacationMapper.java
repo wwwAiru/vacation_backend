@@ -46,8 +46,10 @@ public class VacationMapper {
 
     public VacationDto toVacation(TaskDto taskDto){
         Integer listId = taskDto.getList().getId();
-        String startDate = taskDto.<TextFieldDto>customField(vacationProperty.getItem(listId).getStartDate()).getValue();
-        String endDate = taskDto.<TextFieldDto>customField(vacationProperty.getItem(listId).getEndDate()).getValue();
+        TextFieldDto startDateField = taskDto.customField(vacationProperty.getItem(listId).getStartDate());
+        TextFieldDto endDateField = taskDto.customField(vacationProperty.getItem(listId).getEndDate());
+        String startDate = startDateField.getValue();
+        String endDate = endDateField.getValue();
         RelationshipFieldDto employeeRelationShip = taskDto.customField(vacationProperty.getItem(listId).getEmployeeProfileId());
         String employeeProfileId = employeeRelationShip.getValue().stream()
                 .findFirst()
@@ -74,25 +76,26 @@ public class VacationMapper {
     private AssignerDto mapAssigner(String cuEgarId) {
         TaskDto assignerTask;
         try{
-            assignerTask = taskClient.getTasksByCustomFields(orgStructureListId,
-                            true, CustomFieldRequest.builder()
-                                    .fieldId(this.cuEgarId)
-                                    .value(cuEgarId)
-                                    .build())
+            var customFieldRequest = CustomFieldRequest.builder()
+                    .fieldId(this.cuEgarId)
+                    .value(cuEgarId)
+                    .build();
+            assignerTask = taskClient.getTasksByCustomFields(orgStructureListId, true, customFieldRequest)
                     .getFirstTask();
         } catch (TaskNotFoundException ex){
             throw new AssignerNotFoundException(messageProperties.getAssignerNotFoundMessage(cuEgarId));
         }
-        String fullName = String.format("%s %s %s", assignerTask.<TextFieldDto>customField(lastnameId).getValue(),
-                assignerTask.<TextFieldDto>customField(firstnameId).getValue(),
-                assignerTask.<TextFieldDto>customField(patronymicId).getValue());
-        String avatarUrl = assignerTask.<AttachmentFieldDto>customField(avatarId).getValue().stream()
+        TextFieldDto lastName = assignerTask.customField(lastnameId);
+        TextFieldDto firstName = assignerTask.customField(lastnameId);
+        TextFieldDto patronymic = assignerTask.customField(lastnameId);
+        AttachmentFieldDto avatarUrlField = assignerTask.customField(avatarId);
+        String avatarUrl = avatarUrlField.getValue().stream()
                 .findFirst()
                 .map(AttachmentDto::getUrl)
                 .orElse(null);
         return AssignerDto.builder()
                 .orgStructureId(assignerTask.getId())
-                .fullName(fullName)
+                .fullName(String.format("%s %s %s", lastName.getValue(), firstName.getValue(), patronymic.getValue()))
                 .avatarUrl(avatarUrl)
                 .build();
     }

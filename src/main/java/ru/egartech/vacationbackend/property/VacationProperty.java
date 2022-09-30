@@ -20,8 +20,8 @@ public class VacationProperty {
         private String employeeProfileId;
     }
 
-    public Item getItem(Integer tr){
-        return lists.get(tr);
+    public Item getItem(Integer index){
+        return lists.get(index);
     }
 
 }

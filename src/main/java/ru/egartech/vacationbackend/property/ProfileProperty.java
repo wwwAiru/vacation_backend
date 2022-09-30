@@ -19,7 +19,7 @@ public class ProfileProperty {
         private Integer vacationList;
     }
 
-    public Item getItem(Integer tr){
-        return lists.get(tr);
+    public Item getItem(Integer index){
+        return lists.get(index);
     }
 }

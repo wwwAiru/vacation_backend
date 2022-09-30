@@ -1,6 +1,8 @@
 package ru.egartech.vacationbackend.exception;
 
-public class VacationApplicationNotFoundException extends RuntimeException{
+import ru.egartech.sdk.exception.clickup.ClickUpException;
+
+public class VacationApplicationNotFoundException extends ClickUpException {
 
     public VacationApplicationNotFoundException(String message) {
         super(message);

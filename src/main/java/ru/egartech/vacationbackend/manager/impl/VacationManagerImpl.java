@@ -117,7 +117,8 @@ public class VacationManagerImpl implements VacationManager {
         } catch (TaskNotFoundException e) {
             throw new EmployeeNotFoundException(messageProperties.getEmployeeNotFoundMessage(egarId));
         }
-        var vacationsField = employee.<RelationshipFieldDto>customField(profileProperty.getItem(profileListId).getVacationListId());
+
+        RelationshipFieldDto vacationsField = employee.customField(profileProperty.getItem(profileListId).getVacationListId());
         var vacationsFieldValue = vacationsField.getValue();
         return vacationsFieldValue.stream().map(RelationshipValueDto::getId).toList();
     }
