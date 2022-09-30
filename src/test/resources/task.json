@@ -1,0 +1,761 @@
+{
+  "id": "2wmahab",
+  "custom_id": null,
+  "name": "Отпуск: Николаев Игорь Алексеевич",
+  "text_content": null,
+  "description": null,
+  "status": {
+    "id": "subcat180311910_sc156545942_pdD65bGE",
+    "status": "согласован",
+    "color": "#04A9F4",
+    "orderindex": 6,
+    "type": "done"
+  },
+  "orderindex": "52510.00000000000000000000000000000000",
+  "date_created": "1661774595299",
+  "date_updated": "1663668194763",
+  "date_closed": null,
+  "archived": false,
+  "creator": {
+    "id": 6878086,
+    "username": "Андрей Косарев",
+    "color": "#02bcd4",
+    "email": "akosarev@egartech.com",
+    "profilePicture": null
+  },
+  "assignees": [
+    {
+      "id": 42531032,
+      "username": "Дмитрий Лебедев",
+      "color": "#c51162",
+      "initials": "ДЛ",
+      "email": "dlebedev@egartech.ru",
+      "profilePicture": null
+    }
+  ],
+  "watchers": [
+    {
+      "id": 6878086,
+      "username": "Андрей Косарев",
+      "color": "#02bcd4",
+      "initials": "АК",
+      "email": "akosarev@egartech.com",
+      "profilePicture": null
+    },
+    {
+      "id": 42531032,
+      "username": "Дмитрий Лебедев",
+      "color": "#c51162",
+      "initials": "ДЛ",
+      "email": "dlebedev@egartech.ru",
+      "profilePicture": null
+    }
+  ],
+  "checklists": [],
+  "tags": [],
+  "parent": null,
+  "priority": null,
+  "due_date": "1668474000000",
+  "start_date": "1667350800000",
+  "points": null,
+  "time_estimate": null,
+  "time_spent": 0,
+  "custom_fields": [
+    {
+      "id": "856d3fd6-b982-4085-aa67-65d60bf41bb7",
+      "name": "ЦКР / Сотрудники / Разработчики",
+      "type": "list_relationship",
+      "type_config": {
+        "fields": [
+          {
+            "name": "Status",
+            "field": "status",
+            "width": 100,
+            "hidden": false
+          }
+        ],
+        "subcategory_id": "180311895",
+        "linked_subcategory_access": true,
+        "subcategory_inverted_name": "ЦКР / Сотрудники / Разработчики"
+      },
+      "date_created": "1661769327743",
+      "hide_from_guests": false,
+      "value": [
+        {
+          "id": "2rgq20y",
+          "name": "Сотрудник: Николаев Игорь Алексеевич",
+          "status": "в работе",
+          "color": "#0231E8",
+          "custom_type": null,
+          "team_id": "4597045",
+          "deleted": false,
+          "url": "https://app.clickup.com/t/2rgq20y",
+          "access": true
+        }
+      ],
+      "required": false
+    },
+    {
+      "id": "adc61b90-377a-49c0-8e14-a6450d685a81",
+      "name": "010 Тип задачи",
+      "type": "drop_down",
+      "type_config": {
+        "new_drop_down": true,
+        "options": [
+          {
+            "id": "a460492a-2600-4699-8cd7-ac91f47403ac",
+            "name": "Встреча",
+            "color": null,
+            "orderindex": 0
+          },
+          {
+            "id": "38823f41-d71a-4a0b-8905-9396028497f6",
+            "name": "Программа",
+            "color": null,
+            "orderindex": 1
+          },
+          {
+            "id": "5c9b5585-130b-4e04-aec2-d868337a80ac",
+            "name": "Проект",
+            "color": null,
+            "orderindex": 2
+          },
+          {
+            "id": "f5ae8bf5-1251-48f2-baae-94c4b2024789",
+            "name": "Подпроект",
+            "color": null,
+            "orderindex": 3
+          },
+          {
+            "id": "f471177c-9fc3-43f7-a819-889243b1a2a4",
+            "name": "Этап",
+            "color": null,
+            "orderindex": 4
+          },
+          {
+            "id": "5c71439e-22cd-42e8-8102-6c2c1b9014a3",
+            "name": "Работа",
+            "color": null,
+            "orderindex": 5
+          },
+          {
+            "id": "d790e788-98a0-45bd-ab02-e419a61c61d6",
+            "name": "Веха",
+            "color": null,
+            "orderindex": 6
+          },
+          {
+            "id": "05c94e63-d14f-460c-b58b-1f45e568586c",
+            "name": "Собеседование",
+            "color": null,
+            "orderindex": 7
+          },
+          {
+            "id": "83128b6e-8868-4b67-90c1-0afa4a79f915",
+            "name": "Занятость",
+            "color": null,
+            "orderindex": 8
+          },
+          {
+            "id": "4fd6bd12-1484-4698-85da-dcbb3ef9e4c2",
+            "name": "Предложение",
+            "color": null,
+            "orderindex": 9
+          },
+          {
+            "id": "4dc5ebdc-92b6-4b61-9c1a-760037c69997",
+            "name": "Индексация",
+            "color": null,
+            "orderindex": 10
+          },
+          {
+            "id": "78ae7025-d5b8-40ec-9954-35c8543fb61a",
+            "name": "Сотрудник",
+            "color": null,
+            "orderindex": 11
+          },
+          {
+            "id": "3a319fec-e486-465b-b9b2-d94c87868b49",
+            "name": "Контакт",
+            "color": null,
+            "orderindex": 12
+          },
+          {
+            "id": "20fc972e-2e61-496b-aa70-de159dce0245",
+            "name": "Запрос",
+            "color": null,
+            "orderindex": 13
+          },
+          {
+            "id": "b9ffec27-04f5-4fd5-beab-347555fca34d",
+            "name": "Заказчик",
+            "color": null,
+            "orderindex": 14
+          },
+          {
+            "id": "b0f5e6f4-d02a-4cd6-a364-ac02521c0ed4",
+            "name": "Отпуск",
+            "color": null,
+            "orderindex": 15
+          },
+          {
+            "id": "918f54e7-0a12-4e96-993b-f8cb0412fec0",
+            "name": "Сертификация",
+            "color": null,
+            "orderindex": 16
+          },
+          {
+            "id": "70a04bcb-1a1b-492e-a002-73cc4d9ca096",
+            "name": "Грейдирование",
+            "color": null,
+            "orderindex": 17
+          },
+          {
+            "id": "315b9cdf-2ab1-477a-a1ea-295afcda7be6",
+            "name": "Кандидат",
+            "color": null,
+            "orderindex": 18
+          },
+          {
+            "id": "1390e158-d24a-4b8d-92ab-52c8453190ad",
+            "name": "Обязательство",
+            "color": null,
+            "orderindex": 19
+          },
+          {
+            "id": "944787e9-51bf-41ed-8e4d-c9e2eca686f8",
+            "name": "Опыт",
+            "color": null,
+            "orderindex": 20
+          },
+          {
+            "id": "af5f6570-25f4-4c21-81fc-3318d203da7a",
+            "name": "Сертификат",
+            "color": null,
+            "orderindex": 21
+          },
+          {
+            "id": "7a46cbe6-21d2-4601-a6ff-bd1cf08b77fa",
+            "name": "Оффер",
+            "color": null,
+            "orderindex": 22
+          },
+          {
+            "id": "65a191a9-a37d-43ec-a01a-65e93e2b94e1",
+            "name": "Bug Report",
+            "color": null,
+            "orderindex": 23
+          },
+          {
+            "id": "51ace602-9eda-41bd-a6ac-b0377ab74d72",
+            "name": "Обеспечение",
+            "color": null,
+            "orderindex": 24
+          },
+          {
+            "id": "63e80efa-d5c2-47f9-93ab-670959f6c827",
+            "name": "Грейдизация",
+            "color": null,
+            "orderindex": 25
+          },
+          {
+            "id": "973c01bc-491a-4608-95e7-ea7d6b4ce17f",
+            "name": "Тест",
+            "color": null,
+            "orderindex": 26
+          },
+          {
+            "id": "7b1a88b0-38c7-4c4d-9adc-a599c87807ab",
+            "name": "Подрядчик",
+            "color": null,
+            "orderindex": 27
+          },
+          {
+            "id": "71b8080e-0e36-43f1-bfe6-5445d5d6771a",
+            "name": "Статистика",
+            "color": "#fff",
+            "orderindex": 28
+          },
+          {
+            "id": "046f7dae-0b18-4aa6-9061-ee9c075fe946",
+            "name": "Feature",
+            "color": null,
+            "orderindex": 29
+          },
+          {
+            "id": "0708290d-c217-47ca-a86a-0cd90f327aeb",
+            "name": "HotFix",
+            "color": null,
+            "orderindex": 30
+          },
+          {
+            "id": "d5facc95-62fb-4d72-ae6d-c2c981d026a5",
+            "name": "Improvement",
+            "color": null,
+            "orderindex": 31
+          },
+          {
+            "id": "2464c2c9-20ba-45ac-9541-a26dd8dc276c",
+            "name": "Bugfix",
+            "color": null,
+            "orderindex": 32
+          },
+          {
+            "id": "33fe1578-ec28-4082-8ddd-67581abc3eeb",
+            "name": "Занять",
+            "color": "#e50000",
+            "orderindex": 33
+          },
+          {
+            "id": "d7300681-b894-43d8-b888-9e54657e2a5c",
+            "name": "Release",
+            "color": "#fff",
+            "orderindex": 34
+          }
+        ]
+      },
+      "date_created": "1611835187872",
+      "hide_from_guests": false,
+      "value": 15,
+      "required": false
+    },
+    {
+      "id": "948c4322-be0e-473a-9f54-52b1cb6d428b",
+      "name": "030 Инструмент тех-ий",
+      "type": "labels",
+      "type_config": {
+        "options": [
+          {
+            "id": "f14457e2-ee8b-4663-ba87-e25786ae51a6",
+            "label": "Java",
+            "color": "#667684"
+          },
+          {
+            "id": "dc8cc115-179b-4643-ac2f-af88472cac11",
+            "label": "Java / Java 11",
+            "color": "#fff"
+          },
+          {
+            "id": "3de79154-1b3e-4cfb-a62e-ce39bd670742",
+            "label": "Java / Java EE",
+            "color": "#fff"
+          },
+          {
+            "id": "7b41863c-4667-48b2-8ed4-98ae79a88bf1",
+            "label": "Java / Spring",
+            "color": null
+          },
+          {
+            "id": "1a9b063b-ef72-4985-9a8a-2c41cef3e3f3",
+            "label": "Java / Spring Boot",
+            "color": "#fff"
+          },
+          {
+            "id": "3d0a2ed0-1bab-4891-9cc3-19360d30f635",
+            "label": "Java / Spring Security",
+            "color": null
+          },
+          {
+            "id": "293935ab-077d-439a-992e-a90b43e09433",
+            "label": "Java / Spring Data",
+            "color": null
+          },
+          {
+            "id": "65851c41-693d-454d-a230-c4461bd81d63",
+            "label": "Java / Spring MVC",
+            "color": "#fff"
+          },
+          {
+            "id": "28eaff38-7d34-44a8-8cd6-6ba749efeb57",
+            "label": "Java / EclipseLink",
+            "color": "#fff"
+          },
+          {
+            "id": "edcb8cc9-ab51-4e2b-a028-c65fb5ca6543",
+            "label": "Java / Hibernate",
+            "color": "#fff"
+          },
+          {
+            "id": "de6ddefe-9074-4cc2-9081-841857c82c90",
+            "label": "Java / Cuba Platform",
+            "color": "#fff"
+          },
+          {
+            "id": "570709eb-229b-494f-8888-621a0e5eb47a",
+            "label": "Java / Camunda",
+            "color": "#fff"
+          },
+          {
+            "id": "63c9c8e2-a58e-46a9-868d-03a8ba16eb46",
+            "label": "Java / Oracle SOA Suite",
+            "color": "#fff"
+          },
+          {
+            "id": "2a580788-9a8e-4af4-951e-1991bfcb6fb1",
+            "label": ".NET",
+            "color": "#667684"
+          },
+          {
+            "id": "dbefd0a1-e2b1-48e7-bb82-f45664c9afe2",
+            "label": ".NET / .NET Core",
+            "color": "#fff"
+          },
+          {
+            "id": "d37f3ce0-8257-4a18-9c89-0239e6440513",
+            "label": ".NET / ASP.NET Core",
+            "color": "#fff"
+          },
+          {
+            "id": "ad566ad2-fb79-40e8-8dd0-6d2b263a6c6b",
+            "label": ".NET / ASP .NET",
+            "color": "#fff"
+          },
+          {
+            "id": "f8660cd6-4066-4e2c-9cb1-cdde2af8a7e6",
+            "label": ".NET / ASP.NET",
+            "color": "#fff"
+          },
+          {
+            "id": "cbc6b85c-09bc-4aae-9a9b-57ba016071f9",
+            "label": "ETL",
+            "color": "#fff"
+          },
+          {
+            "id": "e21b872e-4629-470e-872f-0c42c85a0cd7",
+            "label": "ETL / Informatica",
+            "color": "#fff"
+          },
+          {
+            "id": "ec8717cc-aee5-4b6a-b8ac-2b24402501d6",
+            "label": "PowerDesigner",
+            "color": "#fff"
+          },
+          {
+            "id": "721b2ffe-d1cb-4b4d-b671-a6dfd6814c00",
+            "label": "Oracle Insbridge",
+            "color": "#fff"
+          },
+          {
+            "id": "14fdea45-06b2-415e-a63a-45da37e7bbcb",
+            "label": "Oracle Rate Engine",
+            "color": "#fff"
+          },
+          {
+            "id": "e737f96c-014e-49be-91b9-2a66b38004da",
+            "label": "JavaScript",
+            "color": "#667684"
+          },
+          {
+            "id": "1d62f79f-f669-4030-9470-86cc3222d1c8",
+            "label": "JavaScript / Vue.js",
+            "color": "#fff"
+          },
+          {
+            "id": "1abb2b71-b51c-46ce-92b3-46be34a43027",
+            "label": "JavaScript / Vuex",
+            "color": "#fff"
+          },
+          {
+            "id": "a59bc551-be60-4d72-b610-97a2e7ae479a",
+            "label": "JavaScript / Vuetify.js",
+            "color": "#fff"
+          },
+          {
+            "id": "253c2d42-7727-4b63-aa1a-63cdfb8b8acf",
+            "label": "JavaScript / jQuery",
+            "color": "#fff"
+          },
+          {
+            "id": "f89e4467-c41b-48cc-9766-0ddba98c3240",
+            "label": "JavaScript / Angular",
+            "color": "#fff"
+          },
+          {
+            "id": "d623ace5-7a4d-48ab-8078-65933486b8b6",
+            "label": "JavaScript / AngularJS",
+            "color": "#fff"
+          },
+          {
+            "id": "8322f27b-8e6c-44ad-b4ba-850360d06f15",
+            "label": "JavaScript / React",
+            "color": "#fff"
+          },
+          {
+            "id": "3e873c74-ef66-4985-a88c-00d5537a5778",
+            "label": "JavaScript / TypeScript",
+            "color": "#fff"
+          },
+          {
+            "id": "476e80dd-faef-4c1f-914e-97a048d38124",
+            "label": "JavaScript / npm",
+            "color": "#fff"
+          },
+          {
+            "id": "d0971508-400e-493e-96d5-b653588d8925",
+            "label": "DevOps",
+            "color": "#667684"
+          },
+          {
+            "id": "c9d30af4-8ce6-4a51-b5ac-e348ee7fe4cf",
+            "label": "DevOps / Ansible",
+            "color": "#fff"
+          },
+          {
+            "id": "b2302ae9-a90b-48b7-a8b5-f46d723a13cd",
+            "label": "MSA",
+            "color": "#fff"
+          },
+          {
+            "id": "44806117-3048-4b5b-869a-8beccddde97d",
+            "label": "MSA / Kubernetes",
+            "color": "#fff"
+          },
+          {
+            "id": "605732af-e68d-446f-a753-1ab518f601ef",
+            "label": "Docker",
+            "color": "#fff"
+          },
+          {
+            "id": "f55553a9-c9f4-4f1f-b514-7547128e071d",
+            "label": "Kafka",
+            "color": "#fff"
+          },
+          {
+            "id": "106fc701-4c63-4978-91fe-d3176cec16ce",
+            "label": "HTML",
+            "color": "#fff"
+          },
+          {
+            "id": "bff629ee-9ef8-4e3e-8053-8f34e22c6068",
+            "label": "CSS",
+            "color": "#fff"
+          },
+          {
+            "id": "d28d59ab-1083-49b6-8089-5832b1b70beb",
+            "label": "iOS",
+            "color": "#667684"
+          },
+          {
+            "id": "334d2b08-7abd-4181-a15d-082f0c975106",
+            "label": "Android",
+            "color": "#667684"
+          },
+          {
+            "id": "ceb67667-9cef-4b6b-a050-e999c212666f",
+            "label": "Тестирование",
+            "color": "#fff"
+          },
+          {
+            "id": "6f5b7bc8-785a-47e6-8e09-3315729526a5",
+            "label": "Тестирование / АТ",
+            "color": "#fff"
+          },
+          {
+            "id": "2de0f300-6134-400a-a2a6-d413890c2654",
+            "label": "Тестирование / ФТ",
+            "color": "#fff"
+          },
+          {
+            "id": "1772996d-fe6b-40b2-b2c9-a13288ee334f",
+            "label": "Тестирование / НТ",
+            "color": "#fff"
+          },
+          {
+            "id": "c2ba3b00-1763-4a05-bd52-e8452c5be509",
+            "label": "Git",
+            "color": "#fff"
+          },
+          {
+            "id": "6cfde7bf-4bdc-4fde-80dc-3813459a1ce6",
+            "label": "iOS / SWIFT",
+            "color": "#fff"
+          },
+          {
+            "id": "f78895cd-fb27-4b06-a79e-2827b7c6a9fc",
+            "label": "Rabbit MQ",
+            "color": "#fff"
+          },
+          {
+            "id": "8a04e1fd-4d40-4f76-9d98-59e614ec9afc",
+            "label": "Apache Camel",
+            "color": "#fff"
+          },
+          {
+            "id": "6ddbdb41-6e13-466c-acd7-cd027bd34352",
+            "label": "Python",
+            "color": "#667684"
+          },
+          {
+            "id": "2d5d2335-b0a3-4635-abd9-f18f54baab90",
+            "label": "PHP",
+            "color": "#667684"
+          },
+          {
+            "id": "1076d42e-8acf-4dbf-ba90-a67c82bc3f06",
+            "label": "SQL",
+            "color": "#667684"
+          },
+          {
+            "id": "d3111d3f-3174-4b00-b991-bee052a7dd8e",
+            "label": "SQL / T-SQL",
+            "color": "#fff"
+          },
+          {
+            "id": "5267557a-ea32-44a4-9496-8ecd12f6c74e",
+            "label": "SQL / Oracle DB / PLSQL",
+            "color": "#fff"
+          },
+          {
+            "id": "fba6b118-f52e-4b2a-8631-9de5c564490c",
+            "label": "Oracle Siebel CRM",
+            "color": "#fff"
+          },
+          {
+            "id": "84f7457d-8223-444d-a60a-20d09cfad003",
+            "label": "PostgreSQL",
+            "color": "#fff"
+          },
+          {
+            "id": "79dc2d8f-e7ab-45a4-b9a4-76d0c8c7fc0a",
+            "label": "No SQL",
+            "color": "#fff"
+          },
+          {
+            "id": "7fa69673-6c21-4a3f-b041-e865f5485835",
+            "label": "No SQL / MongoDB",
+            "color": "#fff"
+          },
+          {
+            "id": "3e771128-8e41-41ee-8ed7-3b8bd9c28019",
+            "label": "Аналитик",
+            "color": "#fff"
+          },
+          {
+            "id": "dbd312da-8742-433d-a5d6-09ddf6f40775",
+            "label": "IBM API Connect",
+            "color": "#fff"
+          },
+          {
+            "id": "95cfafe7-f4ed-4aad-ad7a-c1e18f9ac12e",
+            "label": "C++",
+            "color": "#fff"
+          },
+          {
+            "id": "79f5c7a7-526f-499e-a837-da8cd5cf415c",
+            "label": "C++ / QT",
+            "color": "#fff"
+          },
+          {
+            "id": "a228d817-69c9-4312-8e26-3ac5058c8cdc",
+            "label": "JavaScript / React-native",
+            "color": "#fff"
+          },
+          {
+            "id": "bceea541-1cb4-4b9d-a356-6b54b4408eb4",
+            "label": "No SQL / ClickHouse",
+            "color": "#fff"
+          },
+          {
+            "id": "893b69b2-c3af-40ac-a0c5-e354911932c4",
+            "label": "Vertica",
+            "color": "#fff"
+          },
+          {
+            "id": "8a98f926-af84-4581-97d6-1c199d6a3110",
+            "label": "1С (1C)",
+            "color": "#fff"
+          },
+          {
+            "id": "0f98fe37-553d-4254-8753-6250df8044f0",
+            "label": "Unity",
+            "color": "#fff"
+          },
+          {
+            "id": "97217a78-c1fa-4113-9c8e-3b56deab45f1",
+            "label": "SQL / MS SQL Server",
+            "color": "#fff"
+          },
+          {
+            "id": "63e4288c-0d22-4385-bf20-fa58b665eb31",
+            "label": "MS Dynamics",
+            "color": "#fff"
+          },
+          {
+            "id": "5b3121bf-dd8a-4d4e-a014-7ab5a0dbcf32",
+            "label": "Qlick",
+            "color": "#fff"
+          },
+          {
+            "id": "cc4cec21-9ada-4d19-a556-975784e4ce9e",
+            "label": "Разработка",
+            "color": "#fff"
+          },
+          {
+            "id": "17d7d648-f0f9-46ae-88db-3d27125d7b23",
+            "label": "Guidewire - Gosu",
+            "color": "#fff"
+          },
+          {
+            "id": "62df2313-d8ab-4bc8-ae69-bcd932800ec9",
+            "label": "Apache NiFi",
+            "color": "#fff"
+          },
+          {
+            "id": "fd3b223a-6377-43e0-a4a5-8ab9e9d04b8a",
+            "label": "Apache Superset",
+            "color": "#fff"
+          }
+        ]
+      },
+      "date_created": "1611666137029",
+      "hide_from_guests": false,
+      "required": false
+    },
+    {
+      "id": "58004edd-d04c-4edb-bed8-f6337397fd72",
+      "name": "Дата начала",
+      "type": "date",
+      "type_config": {},
+      "date_created": "1618856008857",
+      "hide_from_guests": false,
+      "value": "1667350800000",
+      "required": false
+    },
+    {
+      "id": "879e67e3-eb65-45eb-9a82-94ac94470918",
+      "name": "Дата окончания",
+      "type": "date",
+      "type_config": {},
+      "date_created": "1612356203383",
+      "hide_from_guests": false,
+      "value": "1668474000000",
+      "required": false
+    }
+  ],
+  "dependencies": [],
+  "linked_tasks": [],
+  "team_id": "4597045",
+  "url": "https://app.clickup.com/t/2wmahab",
+  "permission_level": "create",
+  "list": {
+    "id": "180311910",
+    "name": "ЦКР / Сотрудники / Отпуска",
+    "access": true
+  },
+  "project": {
+    "id": "102323668",
+    "name": "CUERP (DEV2)",
+    "hidden": false,
+    "access": true
+  },
+  "folder": {
+    "id": "102323668",
+    "name": "CUERP (DEV2)",
+    "hidden": false,
+    "access": true
+  },
+  "space": {
+    "id": "6857652"
+  },
+  "attachments": []
+}
