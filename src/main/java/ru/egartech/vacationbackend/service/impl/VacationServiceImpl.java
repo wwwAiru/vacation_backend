@@ -7,6 +7,7 @@ import ru.egartech.vacationbackend.model.VacationApprovalReqDto;
 import ru.egartech.vacationbackend.model.VacationDayRemainDto;
 import ru.egartech.vacationbackend.model.VacationDto;
 import ru.egartech.vacationbackend.manager.VacationManager;
+import ru.egartech.vacationbackend.property.MessageProperties;
 import ru.egartech.vacationbackend.service.VacationsService;
 import ru.egartech.vacationbackend.util.DateUtils;
 
@@ -28,6 +29,8 @@ public class VacationServiceImpl implements VacationsService {
     private final Integer VACATION_DAYS_IN_YEAR = 28;
     private final VacationManager vacationManager;
 
+    private final MessageProperties messageProperties;
+
     @Override
     public VacationDto addVacationRequest(VacationApprovalReqDto vacationApprovalReqDto) {
         return vacationManager.saveVacation(VacationDto.builder()
@@ -41,7 +44,7 @@ public class VacationServiceImpl implements VacationsService {
     @Override
     public VacationDto findVacationById(String vacationId) {
         return vacationManager.getVacationById(vacationId).orElseThrow(() -> new VacationNotFoundException(
-                String.format("Не удалось найти отпуск с ID: %s", vacationId)));
+                messageProperties.getVacationNotFoundMessage(vacationId)));
     }
 
     @Override
@@ -79,12 +82,12 @@ public class VacationServiceImpl implements VacationsService {
         return vacationManager.updateVacation(vacationId, vacationDto);
     }
 
-    private Predicate<VacationDto> checkVacationDate(Long startDate, Long endDate){
+    private Predicate<VacationDto> checkVacationDate(Long startDate, Long endDate) {
         return v -> {
-            if(startDate != null & endDate != null){
+            if (startDate != null & endDate != null) {
                 return DateUtils.toLocalDate(v.getStartDate()).isAfter(DateUtils.toLocalDate(startDate)) &
                         DateUtils.toLocalDate(v.getStartDate()).isBefore(DateUtils.toLocalDate(endDate));
-            }else {
+            } else {
                 LocalDate firstDayYear = LocalDate.now().with(firstDayOfYear());
                 LocalDate lastDayYear = LocalDate.now().with(firstDayOfNextYear());
                 return DateUtils.toLocalDate(v.getStartDate()).isAfter(firstDayYear) &
@@ -93,9 +96,9 @@ public class VacationServiceImpl implements VacationsService {
         };
     }
 
-    private Integer calculateDayRemain(List<VacationDto> vacationDone, Long jobStartDate){
+    private Integer calculateDayRemain(List<VacationDto> vacationDone, Long jobStartDate) {
         long countVacationDayOff = vacationDone.stream().mapToLong(d ->
-                TimeUnit.MILLISECONDS.toDays(d.getEndDate() - d.getStartDate())+ 1L).sum() ;
+                TimeUnit.MILLISECONDS.toDays(d.getEndDate() - d.getStartDate()) + 1L).sum();
         LocalDateTime startJob = LocalDateTime.ofInstant(Instant.ofEpochMilli(jobStartDate), ZoneId.systemDefault());
         long experienceInMonths = ChronoUnit.MONTHS.between(startJob, LocalDateTime.now());
         return (BigDecimal.valueOf(VACATION_DAYS_IN_YEAR)
@@ -105,8 +108,7 @@ public class VacationServiceImpl implements VacationsService {
                 .intValue();
     }
 
-    private Long calculateEndDate(Long startDate, Integer countDay){
-
+    private Long calculateEndDate(Long startDate, Integer countDay) {
         return Long.sum(startDate, TimeUnit.DAYS.toMillis(countDay)) - TimeUnit.SECONDS.toMillis(1L);
     }
 

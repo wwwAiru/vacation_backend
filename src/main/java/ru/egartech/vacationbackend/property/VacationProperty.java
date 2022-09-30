@@ -10,7 +10,7 @@ import java.util.Map;
 
 @Component
 @Data
-@ConfigurationProperties(prefix = "set.vacation")
+@ConfigurationProperties(prefix = "settings.vacation")
 public class VacationProperty {
     private Map<Integer, Item> lists;
     @Data

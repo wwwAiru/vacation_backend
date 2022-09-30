@@ -15,6 +15,7 @@ import ru.egartech.sdk.dto.task.serialization.customfield.request.CustomFieldReq
 import ru.egartech.sdk.exception.task.TaskNotFoundException;
 import ru.egartech.vacationbackend.exception.AssignerNotFoundException;
 import ru.egartech.vacationbackend.exception.EmployeeNotFoundException;
+import ru.egartech.vacationbackend.property.MessageProperties;
 import ru.egartech.vacationbackend.property.VacationProperty;
 import ru.egartech.vacationbackend.model.VacationDto;
 import ru.egartech.vacationbackend.model.AssignerDto;
@@ -27,7 +28,7 @@ import java.util.List;
 public class VacationMapper {
 
     private final VacationProperty vacationProperty;
-
+    private final MessageProperties messageProperties;
     private final TaskClient taskClient;
 
     @Value("${org_structure.list_id}")
@@ -50,7 +51,8 @@ public class VacationMapper {
         RelationshipFieldDto employeeRelationShip = taskDto.customField(vacationProperty.getItem(listId).getEmployeeProfileId());
         String employeeProfileId = employeeRelationShip.getValue().stream()
                 .findFirst()
-                .map(RelationshipValueDto::getId).orElseThrow(() -> new EmployeeNotFoundException("У запрашиваемого отпуска не привязан сотрудник"));
+                .map(RelationshipValueDto::getId).orElseThrow(() -> new EmployeeNotFoundException(
+                        messageProperties.getVacationNotFoundMessage(taskDto.getId())));
         List<String> assignersCuEgarId = taskDto.getAssigners().stream()
                 .map(ru.egartech.sdk.dto.task.deserialization.customfield.assigner.AssignerDto::getId)
                 .toList();
@@ -79,7 +81,7 @@ public class VacationMapper {
                                     .build())
                     .getFirstTask();
         } catch (TaskNotFoundException ex){
-            throw new AssignerNotFoundException(String.format("Не удалось найти согласующего с CU EGAR ID: %s", cuEgarId));
+            throw new AssignerNotFoundException(messageProperties.getAssignerNotFoundMessage(cuEgarId));
         }
         String fullName = String.format("%s %s %s", assignerTask.<TextFieldDto>customField(lastnameId).getValue(),
                 assignerTask.<TextFieldDto>customField(firstnameId).getValue(),

@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Component
 @Data
-@ConfigurationProperties(prefix = "set.profile")
+@ConfigurationProperties(prefix = "settings.profile")
 public class ProfileProperty {
     private Map<Integer, Item> lists;
 

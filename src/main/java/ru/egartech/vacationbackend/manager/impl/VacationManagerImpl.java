@@ -15,6 +15,7 @@ import ru.egartech.sdk.exception.clickup.ClickUpException;
 import ru.egartech.sdk.exception.task.TaskNotFoundException;
 import ru.egartech.vacationbackend.exception.VacationNotFoundException;
 import ru.egartech.vacationbackend.exception.EmployeeNotFoundException;
+import ru.egartech.vacationbackend.property.MessageProperties;
 import ru.egartech.vacationbackend.property.ProfileProperty;
 import ru.egartech.vacationbackend.mapper.VacationMapper;
 import ru.egartech.vacationbackend.property.VacationProperty;
@@ -33,6 +34,7 @@ public class VacationManagerImpl implements VacationManager {
     private final VacationMapper vacationMapper;
     private final VacationProperty vacationProperty;
     private final ProfileProperty profileProperty;
+    private final MessageProperties messageProperties;
 
     @Override
     public Optional<VacationDto> getVacationById(String vacationId) {
@@ -48,17 +50,14 @@ public class VacationManagerImpl implements VacationManager {
 
     @Override
     public VacationDto saveVacation(VacationDto vacationDto, Integer profileListId) {
-        //получение карточки сотрудника для привязки отпуска
         TaskDto employeeProfile = findTaskById(vacationDto.getEmployeeProfileId())
                 .orElseThrow(() -> new EmployeeNotFoundException(
-                                String.format("Не удалось найти сотрудника с ID: %s", vacationDto.getEmployeeProfileId())));
-        //создание новой таски
+                        messageProperties.getEmployeeNotFoundMessage(vacationDto.getEmployeeProfileId())));
         var createTaskDto = CreateTaskDto.builder()
                 .name(employeeProfile.getName().replace("Сотрудник", "Отпуск"))
                 .build();
         int vacationListId = profileProperty.getItem(profileListId).getVacationList();
         TaskDto newTask = taskClient.createTask(vacationListId, createTaskDto);
-        //обновление таски
         var updateTaskDto = UpdateTaskDto.builder()
                 .id(newTask.getId())
                 .customFields(getBindField(vacationDto, vacationListId))
@@ -70,10 +69,8 @@ public class VacationManagerImpl implements VacationManager {
 
     @Override
     public VacationDto updateVacation(String vacationId, VacationDto vacationDto) {
-        //проверка отпуска на существование
         var vacationTask = findTaskById(vacationId).orElseThrow(() ->
-                new VacationNotFoundException(
-                        String.format("Не удалось найти отпуск с ID: %s", vacationId)));
+                new VacationNotFoundException(messageProperties.getVacationNotFoundMessage(vacationId)));
         var updateTaskDto = UpdateTaskDto.builder()
                 .id(vacationId)
                 .customFields(getBindField(vacationDto, vacationTask.getList().getId()))
@@ -118,8 +115,7 @@ public class VacationManagerImpl implements VacationManager {
                     .value(egarId).build();
             employee = taskClient.getTasksByCustomFields(profileListId, false, customField).getFirstTask();
         } catch (TaskNotFoundException e) {
-            throw new EmployeeNotFoundException(
-                    String.format("Не удалось найти сотрудника с EGAR ID: %s", egarId));
+            throw new EmployeeNotFoundException(messageProperties.getEmployeeNotFoundMessage(egarId));
         }
         var vacationsField = employee.<RelationshipFieldDto>customField(profileProperty.getItem(profileListId).getVacationListId());
         var vacationsFieldValue = vacationsField.getValue();
@@ -137,8 +133,7 @@ public class VacationManagerImpl implements VacationManager {
     private VacationDto findVacationById(String vacationId) {
         return findTaskById(vacationId).map(vacationMapper::toVacation)
                 .orElseThrow(() ->
-                        new VacationNotFoundException(
-                                String.format("Не удалось найти отпуск с ID: %s", vacationId)));
+                        new VacationNotFoundException(messageProperties.getVacationNotFoundMessage(vacationId)));
     }
 
 }
