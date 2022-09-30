@@ -22,25 +22,6 @@ import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 @RestControllerAdvice
 public class ErrorHandlingControllerAdvice {
 
-    @ExceptionHandler(ConstraintViolationException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public List<ViolationDto> onConstraintValidationException(ConstraintViolationException e) {
-        return e.getConstraintViolations().stream()
-                .map(violation -> ViolationDto.builder()
-                                .fieldName(violation.getPropertyPath().toString())
-                                .message(violation.getMessage())
-                                .build())
-                .collect(Collectors.toList());
-    }
-
-    @ExceptionHandler(MethodArgumentNotValidException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public List<ViolationDto> onMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        return e.getBindingResult().getFieldErrors().stream()
-                .map(error -> new ViolationDto(error.getField(), error.getDefaultMessage()))
-                .collect(Collectors.toList());
-    }
-
     @ExceptionHandler(VacationApplicationNotFoundException.class)
     public ResponseEntity<Object> handleNotFoundException(VacationApplicationNotFoundException e) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
