@@ -86,8 +86,8 @@ public class VacationMapper {
             throw new AssignerNotFoundException(messageProperties.getAssignerNotFoundMessage(cuEgarId));
         }
         TextFieldDto lastName = assignerTask.customField(lastnameId);
-        TextFieldDto firstName = assignerTask.customField(lastnameId);
-        TextFieldDto patronymic = assignerTask.customField(lastnameId);
+        TextFieldDto firstName = assignerTask.customField(firstnameId);
+        TextFieldDto patronymic = assignerTask.customField(patronymicId);
         AttachmentFieldDto avatarUrlField = assignerTask.customField(avatarId);
         String avatarUrl = avatarUrlField.getValue().stream()
                 .findFirst()

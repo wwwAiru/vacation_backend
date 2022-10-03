@@ -16,7 +16,7 @@
     <groupId>ru.egartech</groupId>
     <artifactId>vacation-backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>vacation-backend</name>
+    <name>vacation_backend</name>
 
     <dependencies>
 
@@ -27,8 +27,20 @@
         </dependency>
 
         <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-config</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
 
         <dependency>
@@ -73,6 +85,18 @@
         </dependency>
     </dependencies>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2021.0.3</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <build>
         <plugins>
             <plugin>
@@ -87,25 +111,20 @@
                     </excludes>
                 </configuration>
             </plugin>
-
-
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <!-- RELEASE_VERSION -->
                 <version>6.0.1</version>
-                <!-- /RELEASE_VERSION -->
                 <executions>
                     <execution>
                         <goals>
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <inputSpec>${project.basedir}/src/main/resources/openapi.yml</inputSpec>
+                            <inputSpec>${project.basedir}/src/main/resources/swagger/openapi.yml</inputSpec>
                             <generatorName>spring-codegen</generatorName>
                             <apiPackage>ru.egartech.vacationbackend</apiPackage>
                             <modelPackage>ru.egartech.vacationbackend.model</modelPackage>
-
                             <configOptions>
                                 <useDto>true</useDto>
                                 <jsonIgnoreNullFields>true</jsonIgnoreNullFields>
@@ -113,7 +132,6 @@
                         </configuration>
                     </execution>
                 </executions>
-
                 <dependencies>
                     <dependency>
                         <groupId>ru.egartech</groupId>
@@ -122,10 +140,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
         </plugins>
     </build>
-
-
-
 </project>
