@@ -3,5 +3,8 @@ spring:
     name: vacation_backend
   profiles:
     active: dev
+  cloud:
+    config:
+      fail-fast: true
   config:
     import: configserver:http://176.113.82.235:8888
