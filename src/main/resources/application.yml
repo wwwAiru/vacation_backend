@@ -3,8 +3,8 @@ spring:
     name: vacation_backend
   profiles:
     active: dev
+  config:
+    import: configserver:${CONFIG_HOST:http://176.113.82.235}:${CONFIG_PORT:8888}
   cloud:
     config:
       fail-fast: true
-  config:
-    import: configserver:${CONFIG_HOST:http://176.113.82.235}:${CONFIG_PORT:8888}
