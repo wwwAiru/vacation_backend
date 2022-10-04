@@ -4,4 +4,7 @@ spring:
   profiles:
     active: dev
   config:
-    import: configserver:http://176.113.82.235:8888
+    import: configserver:${CONFIG_HOST:http://176.113.82.235}:${CONFIG_PORT:8888}
+  cloud:
+    config:
+      fail-fast: true
