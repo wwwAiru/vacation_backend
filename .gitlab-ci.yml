@@ -7,4 +7,4 @@ test1:
     - echo "Do a test here"
     - echo "For example run a test suite"
   tags:
-    -shell
+    - shell
