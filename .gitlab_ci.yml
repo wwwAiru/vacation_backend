@@ -1,0 +1,11 @@
+stages:
+  - test
+
+maven-test:
+  stage: test
+  only:
+    - ^feature/*
+  script:
+    - 'mvn test'
+  tags:
+    - docker
