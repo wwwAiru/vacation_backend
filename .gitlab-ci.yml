@@ -1,11 +1,10 @@
 stages:
   - test
 
-maven-test:
+test1:
   stage: test
-  only:
-    - ^feature/*
   script:
-    - 'mvn test'
+    - echo "Do a test here"
+    - echo "For example run a test suite"
   tags:
-    - docker
+    -shell
