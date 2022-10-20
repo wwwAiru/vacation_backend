@@ -730,6 +730,16 @@
       "hide_from_guests": false,
       "value": "1668474000000",
       "required": false
+    },
+    {
+      "id": "daef2554-5625-4eaa-a5a7-2cb297a5f86d",
+      "name": "Резолюция",
+      "type": "text",
+      "type_config": {},
+      "date_created": "1666103297609",
+      "hide_from_guests": false,
+      "value": "Отказ",
+      "required": false
     }
   ],
   "dependencies": [],
