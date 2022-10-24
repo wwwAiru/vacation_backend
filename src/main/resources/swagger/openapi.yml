@@ -286,6 +286,8 @@ components:
             - closed
         status_id:
           type: string
+        resolution:
+          type: string
 
 
     VacationApprovalReq:

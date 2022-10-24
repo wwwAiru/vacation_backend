@@ -57,6 +57,7 @@ class VacationMapperTest extends AbstractSpringContext {
                 .startDate(1667350800000L)
                 .endDate(1668474000000L)
                 .status("согласован")
+                .resolution("Отказ")
                 .statusType(VacationDto.StatusTypeEnum.DONE)
                 .statusId("subcat180311910_sc156545942_pdD65bGE")
                 .build();

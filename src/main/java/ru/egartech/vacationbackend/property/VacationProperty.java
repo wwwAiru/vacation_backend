@@ -18,6 +18,7 @@ public class VacationProperty {
         private String startDate;
         private String endDate;
         private String employeeProfileId;
+        private String resolution;
     }
 
     public Item getItem(Integer index){

@@ -48,6 +48,7 @@ public class VacationMapper {
         Integer listId = taskDto.getList().getId();
         TextFieldDto startDateField = taskDto.customField(vacationProperty.getItem(listId).getStartDate());
         TextFieldDto endDateField = taskDto.customField(vacationProperty.getItem(listId).getEndDate());
+        TextFieldDto resolutionField = taskDto.customField(vacationProperty.getItem(listId).getResolution());
         String startDate = startDateField.getValue();
         String endDate = endDateField.getValue();
         RelationshipFieldDto employeeRelationShip = taskDto.customField(vacationProperty.getItem(listId).getEmployeeProfileId());
@@ -70,6 +71,7 @@ public class VacationMapper {
                 .status(taskDto.getStatus().getStatus())
                 .statusType(VacationDto.StatusTypeEnum.fromValue(taskDto.getStatus().getType()))
                 .statusId(taskDto.getStatus().getId())
+                .resolution(resolutionField.getValue())
                 .build();
     }
 
