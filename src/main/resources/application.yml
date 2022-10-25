@@ -2,7 +2,7 @@ spring:
   application:
     name: vacation_backend
   profiles:
-    active: dev
+    active: local
   config:
     import: configserver:http://${CONFIG_HOST:192.168.111.10}:${CONFIG_PORT:8888}
   cloud:
